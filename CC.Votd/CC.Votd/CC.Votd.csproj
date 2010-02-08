@@ -12,11 +12,13 @@
     <AssemblyName>CC.Votd</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <ApplicationIcon>Resources\Bible.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <Win32Resource>C:\Projects2\CC.Votd\CC.Votd\Resources\NativeResources.res</Win32Resource>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -112,6 +114,7 @@
     <None Include="Resources\Bible.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\NativeResources.res" />
     <None Include="Resources\Cross.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using CC.Utilities.Rss;
 
@@ -9,23 +10,45 @@ namespace CC.Votd
 {
     public partial class FormScreenSaver : Form
     {
-        #region Contstructor
-        public FormScreenSaver() : this(new Settings())
+        // TODO: Move these into CC.Utilities, verifiy their accuracy and that they are the correct choice
+        [DllImport("user32.dll")]
+        static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
+
+        [DllImport("user32.dll")]
+        static extern int SetWindowLong(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern int GetWindowLong(IntPtr hWnd, int nIndex);
+
+        [DllImport("user32.dll")]
+        static extern bool GetClientRect(IntPtr hWnd, out Rectangle lpRect);
+
+        #region Constructor
+        public FormScreenSaver() : this(IntPtr.Zero)
         {
             // Empty constructor
         }
 
-        public FormScreenSaver(Settings settings)
+        public FormScreenSaver(IntPtr previewHandle)
         {
             InitializeComponent();
             Icon = Properties.Resources.Bible;
 
-            _Settings = settings;
+            //_Settings = settings;
+            if (previewHandle != IntPtr.Zero)
+            {
+                _IsPreview = true;
+                _PreviewHandle = previewHandle;
+            }
 
-            CreateSecondaryScreenSavers();
+            if (!_IsPreview)
+            {
+                CreateSecondaryScreenSavers();
+            }
+
             SetupScreenSaver();
 
-            _RssFeed = new RssFeed((_Settings.RandomVerse) ? VERSE_RANDOM : VERSE_DAILY);
+            _RssFeed = new RssFeed(_Settings.RandomVerse ? VERSE_RANDOM : VERSE_DAILY);
             _RssItemView = new RssItemView(_RssFeed.Channels[0].Items[0]);
 
             InitializeRssItemView();
@@ -41,12 +64,14 @@ namespace CC.Votd
 
         #region Private Fields
         private bool _IsActive;
+        private readonly bool _IsPreview;
         private Point _MouseLocation;
+        private readonly IntPtr _PreviewHandle = IntPtr.Zero;
         private readonly Random _Random = new Random();
         private readonly RssFeed _RssFeed;
         private readonly RssItemView _RssItemView;
         private readonly List<FormSecondaryScreenSaver> _SecondaryScreensSavers = new List<FormSecondaryScreenSaver>();
-        private readonly Settings _Settings;
+        private readonly Settings _Settings = new Settings(true);
         #endregion
 
         #region Public Properties
@@ -93,26 +118,35 @@ namespace CC.Votd
         #region Public Event Handlers
         public void FormScreenSaver_KeyDown(object sender, KeyEventArgs e)
         {
-            Close();
+            if (!_IsPreview)
+            {
+                Close();
+            }
         }
 
         public void FormScreenSaver_MouseDown(object sender, MouseEventArgs e)
         {
-            Close();
+            if (!_IsPreview)
+            {
+                Close();
+            }
         }
 
         public void FormScreenSaver_MouseMove(object sender, MouseEventArgs e)
         {
-            if (!_IsActive)
+            if (!_IsPreview)
             {
-                _IsActive = true;
-                _MouseLocation = MousePosition;
-            }
-            else
-            {
-                if ((Math.Abs(MousePosition.X - _MouseLocation.X) > 10) || (Math.Abs(MousePosition.Y - _MouseLocation.Y) > 10))
+                if (!_IsActive)
                 {
-                    Close();
+                    _IsActive = true;
+                    _MouseLocation = MousePosition;
+                }
+                else
+                {
+                    if ((Math.Abs(MousePosition.X - _MouseLocation.X) > 10) || (Math.Abs(MousePosition.Y - _MouseLocation.Y) > 10))
+                    {
+                        Close();
+                    }
                 }
             }
         }
@@ -165,8 +199,8 @@ namespace CC.Votd
 
         private Point PositionRssItemView()
         {
-            int x = _Random.Next(1, Width - _RssItemView.Size.Width);
-            int y = _Random.Next(1, Height - _RssItemView.Size.Height);
+            int x = (Width >= _RssItemView.Size.Width) ? _Random.Next(0, Width - _RssItemView.Size.Width) : 0;
+            int y = (Height >= _RssItemView.Size.Height) ? _Random.Next(0, Height - _RssItemView.Size.Height) : 0;
             return new Point(x, y);
         }
 
@@ -198,14 +232,34 @@ namespace CC.Votd
             SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
             Capture = true;
 
-            Cursor.Hide();
-            Bounds = Screen.PrimaryScreen.Bounds;
-            WindowState = FormWindowState.Maximized;
+            if (!_IsPreview)
+            {
+                Cursor.Hide();
+                Bounds = Screen.PrimaryScreen.Bounds;
+                WindowState = FormWindowState.Maximized;
 #if DEBUG
-            TopMost = false;
+                TopMost = false;
 #else
-            TopMost = true;
+                TopMost = true;
 #endif
+            }
+            else
+            {
+                SetParent(Handle, _PreviewHandle);
+
+                //make this a child window, so when the select 
+                //screensaver dialog closes, this will also close
+                SetWindowLong(Handle, -16, new IntPtr(GetWindowLong(Handle, -16) | 0x40000000));
+
+                //set our window's size to the size of our window's new parent
+                Rectangle parentRect;
+                GetClientRect(_PreviewHandle, out parentRect);
+                Size = parentRect.Size;
+
+                //set our location at (0, 0)
+                Location = new Point(0, 0);
+            }
+
             ShowInTaskbar = false;
             DoubleBuffered = true;
             BackgroundImageLayout = ImageLayout.Stretch;

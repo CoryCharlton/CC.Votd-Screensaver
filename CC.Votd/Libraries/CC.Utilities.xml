@@ -291,6 +291,27 @@
             Selection related constants
             </summary>
         </member>
+        <member name="T:CC.Utilities.XmlNodeExtensions">
+            <summary>
+            Contains <see cref="T:System.Xml.XmlNode"/> extension methods
+            </summary>
+        </member>
+        <member name="M:CC.Utilities.XmlNodeExtensions.AttributeValue(System.Xml.XmlNode,System.String)">
+            <summary>
+            Gets an attibute value from an <see cref="T:System.Xml.XmlNode"/>
+            </summary>
+            <param name="xmlNode">The <see cref="T:System.Xml.XmlNode"/></param>
+            <param name="name">The attribute name</param>
+            <returns>The attribute value</returns>
+        </member>
+        <member name="M:CC.Utilities.XmlNodeExtensions.SelectSingleNodeInnerText(System.Xml.XmlNode,System.String)">
+            <summary>
+            Gets the InnerText of an <see cref="T:System.Xml.XmlNode"/> based on an XPath expression.
+            </summary>
+            <param name="xmlNode">The <see cref="T:System.Xml.XmlNode"/></param>
+            <param name="xpath">The XPath expression</param>
+            <returns>The InnerText of the selected <see cref="T:System.Xml.XmlNode"/></returns>
+        </member>
         <member name="T:CC.Utilities.CsvParser">
             <summary>
             Provides CSV parsing functionality per RFC4180 http://tools.ietf.org/html/rfc4180
@@ -417,6 +438,57 @@
         <member name="P:CC.Utilities.ArgumentParser.CommonPrefixes">
             <summary>
             A list of common prefixes.
+            </summary>
+        </member>
+        <member name="T:CC.Utilities.Rss.RssItem">
+            <summary>
+            Represents an Item element in an RSS 2.0 XML document.
+            </summary>
+        </member>
+        <member name="M:CC.Utilities.Rss.RssItem.#ctor(System.Xml.XmlNode)">
+            <summary>
+            Create a new <see cref="T:CC.Utilities.Rss.RssItem"/> from a <see cref="T:System.Xml.XmlNode"/>.
+            </summary>
+            <param name="xmlNode">The <see cref="T:System.Xml.XmlNode"/> to parse.</param>
+        </member>
+        <member name="P:CC.Utilities.Rss.RssItem.Author">
+            <summary>
+            The author
+            </summary>
+        </member>
+        <member name="P:CC.Utilities.Rss.RssItem.Category">
+            <summary>
+            The category
+            </summary>
+        </member>
+        <member name="P:CC.Utilities.Rss.RssItem.Comments">
+            <summary>
+            The comments
+            </summary>
+        </member>
+        <member name="P:CC.Utilities.Rss.RssItem.Description">
+            <summary>
+            The description
+            </summary>
+        </member>
+        <member name="P:CC.Utilities.Rss.RssItem.Enclosure">
+            <summary>
+            The <see cref="T:CC.Utilities.Rss.RssEnclosure"/>
+            </summary>
+        </member>
+        <member name="P:CC.Utilities.Rss.RssItem.Guid">
+            <summary>
+            The guid
+            </summary>
+        </member>
+        <member name="P:CC.Utilities.Rss.RssItem.Link">
+            <summary>
+            The link
+            </summary>
+        </member>
+        <member name="P:CC.Utilities.Rss.RssItem.Title">
+            <summary>
+            The title
             </summary>
         </member>
         <member name="T:CC.Utilities.Interop.EM">
@@ -615,6 +687,49 @@
             </summary>
             <param name="dateTime">The <see cref="T:System.DateTime"/> to work with</param>
             <returns>A <see cref="T:System.String"/></returns>
+        </member>
+        <member name="T:CC.Utilities.Rss.RssFeed">
+            <summary>
+            Represents a RSS feed
+            </summary>
+        </member>
+        <member name="M:CC.Utilities.Rss.RssFeed.#ctor(System.String)">
+            <summary>
+            Creates a new <see cref="T:CC.Utilities.Rss.RssFeed"/>
+            </summary>
+            <param name="url">The url to the RSS feed</param>
+        </member>
+        <member name="M:CC.Utilities.Rss.RssFeed.#ctor(System.Uri)">
+            <summary>
+            Creates a new <see cref="T:CC.Utilities.Rss.RssFeed"/>
+            </summary>
+            <param name="uri">The <see cref="P:CC.Utilities.Rss.RssFeed.Uri"/> to the RSS feed</param>
+        </member>
+        <member name="M:CC.Utilities.Rss.RssFeed.Refresh">
+            <summary>
+            Refresh the <see cref="T:CC.Utilities.Rss.RssFeed"/>
+            </summary>
+            <returns>true if the <see cref="T:CC.Utilities.Rss.RssFeed"/> was refreshed; false otherwise.</returns>
+        </member>
+        <member name="P:CC.Utilities.Rss.RssFeed.Channels">
+            <summary>
+            The <see cref="T:CC.Utilities.Rss.RssChannel"/>s
+            </summary>
+        </member>
+        <member name="P:CC.Utilities.Rss.RssFeed.LastUpdated">
+            <summary>
+            The last updated
+            </summary>
+        </member>
+        <member name="P:CC.Utilities.Rss.RssFeed.Uri">
+            <summary>
+            The <see cref="P:CC.Utilities.Rss.RssFeed.Uri"/>
+            </summary>
+        </member>
+        <member name="P:CC.Utilities.Rss.RssFeed.Url">
+            <summary>
+            The url
+            </summary>
         </member>
         <member name="T:CC.Utilities.DataTableExtensions">
             <summary>
@@ -869,100 +984,6 @@
             <param name="pfa">The <see cref="T:CC.Utilities.Interop.PFA"/> to convert.</param>
             <returns>A <see cref="T:System.Windows.Forms.HorizontalAlignment"/></returns>
         </member>
-        <member name="T:CC.Utilities.Rss.RssItem">
-            <summary>
-            Represents an Item element in an RSS 2.0 XML document.
-            </summary>
-        </member>
-        <member name="M:CC.Utilities.Rss.RssItem.#ctor(System.Xml.XmlNode)">
-            <summary>
-            Create a new <see cref="T:CC.Utilities.Rss.RssItem"/> from a <see cref="T:System.Xml.XmlNode"/>.
-            </summary>
-            <param name="xmlNode">The <see cref="T:System.Xml.XmlNode"/> to parse.</param>
-        </member>
-        <member name="P:CC.Utilities.Rss.RssItem.Author">
-            <summary>
-            The author
-            </summary>
-        </member>
-        <member name="P:CC.Utilities.Rss.RssItem.Category">
-            <summary>
-            The category
-            </summary>
-        </member>
-        <member name="P:CC.Utilities.Rss.RssItem.Comments">
-            <summary>
-            The comments
-            </summary>
-        </member>
-        <member name="P:CC.Utilities.Rss.RssItem.Description">
-            <summary>
-            The description
-            </summary>
-        </member>
-        <member name="P:CC.Utilities.Rss.RssItem.Enclosure">
-            <summary>
-            The <see cref="T:CC.Utilities.Rss.RssEnclosure"/>
-            </summary>
-        </member>
-        <member name="P:CC.Utilities.Rss.RssItem.Guid">
-            <summary>
-            The guid
-            </summary>
-        </member>
-        <member name="P:CC.Utilities.Rss.RssItem.Link">
-            <summary>
-            The link
-            </summary>
-        </member>
-        <member name="P:CC.Utilities.Rss.RssItem.Title">
-            <summary>
-            The title
-            </summary>
-        </member>
-        <member name="T:CC.Utilities.Rss.RssFeed">
-            <summary>
-            Represents a RSS feed
-            </summary>
-        </member>
-        <member name="M:CC.Utilities.Rss.RssFeed.#ctor(System.String)">
-            <summary>
-            Creates a new <see cref="T:CC.Utilities.Rss.RssFeed"/>
-            </summary>
-            <param name="url">The url to the RSS feed</param>
-        </member>
-        <member name="M:CC.Utilities.Rss.RssFeed.#ctor(System.Uri)">
-            <summary>
-            Creates a new <see cref="T:CC.Utilities.Rss.RssFeed"/>
-            </summary>
-            <param name="uri">The <see cref="P:CC.Utilities.Rss.RssFeed.Uri"/> to the RSS feed</param>
-        </member>
-        <member name="M:CC.Utilities.Rss.RssFeed.Refresh">
-            <summary>
-            Refresh the <see cref="T:CC.Utilities.Rss.RssFeed"/>
-            </summary>
-            <returns>true if the <see cref="T:CC.Utilities.Rss.RssFeed"/> was refreshed; false otherwise.</returns>
-        </member>
-        <member name="P:CC.Utilities.Rss.RssFeed.Channels">
-            <summary>
-            The <see cref="T:CC.Utilities.Rss.RssChannel"/>s
-            </summary>
-        </member>
-        <member name="P:CC.Utilities.Rss.RssFeed.LastUpdated">
-            <summary>
-            The last updated
-            </summary>
-        </member>
-        <member name="P:CC.Utilities.Rss.RssFeed.Uri">
-            <summary>
-            The <see cref="P:CC.Utilities.Rss.RssFeed.Uri"/>
-            </summary>
-        </member>
-        <member name="P:CC.Utilities.Rss.RssFeed.Url">
-            <summary>
-            The url
-            </summary>
-        </member>
         <member name="T:CC.Utilities.Rss.RssEnclosure">
             <summary>
             Represents a RSS enclosure.
@@ -1059,27 +1080,6 @@
             <summary>
             The webmaster
             </summary>
-        </member>
-        <member name="T:CC.Utilities.XmlNodeExtensions">
-            <summary>
-            Contains <see cref="T:System.Xml.XmlNode"/> extension methods
-            </summary>
-        </member>
-        <member name="M:CC.Utilities.XmlNodeExtensions.AttributeValue(System.Xml.XmlNode,System.String)">
-            <summary>
-            Gets an attibute value from an <see cref="T:System.Xml.XmlNode"/>
-            </summary>
-            <param name="xmlNode">The <see cref="T:System.Xml.XmlNode"/></param>
-            <param name="name">The attribute name</param>
-            <returns>The attribute value</returns>
-        </member>
-        <member name="M:CC.Utilities.XmlNodeExtensions.SelectSingleNodeInnerText(System.Xml.XmlNode,System.String)">
-            <summary>
-            Gets the InnerText of an <see cref="T:System.Xml.XmlNode"/> based on an XPath expression.
-            </summary>
-            <param name="xmlNode">The <see cref="T:System.Xml.XmlNode"/></param>
-            <param name="xpath">The XPath expression</param>
-            <returns>The InnerText of the selected <see cref="T:System.Xml.XmlNode"/></returns>
         </member>
     </members>
 </doc>

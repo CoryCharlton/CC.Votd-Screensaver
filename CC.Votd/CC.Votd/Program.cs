@@ -31,18 +31,29 @@ namespace CC.Votd
                         }
                     case "/p":
                         {
-                            // TODO: Figure out the preview functionality ...
+                            IntPtr previewHandle = IntPtr.Zero;
+                            
+                            if (args.Length > 1)
+                            {
+                                long tempLong;
+                                if (long.TryParse(args[1], out tempLong))
+                                {
+                                    previewHandle = new IntPtr(tempLong);
+                                }
+                            }
+
+                            Application.Run(new FormScreenSaver(previewHandle));
                             break;
                         }
                     case "/s":
                         {
-                            Application.Run(new FormScreenSaver());
+                            Application.Run(new FormScreenSaver(IntPtr.Zero));
                             break;
                         }
                     case "/d":
                         {
                             // Should be debug mode...
-                            Application.Run(new FormScreenSaver());
+                            Application.Run(new FormScreenSaver(IntPtr.Zero));
                             break;
                         }
                     default:
@@ -54,7 +65,7 @@ namespace CC.Votd
             }
             else
             {
-                Application.Run(new FormScreenSaver());
+                Application.Run(new FormScreenSaver(IntPtr.Zero));
             }
         }
 
