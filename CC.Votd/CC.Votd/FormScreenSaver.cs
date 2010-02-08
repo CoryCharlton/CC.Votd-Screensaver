@@ -246,17 +246,12 @@ namespace CC.Votd
             else
             {
                 SetParent(Handle, _PreviewHandle);
-
-                //make this a child window, so when the select 
-                //screensaver dialog closes, this will also close
                 SetWindowLong(Handle, -16, new IntPtr(GetWindowLong(Handle, -16) | 0x40000000));
 
-                //set our window's size to the size of our window's new parent
-                Rectangle parentRect;
-                GetClientRect(_PreviewHandle, out parentRect);
-                Size = parentRect.Size;
+                Rectangle parentRectangle;
+                GetClientRect(_PreviewHandle, out parentRectangle);
+                Size = parentRectangle.Size;
 
-                //set our location at (0, 0)
                 Location = new Point(0, 0);
             }
 
