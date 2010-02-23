@@ -66,6 +66,23 @@ namespace CC.Votd
         private readonly Settings _Settings = new Settings(true);
         #endregion
 
+        #region Protected Properties
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams createParams = base.CreateParams;
+
+                if (!DesignMode && _IsPreview)
+                {
+                    createParams.Style |= 0x40000000; // Add the WS_CHILD style to preview mode...
+                }
+
+                return createParams;
+            }
+        }
+        #endregion
+
         #region Public Properties
         public RssItemView RssItemView
         {
@@ -241,7 +258,7 @@ namespace CC.Votd
             }
             else
             {
-                User32.SetWindowLong(Handle, -16, new IntPtr(User32.GetWindowLong(Handle, -16).ToInt64() | 0x40000000));
+                //User32.SetWindowLong(Handle, -16, new IntPtr(User32.GetWindowLong(Handle, -16).ToInt64() | 0x40000000));
                 User32.SetParent(Handle, _PreviewHandle);
 
                 Rectangle parentRectangle;
