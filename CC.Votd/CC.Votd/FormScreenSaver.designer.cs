@@ -40,7 +40,7 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormScreenSaver";
-            this.Text = "Form1";
+            this.Text = "FormScreenSaver";
             this.TopMost = true;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormScreenSaver_MouseDown);
