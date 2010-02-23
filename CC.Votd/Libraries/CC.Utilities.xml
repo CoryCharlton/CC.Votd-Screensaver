@@ -215,6 +215,53 @@
             <param name="color"></param>
             <returns></returns>
         </member>
+        <!-- Badly formed XML comment ignored for member "T:CC.Utilities.ShortGuid" -->
+        <!-- Badly formed XML comment ignored for member "F:CC.Utilities.ShortGuid.Empty" -->
+        <!-- Badly formed XML comment ignored for member "M:CC.Utilities.ShortGuid.#ctor(System.String)" -->
+        <member name="M:CC.Utilities.ShortGuid.#ctor(System.Guid)">
+            <param name="guid">The Guid to encode</param>
+        </member>
+        <member name="M:CC.Utilities.ShortGuid.ToString">
+            <returns></returns>
+        </member>
+        <member name="M:CC.Utilities.ShortGuid.Equals(System.Object)">
+            <returns></returns>
+        </member>
+        <member name="M:CC.Utilities.ShortGuid.GetHashCode">
+            <returns></returns>
+        </member>
+        <member name="M:CC.Utilities.ShortGuid.NewGuid">
+            <returns></returns>
+        </member>
+        <member name="M:CC.Utilities.ShortGuid.Encode(System.String)">
+            <returns></returns>
+        </member>
+        <member name="M:CC.Utilities.ShortGuid.Encode(System.Guid)">
+            <returns></returns>
+        </member>
+        <member name="M:CC.Utilities.ShortGuid.Decode(System.String)">
+            <returns>A new Guid</returns>
+        </member>
+        <member name="M:CC.Utilities.ShortGuid.op_Equality(CC.Utilities.ShortGuid,CC.Utilities.ShortGuid)">
+            <returns></returns>
+        </member>
+        <member name="M:CC.Utilities.ShortGuid.op_Inequality(CC.Utilities.ShortGuid,CC.Utilities.ShortGuid)">
+            <returns></returns>
+        </member>
+        <member name="M:CC.Utilities.ShortGuid.op_Implicit(CC.Utilities.ShortGuid)~System.String">
+            <returns></returns>
+        </member>
+        <member name="M:CC.Utilities.ShortGuid.op_Implicit(CC.Utilities.ShortGuid)~System.Guid">
+            <returns></returns>
+        </member>
+        <member name="M:CC.Utilities.ShortGuid.op_Implicit(System.String)~CC.Utilities.ShortGuid">
+            <returns></returns>
+        </member>
+        <member name="M:CC.Utilities.ShortGuid.op_Implicit(System.Guid)~CC.Utilities.ShortGuid">
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:CC.Utilities.ShortGuid.Guid" -->
+        <!-- Badly formed XML comment ignored for member "P:CC.Utilities.ShortGuid.Value" -->
         <member name="T:CC.Utilities.Encryption">
             <summary>
             Provides simple <see cref="T:System.Security.Cryptography.RijndaelManaged"/> Decrypt() and Encrypt() methods using a static implementation of <see cref="T:CC.Utilities.SimpleEncryption"/>
@@ -868,6 +915,13 @@
             <summary>
             Set the capacity to the actual number of elements in the <see cref="T:CC.Utilities.ThreadSafeQueue`1"/>, if that number is less than 90 percent of current capactity.
             </summary>
+        </member>
+        <member name="M:CC.Utilities.ThreadSafeQueue`1.TryDequeue(`0@)">
+            <summary>
+            Attempts to remove and return the object at the beggining of the <see cref="T:CC.Utilities.ThreadSafeQueue`1"/>
+            </summary>
+            <param name="item">The <see cref="!:T"/> to return</param>
+            <returns></returns>
         </member>
         <member name="P:CC.Utilities.ThreadSafeQueue`1.Count">
             <summary>

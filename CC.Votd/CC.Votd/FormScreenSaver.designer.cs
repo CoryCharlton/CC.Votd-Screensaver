@@ -42,7 +42,6 @@
             this.Name = "FormScreenSaver";
             this.Text = "FormScreenSaver";
             this.TopMost = true;
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormScreenSaver_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FormScreenSaver_MouseMove);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormScreenSaver_KeyDown);

@@ -39,6 +39,7 @@ namespace CC.Votd
                                 if (long.TryParse(args[1], out tempLong))
                                 {
                                     previewHandle = new IntPtr(tempLong);
+                                    Logging.LogMessage("Preview Handle: " + previewHandle);
                                 }
                             }
 

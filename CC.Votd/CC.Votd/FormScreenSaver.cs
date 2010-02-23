@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using CC.Utilities.Interop;
 using CC.Utilities.Rss;
 
 namespace CC.Votd
@@ -11,15 +12,6 @@ namespace CC.Votd
     public partial class FormScreenSaver : Form
     {
         // TODO: Move these into CC.Utilities, verifiy their accuracy and that they are the correct choice
-        [DllImport("user32.dll")]
-        static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
-
-        [DllImport("user32.dll")]
-        static extern int SetWindowLong(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
-
-        [DllImport("user32.dll", SetLastError = true)]
-        static extern int GetWindowLong(IntPtr hWnd, int nIndex);
-
         [DllImport("user32.dll")]
         static extern bool GetClientRect(IntPtr hWnd, out Rectangle lpRect);
 
@@ -230,7 +222,11 @@ namespace CC.Votd
             }
 
             SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
+
+            BackgroundImageLayout = ImageLayout.Stretch;
             Capture = true;
+            DoubleBuffered = true;
+            ShowInTaskbar = false;
 
             if (!_IsPreview)
             {
@@ -245,8 +241,8 @@ namespace CC.Votd
             }
             else
             {
-                SetParent(Handle, _PreviewHandle);
-                SetWindowLong(Handle, -16, new IntPtr(GetWindowLong(Handle, -16) | 0x40000000));
+                User32.SetWindowLong(Handle, -16, new IntPtr(User32.GetWindowLong(Handle, -16).ToInt64() | 0x40000000));
+                User32.SetParent(Handle, _PreviewHandle);
 
                 Rectangle parentRectangle;
                 GetClientRect(_PreviewHandle, out parentRectangle);
@@ -254,10 +250,6 @@ namespace CC.Votd
 
                 Location = new Point(0, 0);
             }
-
-            ShowInTaskbar = false;
-            DoubleBuffered = true;
-            BackgroundImageLayout = ImageLayout.Stretch;
 
             foreach (FormSecondaryScreenSaver formSecondaryScreenSaver in _SecondaryScreensSavers)
             {
