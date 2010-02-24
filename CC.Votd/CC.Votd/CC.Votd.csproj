@@ -126,6 +126,6 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>copy $(TargetDir)$(TargetName)$(TargetExt) $(TargetDir)$(TargetName).scr</PostBuildEvent>
+    <PostBuildEvent>copy /Y $(TargetDir)$(TargetName)$(TargetExt) $(TargetDir)$(TargetName).scr</PostBuildEvent>
   </PropertyGroup>
 </Project>

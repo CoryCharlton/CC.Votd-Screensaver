@@ -149,11 +149,6 @@
             "AssemblyAsmDisplayName" = "8:CC.Votd, Version=1.0.10.223, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_9B01A54F134742BB926B45B9A6DFE128"
-                    {
-                    "Name" = "8:CC.Votd.scr"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:..\\CC.Votd\\bin\\Release\\CC.Votd.scr"
             "TargetName" = "8:"
@@ -249,14 +244,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:CC.Votd"
-        "ProductCode" = "8:{048BEA5F-E066-4A8A-B581-D61A6A120978}"
-        "PackageCode" = "8:{537E9C5B-0968-48BC-B2AF-882360EFC542}"
+        "ProductCode" = "8:{AB2D3D8D-94CF-42BA-9392-6A2AC3C3158B}"
+        "PackageCode" = "8:{5221CF5B-B281-4D8E-AA75-DD319EE26092}"
         "UpgradeCode" = "8:{18589AC4-0B9F-428D-993E-8380AB7D66EE}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.0.1"
         "Manufacturer" = "8:CC Software Engineering"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://www.ccswe.com"

@@ -26,16 +26,10 @@ namespace CC.Votd
             InitializeComponent();
             Icon = Properties.Resources.Bible;
 
-            //_Settings = settings;
             if (previewHandle != IntPtr.Zero)
             {
                 _IsPreview = true;
                 _PreviewHandle = previewHandle;
-            }
-
-            if (!_IsPreview)
-            {
-                CreateSecondaryScreenSavers();
             }
 
             SetupScreenSaver();
@@ -178,7 +172,6 @@ namespace CC.Votd
                                                                                     Size = new Size(screen.WorkingArea.Width, screen.WorkingArea.Height)
                                                                                 };
 
-                        //formSecondaryScreenSaver.Size = new Size(screen.WorkingArea.Width/2, screen.WorkingArea.Height/2);
                         formSecondaryScreenSaver.Show();
 
                         _SecondaryScreensSavers.Add(formSecondaryScreenSaver);
@@ -189,19 +182,31 @@ namespace CC.Votd
 
         private void InitializeRssItemView()
         {
-            _RssItemView.BackColor = Color.FromArgb(100, _Settings.BackgroundColor);
+            _RssItemView.BackColor = _Settings.BackgroundColor;
             _RssItemView.BorderColor = _Settings.BorderColor;
             _RssItemView.ForeColor = _Settings.ForegroundColor;
 
             _RssItemView.FadeDelay = _Settings.FadeDelay;
             _RssItemView.FadeSpeed = _Settings.FadeSpeed;
 
-            _RssItemView.TitleFont = _Settings.TitleFont;
-            _RssItemView.TextFont = _Settings.TextFont;
+            if (_IsPreview)
+            {
+                _RssItemView.MaxWidth = (int)(Width * .8);
+                _RssItemView.Padding = new Padding(2);
+                _RssItemView.TitleFont = new Font(_Settings.TitleFont.FontFamily.Name, _Settings.TitleFont.Size / 4, _Settings.TitleFont.Style, _Settings.TitleFont.Unit);
+                _RssItemView.TextFont = new Font(_Settings.TextFont.FontFamily.Name, _Settings.TextFont.Size / 4, _Settings.TextFont.Style, _Settings.TextFont.Unit);
+            }
+            else
+            {
+                _RssItemView.MaxWidth = (int)(Width * .65);
+                _RssItemView.Padding = new Padding(8);
+                _RssItemView.TitleFont = _Settings.TitleFont;
+                _RssItemView.TextFont = _Settings.TextFont;                
+            }
+
             _RssItemView.FadingTick += _RssItemView_FadeTick;
             _RssItemView.FadingComplete += _RssItemView_FadeComplete;
 
-            _RssItemView.MaxWidth = Width/2;
             _RssItemView.SetSize(CreateGraphics());
             _RssItemView.Location = PositionRssItemView();
         }
@@ -233,9 +238,21 @@ namespace CC.Votd
 
         private void SetupScreenSaver()
         {
+            if (!_IsPreview)
+            {
+                CreateSecondaryScreenSavers();
+            }
+
             if (!string.IsNullOrEmpty(_Settings.BackgroundImage) && File.Exists(_Settings.BackgroundImage))
             {
-                BackgroundImage = Image.FromFile(_Settings.BackgroundImage);
+                try
+                {
+                    BackgroundImage = Image.FromFile(_Settings.BackgroundImage);
+                }
+                catch (Exception)
+                {
+                    BackgroundImage = Properties.Resources.Cross;
+                }
             }
 
             SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
@@ -258,7 +275,6 @@ namespace CC.Votd
             }
             else
             {
-                //User32.SetWindowLong(Handle, -16, new IntPtr(User32.GetWindowLong(Handle, -16).ToInt64() | 0x40000000));
                 User32.SetParent(Handle, _PreviewHandle);
 
                 Rectangle parentRectangle;

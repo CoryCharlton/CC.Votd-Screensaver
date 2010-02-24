@@ -33,8 +33,6 @@ namespace CC.Votd
         private const int ALPHA_MAX = 200;
         private const int FADE_DELAY = 60000;
         private const int FADE_SPEED = 50;
-        private const int HORIZONTAL_BUFFER = 20;
-        private const int VERTICAL_BUFFER = 20;
         // ReSharper restore InconsistentNaming
         #endregion
 
@@ -63,6 +61,8 @@ namespace CC.Votd
         public Point Location { get; set; }
         
         public int MaxWidth { get; set; }
+
+        public Padding Padding { get; set; }
 
         public Size Size { get; private set; }
 
@@ -147,8 +147,8 @@ namespace CC.Votd
 
             DrawBackground(e.Graphics);
 
-            Rectangle textRectangle = new Rectangle(Location.X + HORIZONTAL_BUFFER, Location.Y + VERTICAL_BUFFER, _TextSize.Width, _TextSize.Height);
-            Rectangle titleRectangle = new Rectangle(Location.X + HORIZONTAL_BUFFER, Location.Y + VERTICAL_BUFFER + _TextSize.Height + VERTICAL_BUFFER, _TitleSize.Width, _TitleSize.Height);
+            Rectangle textRectangle = new Rectangle(Location.X + Padding.Size.Width, Location.Y + Padding.Size.Height, _TextSize.Width, _TextSize.Height);
+            Rectangle titleRectangle = new Rectangle(Location.X + Padding.Size.Width, Location.Y + Padding.Size.Height + _TextSize.Height + Padding.Size.Height, _TitleSize.Width, _TitleSize.Height);
 
             using (Brush textBrush = new SolidBrush(Color.FromArgb(_Alpha, Color.Black)))
             {
@@ -172,9 +172,9 @@ namespace CC.Votd
 
         public void SetSize(Graphics graphics)
         {
-            SizeF textSize = graphics.MeasureString(" " + Item.Description + " ", TextFont, MaxWidth - (HORIZONTAL_BUFFER * 2), _StringFormat);
-            SizeF titleSize = graphics.MeasureString(" " + Item.Title + " ", TextFont, MaxWidth - (HORIZONTAL_BUFFER * 2), _StringFormat);
-            SizeF totalSize = new SizeF((textSize.Width > titleSize.Width ? textSize.Width : titleSize.Width) + (HORIZONTAL_BUFFER*2), textSize.Height + titleSize.Height + (VERTICAL_BUFFER * 3));
+            SizeF textSize = graphics.MeasureString(" " + Item.Description + " ", TextFont, MaxWidth - (Padding.Size.Width * 2), _StringFormat);
+            SizeF titleSize = graphics.MeasureString(" " + Item.Title + " ", TextFont, MaxWidth - (Padding.Size.Width * 2), _StringFormat);
+            SizeF totalSize = new SizeF((textSize.Width > titleSize.Width ? textSize.Width : titleSize.Width) + (Padding.Size.Width * 2), textSize.Height + titleSize.Height + (Padding.Size.Height * 3));
 
             Logging.LogMessage("Text --- H: " + textSize.Height + " W: " + textSize.Width + " Max W: " + MaxWidth);
             Logging.LogMessage("Title -- H: " + titleSize.Height + " W: " + titleSize.Width + " Max W: " + MaxWidth);
