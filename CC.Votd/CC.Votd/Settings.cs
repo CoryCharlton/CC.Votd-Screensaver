@@ -67,6 +67,8 @@ namespace CC.Votd
 
         public int FadeSpeed { get; set; }
 
+        public bool IsPreview { get; set; }
+
         public bool RandomVerse { get; set; }
 
         public Font TextFont { get; set; }

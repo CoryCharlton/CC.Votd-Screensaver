@@ -7,6 +7,14 @@ namespace CC.Votd
 {
     static class Program
     {
+        #region Private Fields
+        private static readonly Settings _Settings = new Settings(true);
+        #endregion
+
+        #region Public Properties
+        public static Settings Settings { get { return _Settings; } }
+        #endregion
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -43,18 +51,18 @@ namespace CC.Votd
                                 }
                             }
 
-                            Application.Run(new FormScreenSaver(previewHandle));
+                            Application.Run(new FormMain(previewHandle));
                             break;
                         }
                     case "/s":
                         {
-                            Application.Run(new FormScreenSaver(IntPtr.Zero));
+                            Application.Run(new FormMain(IntPtr.Zero));
                             break;
                         }
                     case "/d":
                         {
                             // Should be debug mode...
-                            Application.Run(new FormScreenSaver(IntPtr.Zero));
+                            Application.Run(new FormMain(IntPtr.Zero));
                             break;
                         }
                     default:
@@ -66,7 +74,7 @@ namespace CC.Votd
             }
             else
             {
-                Application.Run(new FormScreenSaver(IntPtr.Zero));
+                Application.Run(new FormMain(IntPtr.Zero));
             }
         }
 
