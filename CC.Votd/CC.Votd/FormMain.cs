@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using CC.Utilities;
 using CC.Utilities.Interop;
 
 namespace CC.Votd
@@ -22,26 +22,23 @@ namespace CC.Votd
 
         public FormMain(IntPtr previewHandle)
         {
-            InitializeComponent();
-
             if (previewHandle != IntPtr.Zero)
             {
                 Program.Settings.IsPreview = true;
                 _PreviewHandle = previewHandle;
             }
 
+            InitializeComponent();
             SetupScreenSaver();
+            Initialize();
         }
-        #endregion
-
-        #region Private Constants
         #endregion
 
         #region Private Fields
         private bool _IsActive;
         private Point _MouseLocation;
         private readonly IntPtr _PreviewHandle = IntPtr.Zero;
-        private readonly List<FormScreenSaver> _SecondaryScreensSavers = new List<FormScreenSaver>();
+        private readonly List<FormScreenSaver> _SecondaryScreens = new List<FormScreenSaver>();
         #endregion
 
         #region Protected Properties
@@ -62,7 +59,7 @@ namespace CC.Votd
         #endregion
 
         #region Public Event Handlers
-        public void FormScreenSaver_KeyDown(object sender, KeyEventArgs e)
+        public void FormMain_KeyDown(object sender, KeyEventArgs e)
         {
             if (!Program.Settings.IsPreview)
             {
@@ -70,7 +67,7 @@ namespace CC.Votd
             }
         }
 
-        public void FormScreenSaver_MouseDown(object sender, MouseEventArgs e)
+        public void FormMain_MouseDown(object sender, MouseEventArgs e)
         {
             if (!Program.Settings.IsPreview)
             {
@@ -78,7 +75,7 @@ namespace CC.Votd
             }
         }
 
-        public void FormScreenSaver_MouseMove(object sender, MouseEventArgs e)
+        public void FormMain_MouseMove(object sender, MouseEventArgs e)
         {
             if (!Program.Settings.IsPreview)
             {
@@ -109,21 +106,19 @@ namespace CC.Votd
                     {
                         FormScreenSaver formScreenSaver = new FormScreenSaver
                                                               {
-                                                                  Capture = true,
-                                                                  ShowInTaskbar = false,
                                                                   StartPosition = FormStartPosition.Manual,
                                                                   Location = screen.WorkingArea.Location,
                                                                   Size = new Size(screen.WorkingArea.Width, screen.WorkingArea.Height),
                                                                   TopMost = true
                                                               };
 
-                        formScreenSaver.KeyDown += FormScreenSaver_KeyDown;
-                        formScreenSaver.MouseDown += FormScreenSaver_MouseDown;
-                        formScreenSaver.MouseMove += FormScreenSaver_MouseMove;
+                        formScreenSaver.KeyDown += FormMain_KeyDown;
+                        formScreenSaver.MouseDown += FormMain_MouseDown;
+                        formScreenSaver.MouseMove += FormMain_MouseMove;
                         formScreenSaver.Initialize();
                         formScreenSaver.Show();
 
-                        _SecondaryScreensSavers.Add(formScreenSaver);
+                        _SecondaryScreens.Add(formScreenSaver);
                     }
                 }
             }
@@ -131,25 +126,6 @@ namespace CC.Votd
 
         private void SetupScreenSaver()
         {
-            if (!string.IsNullOrEmpty(Program.Settings.BackgroundImage) && File.Exists(Program.Settings.BackgroundImage))
-            {
-                try
-                {
-                    BackgroundImage = Image.FromFile(Program.Settings.BackgroundImage);
-                }
-                catch (Exception)
-                {
-                    BackgroundImage = Properties.Resources.Cross;
-                }
-            }
-
-            SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
-
-            BackgroundImageLayout = ImageLayout.Stretch;
-            Capture = true;
-            DoubleBuffered = true;
-            ShowInTaskbar = false;
-
             if (!Program.Settings.IsPreview)
             {
                 Cursor.Hide();
@@ -163,11 +139,14 @@ namespace CC.Votd
             }
             else
             {
+                Cursor = Cursors.Default;
                 User32.SetParent(Handle, _PreviewHandle);
 
-                Rectangle parentRectangle;
-                GetClientRect(_PreviewHandle, out parentRectangle);
-                Size = parentRectangle.Size;
+                RECT parentRectangle = new RECT();
+                if (User32.GetClientRect(_PreviewHandle, parentRectangle))
+                {
+                    Size = new Size(parentRectangle.right - parentRectangle.left, parentRectangle.bottom - parentRectangle.top);
+                }
 
                 Location = new Point(0, 0);
             }
@@ -176,8 +155,6 @@ namespace CC.Votd
             {
                 CreateSecondaryScreenSavers();
             }
-
-            Initialize();
         }
         #endregion
     }

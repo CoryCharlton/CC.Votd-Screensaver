@@ -42,6 +42,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormScreenSaver";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "FormScreenSaver";
             this.TopMost = true;

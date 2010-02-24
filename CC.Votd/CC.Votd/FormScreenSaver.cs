@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO;
 using System.Windows.Forms;
 using CC.Utilities;
 using CC.Utilities.Rss;
@@ -14,6 +15,8 @@ namespace CC.Votd
         {
             InitializeComponent();
             Icon = Properties.Resources.Bible;
+
+            SetupScreenSaver();
         }
         #endregion
 
@@ -95,6 +98,24 @@ namespace CC.Votd
             _RssItemView.Item = _RssFeed.Channels[0].Items[0];
             _RssItemView.SetSize(CreateGraphics());
         }
+
+        private void SetupScreenSaver()
+        {
+            if (!string.IsNullOrEmpty(Program.Settings.BackgroundImage) && File.Exists(Program.Settings.BackgroundImage))
+            {
+                try
+                {
+                    BackgroundImage = Image.FromFile(Program.Settings.BackgroundImage);
+                }
+                catch (Exception)
+                {
+                    BackgroundImage = Properties.Resources.Cross;
+                }
+            }
+
+            SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
+            Capture = true;
+        }
         #endregion
 
         #region Protected Methods
@@ -111,6 +132,7 @@ namespace CC.Votd
             if (_RssItemView != null)
             {
                 _RssItemView.SetSize(CreateGraphics());
+                _RssItemView.Location = PositionRssItemView();
             }
             base.OnResize(e);
         }

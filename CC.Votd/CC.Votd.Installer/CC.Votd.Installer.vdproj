@@ -19,24 +19,6 @@
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
-        "Entry"
-        {
-        "MsmKey" = "8:_C90158E726E3877F39DA6758B8EB836C"
-        "OwnerKey" = "8:_9B01A54F134742BB926B45B9A6DFE128"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_9B01A54F134742BB926B45B9A6DFE128"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C90158E726E3877F39DA6758B8EB836C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
     }
     "Configurations"
     {
@@ -168,37 +150,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C90158E726E3877F39DA6758B8EB836C"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:CC.Utilities, Version=1.0.10.208, Culture=neutral, PublicKeyToken=111aac7a42f7965e, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_C90158E726E3877F39DA6758B8EB836C"
-                    {
-                    "Name" = "8:CC.Utilities.DLL"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:CC.Utilities.DLL"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_AD2F2C507212427BA19729F5FC369915"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
         }
         "FileType"
         {
@@ -244,14 +195,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:CC.Votd"
-        "ProductCode" = "8:{AB2D3D8D-94CF-42BA-9392-6A2AC3C3158B}"
-        "PackageCode" = "8:{5221CF5B-B281-4D8E-AA75-DD319EE26092}"
+        "ProductCode" = "8:{806CD66D-3AAE-4CDF-9463-923C52B3EAF3}"
+        "PackageCode" = "8:{735F5102-03D7-4D76-BC5A-50C2ED028CE7}"
         "UpgradeCode" = "8:{18589AC4-0B9F-428D-993E-8380AB7D66EE}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.1"
+        "ProductVersion" = "8:1.0.2"
         "Manufacturer" = "8:CC Software Engineering"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://www.ccswe.com"
