@@ -1,5 +1,7 @@
 ﻿using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using CC.Utilities;
 
 namespace CC.Votd
 {
@@ -13,33 +15,15 @@ namespace CC.Votd
         }
         #endregion
 
-        #region Public Properties
-        public FormScreenSaver ScreenSaver { get; set; }
-        #endregion
-
-        #region Private Event Handlers
-        private void FormSecondaryScreenSaver_KeyDown(object sender, KeyEventArgs e)
-        {
-            ScreenSaver.FormScreenSaver_KeyDown(sender, e);
-        }
-
-        private void FormSecondaryScreenSaver_MouseDown(object sender, MouseEventArgs e)
-        {
-            ScreenSaver.FormScreenSaver_MouseDown(sender, e);
-        }
-
-        private void FormSecondaryScreenSaver_MouseMove(object sender, MouseEventArgs e)
-        {
-            ScreenSaver.FormScreenSaver_MouseMove(sender, e);
-        }
-        #endregion
-
         #region Public Methods
-        public void Draw()
+        public void Draw(Image image)
         {
             using (Graphics graphics = CreateGraphics())
             {
-                graphics.CopyFromScreen(0, 0, 0, 0, Screen.PrimaryScreen.WorkingArea.Size);
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
+                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                graphics.DrawImage(image, ClientRectangle, image.GetRectangle(), GraphicsUnit.Pixel);
             }
         }
         #endregion

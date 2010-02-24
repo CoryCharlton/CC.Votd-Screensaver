@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using CC.Utilities;
 using CC.Utilities.Interop;
 using CC.Utilities.Rss;
 
@@ -111,9 +112,12 @@ namespace CC.Votd
         {
             _RssItemView.Paint(e);
 
-            foreach (FormSecondaryScreenSaver secondaryScreenSaver in _SecondaryScreensSavers)
+            using (Image image = this.DrawToImage())
             {
-                secondaryScreenSaver.Draw();
+                foreach (FormSecondaryScreenSaver secondaryScreenSaver in _SecondaryScreensSavers)
+                {
+                    secondaryScreenSaver.Draw(image);
+                }
             }
         }
         #endregion
@@ -168,10 +172,12 @@ namespace CC.Votd
                                                                                 {
                                                                                     StartPosition = FormStartPosition.Manual,
                                                                                     Location = screen.WorkingArea.Location,
-                                                                                    ScreenSaver = this,
                                                                                     Size = new Size(screen.WorkingArea.Width, screen.WorkingArea.Height)
                                                                                 };
 
+                        formSecondaryScreenSaver.KeyDown += FormScreenSaver_KeyDown;
+                        formSecondaryScreenSaver.MouseDown += FormScreenSaver_MouseDown;
+                        formSecondaryScreenSaver.MouseMove += FormScreenSaver_MouseMove;
                         formSecondaryScreenSaver.Show();
 
                         _SecondaryScreensSavers.Add(formSecondaryScreenSaver);
@@ -229,8 +235,6 @@ namespace CC.Votd
         private void SetupSecondaryScreenSaver(FormSecondaryScreenSaver formSecondaryScreenSaver)
         // ReSharper restore SuggestBaseTypeForParameter
         {
-            formSecondaryScreenSaver.BackgroundImage = BackgroundImage;
-            formSecondaryScreenSaver.BackgroundImageLayout = ImageLayout.Stretch;
             formSecondaryScreenSaver.Capture = true;
             formSecondaryScreenSaver.ShowInTaskbar = false;
             formSecondaryScreenSaver.TopMost = true;

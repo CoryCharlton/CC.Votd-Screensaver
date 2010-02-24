@@ -43,11 +43,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "FormSecondaryScreenSaver";
             this.TopMost = true;
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormSecondaryScreenSaver_MouseDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FormSecondaryScreenSaver_MouseMove);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormSecondaryScreenSaver_KeyDown);
             this.ResumeLayout(false);
-
         }
 
         #endregion

@@ -215,53 +215,6 @@
             <param name="color"></param>
             <returns></returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:CC.Utilities.ShortGuid" -->
-        <!-- Badly formed XML comment ignored for member "F:CC.Utilities.ShortGuid.Empty" -->
-        <!-- Badly formed XML comment ignored for member "M:CC.Utilities.ShortGuid.#ctor(System.String)" -->
-        <member name="M:CC.Utilities.ShortGuid.#ctor(System.Guid)">
-            <param name="guid">The Guid to encode</param>
-        </member>
-        <member name="M:CC.Utilities.ShortGuid.ToString">
-            <returns></returns>
-        </member>
-        <member name="M:CC.Utilities.ShortGuid.Equals(System.Object)">
-            <returns></returns>
-        </member>
-        <member name="M:CC.Utilities.ShortGuid.GetHashCode">
-            <returns></returns>
-        </member>
-        <member name="M:CC.Utilities.ShortGuid.NewGuid">
-            <returns></returns>
-        </member>
-        <member name="M:CC.Utilities.ShortGuid.Encode(System.String)">
-            <returns></returns>
-        </member>
-        <member name="M:CC.Utilities.ShortGuid.Encode(System.Guid)">
-            <returns></returns>
-        </member>
-        <member name="M:CC.Utilities.ShortGuid.Decode(System.String)">
-            <returns>A new Guid</returns>
-        </member>
-        <member name="M:CC.Utilities.ShortGuid.op_Equality(CC.Utilities.ShortGuid,CC.Utilities.ShortGuid)">
-            <returns></returns>
-        </member>
-        <member name="M:CC.Utilities.ShortGuid.op_Inequality(CC.Utilities.ShortGuid,CC.Utilities.ShortGuid)">
-            <returns></returns>
-        </member>
-        <member name="M:CC.Utilities.ShortGuid.op_Implicit(CC.Utilities.ShortGuid)~System.String">
-            <returns></returns>
-        </member>
-        <member name="M:CC.Utilities.ShortGuid.op_Implicit(CC.Utilities.ShortGuid)~System.Guid">
-            <returns></returns>
-        </member>
-        <member name="M:CC.Utilities.ShortGuid.op_Implicit(System.String)~CC.Utilities.ShortGuid">
-            <returns></returns>
-        </member>
-        <member name="M:CC.Utilities.ShortGuid.op_Implicit(System.Guid)~CC.Utilities.ShortGuid">
-            <returns></returns>
-        </member>
-        <!-- Badly formed XML comment ignored for member "P:CC.Utilities.ShortGuid.Guid" -->
-        <!-- Badly formed XML comment ignored for member "P:CC.Utilities.ShortGuid.Value" -->
         <member name="T:CC.Utilities.Encryption">
             <summary>
             Provides simple <see cref="T:System.Security.Cryptography.RijndaelManaged"/> Decrypt() and Encrypt() methods using a static implementation of <see cref="T:CC.Utilities.SimpleEncryption"/>
@@ -830,10 +783,16 @@
         </member>
         <member name="M:CC.Utilities.Drawing.DoubleBufferedGraphics.#ctor(System.Int32,System.Int32)">
             <summary>
-            Creates a new <see cref="T:CC.Utilities.Drawing.DoubleBufferedGraphics"/> using the specified width and height.
+            Creates a new <see cref="T:CC.Utilities.Drawing.DoubleBufferedGraphics"/> using the specified <see cref="T:System.Drawing.Size"/>.
             </summary>
             <param name="width">The width</param>
             <param name="height">The height</param>
+        </member>
+        <member name="M:CC.Utilities.Drawing.DoubleBufferedGraphics.#ctor(System.Drawing.Size)">
+            <summary>
+            Creates a new <see cref="T:CC.Utilities.Drawing.DoubleBufferedGraphics"/> using the specified <see cref="T:System.Drawing.Size"/>.
+            </summary>
+            <param name="size">The size</param>
         </member>
         <member name="M:CC.Utilities.Drawing.DoubleBufferedGraphics.Dispose">
             <summary>
@@ -844,12 +803,18 @@
             <summary>
             Initialize this <see cref="T:CC.Utilities.Drawing.DoubleBufferedGraphics"/>.
             </summary>
-            <param name="width"></param>
-            <param name="height"></param>
+            <param name="width">The width</param>
+            <param name="height">The height</param>
+        </member>
+        <member name="M:CC.Utilities.Drawing.DoubleBufferedGraphics.Initialize(System.Drawing.Size)">
+            <summary>
+            Initialize this <see cref="T:CC.Utilities.Drawing.DoubleBufferedGraphics"/>.
+            </summary>
+            <param name="size">The size</param>
         </member>
         <member name="M:CC.Utilities.Drawing.DoubleBufferedGraphics.Render(System.Drawing.Graphics)">
             <summary>
-            Draw this <see cref="T:CC.Utilities.Drawing.DoubleBufferedGraphics"/> to the supplied <see cref="P:CC.Utilities.Drawing.DoubleBufferedGraphics.Graphics"/>.
+            Draw this <see cref="T:CC.Utilities.Drawing.DoubleBufferedGraphics"/> to the supplied <see cref="T:System.Drawing.Graphics"/>
             </summary>
             <param name="graphics"></param>
         </member>
@@ -862,7 +827,7 @@
             <summary>
             This method is the preferred method of drawing a background image.
             It is *MUCH* faster than any of the Graphics.DrawImage() methods.
-            Warning: The memory image and the <see cref="P:CC.Utilities.Drawing.DoubleBufferedGraphics.Graphics"/> object
+            Warning: The memory image and the <see cref="T:System.Drawing.Graphics"/> object
             will be reset after calling this method. This should be your first
             drawing operation.
             </summary>
@@ -873,19 +838,19 @@
             The <see cref="P:CC.Utilities.Drawing.DoubleBufferedGraphics.Graphics"/> object to draw to.
             </summary>
         </member>
-        <member name="P:CC.Utilities.Drawing.DoubleBufferedGraphics.Height">
-            <summary>
-            The height.
-            </summary>
-        </member>
-        <member name="P:CC.Utilities.Drawing.DoubleBufferedGraphics.Initialized">
+        <member name="P:CC.Utilities.Drawing.DoubleBufferedGraphics.IsInitialized">
             <summary>
             True if the <see cref="T:CC.Utilities.Drawing.DoubleBufferedGraphics"/> is initialized.
             </summary>
         </member>
-        <member name="P:CC.Utilities.Drawing.DoubleBufferedGraphics.Width">
+        <member name="P:CC.Utilities.Drawing.DoubleBufferedGraphics.MemoryImage">
             <summary>
-            The width.
+            The underlying <see cref="T:System.Drawing.Image"/>
+            </summary>
+        </member>
+        <member name="P:CC.Utilities.Drawing.DoubleBufferedGraphics.Size">
+            <summary>
+            The <see cref="T:System.Drawing.Size"/>.
             </summary>
         </member>
         <member name="T:CC.Utilities.ThreadSafeQueue`1">
