@@ -21,8 +21,12 @@ namespace CC.Votd
             _LabelProductName.Text = string.Format("{0} v {1}", AssemblyProduct, AssemblyVersion);
             _LabelCopyright.Text = AssemblyCopyright;
             _LinkLabelHomepage.Text = AssemblyCompany;
+
+
             _LinkLabelHomepage.Links.Remove(_LinkLabelHomepage.Links[0]);
             _LinkLabelHomepage.Links.Add(0, _LinkLabelHomepage.Text.Length, "http://www.ccswe.com/");
+            _LinkLabelHomepage.Text += " (CodePlex Project)";
+            _LinkLabelHomepage.Links.Add(AssemblyCompany.Length + 2, _LinkLabelHomepage.Text.Length - (AssemblyCompany.Length + 3), "http://ccvotd.codeplex.com/");
 
             _TextBoxDescription.Text = AssemblyDescription;
 
