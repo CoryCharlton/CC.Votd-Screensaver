@@ -228,6 +228,13 @@
             <param name="color"></param>
             <returns></returns>
         </member>
+        <member name="T:CC.Utilities.SerializableDictionary`2">
+            <summary>
+            A serializable <see cref="T:System.Collections.Generic.Dictionary`2"/>
+            </summary>
+            <typeparam name="TKey">The Key <see cref="T:System.Type"/></typeparam>
+            <typeparam name="TValue">The Value <see cref="T:System.Type"/></typeparam>
+        </member>
         <member name="T:CC.Utilities.Encryption">
             <summary>
             Provides simple <see cref="T:System.Security.Cryptography.RijndaelManaged"/> Decrypt() and Encrypt() methods using a static implementation of <see cref="T:CC.Utilities.SimpleEncryption"/>
@@ -456,6 +463,11 @@
         <member name="T:CC.Utilities.Rss.RssItem">
             <summary>
             Represents an Item element in an RSS 2.0 XML document.
+            </summary>
+        </member>
+        <member name="M:CC.Utilities.Rss.RssItem.#ctor">
+            <summary>
+            Create a new <see cref="T:CC.Utilities.Rss.RssItem"/>.
             </summary>
         </member>
         <member name="M:CC.Utilities.Rss.RssItem.#ctor(System.Xml.XmlNode)">
@@ -1026,6 +1038,11 @@
             Represents a RSS enclosure.
             </summary>
         </member>
+        <member name="M:CC.Utilities.Rss.RssEnclosure.#ctor">
+            <summary>
+            Create a new <see cref="T:CC.Utilities.Rss.RssEnclosure"/>.
+            </summary>
+        </member>
         <member name="M:CC.Utilities.Rss.RssEnclosure.#ctor(System.Xml.XmlNode)">
             <summary>
             Create a new <see cref="T:CC.Utilities.Rss.RssEnclosure"/> from a <see cref="T:System.Xml.XmlNode"/>.
@@ -1117,13 +1134,6 @@
             <summary>
             The webmaster
             </summary>
-        </member>
-        <member name="T:CC.Utilities.SerializableDictionary`2">
-            <summary>
-            A serializable <see cref="T:System.Collections.Generic.Dictionary`2"/>
-            </summary>
-            <typeparam name="TKey">The Key <see cref="T:System.Type"/></typeparam>
-            <typeparam name="TValue">The Value <see cref="T:System.Type"/></typeparam>
         </member>
     </members>
 </doc>

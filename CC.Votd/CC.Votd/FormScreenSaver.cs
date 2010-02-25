@@ -95,8 +95,32 @@ namespace CC.Votd
         private void RefreshRssFeed()
         {
             _RssFeed.Refresh();
-            _RssItemView.Item = _RssFeed.Channels[0].Items[0];
+            
+            SetRssItem();
+
             _RssItemView.SetSize(CreateGraphics());
+        }
+
+        private void SetRssItem()
+        {
+            _RssItemView.Item = _RssFeed.Channels[0].Items[0];
+
+            if (!_RssFeed.IsError)
+            {
+                if (RssItemCache.Add(_RssItemView.Item))
+                {
+                    RssItemCache.Save();
+                }
+            }
+            else
+            {
+                RssItem rssItem = RssItemCache.GetRandomItem();
+
+                if (rssItem != null)
+                {
+                    _RssItemView.Item = rssItem;
+                }
+            }
         }
 
         private void SetupScreenSaver()
@@ -127,7 +151,7 @@ namespace CC.Votd
             }
         }
 
-        protected override void  OnResize(EventArgs e)
+        protected override void OnResize(EventArgs e)
         {
             if (_RssItemView != null)
             {
@@ -144,6 +168,7 @@ namespace CC.Votd
             _RssFeed = new RssFeed(Settings.RandomVerse ? Constants.VERSE_RANDOM : Constants.VERSE_DAILY);
             _RssItemView = new RssItemView(_RssFeed.Channels[0].Items[0]);
 
+            SetRssItem();
             InitializeRssItemView();
         }
         #endregion

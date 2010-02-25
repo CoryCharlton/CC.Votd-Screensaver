@@ -23,6 +23,7 @@ namespace CC.Votd
         private const string FADE_DELAY = "FadeDelay";
         private const string FADESPEED = "FadeSpeed";
         private const string FOREGROUND_COLOR = "ForegroundColor";
+        private const string MAXIMUM_CACHE_ITEMS = "MaximumCacheItems";
         private const string RANDOM_VERSE = "RandomVerse";
         private const string TEXT_FONT = "TextFont";
         private const string TITLE_FONT = "TitleFont";
@@ -39,6 +40,7 @@ namespace CC.Votd
         private static readonly Color _DefaultForegroundColor = Color.White;
         private const int _DefaultFadeDelay = 60000;
         private const int _DefaultFadeSpeed = 20;
+        private const int _DefaultMaximumCacheItems = 1000;
         private const bool _DefaultRandomVerse = false;
         private static readonly Font _DefaultTextFont = new Font("Papyrus", 24, FontStyle.Regular, GraphicsUnit.Pixel);
         private static readonly Font _DefaultTitleFont = new Font("Papyrus", 24, FontStyle.Italic, GraphicsUnit.Pixel);
@@ -59,6 +61,8 @@ namespace CC.Votd
         public static int FadeSpeed { get; set; }
 
         public static bool IsPreview { get; set; }
+
+        public static int MaximumCacheItems { get; set; }
 
         public static bool RandomVerse { get; set; }
 
@@ -89,6 +93,7 @@ namespace CC.Votd
                     FadeDelay = (int)registryKey.GetValue(FADE_DELAY, _DefaultFadeDelay);
                     FadeSpeed = (int)registryKey.GetValue(FADESPEED, _DefaultFadeSpeed);
                     ForegroundColor = Color.FromArgb((int)registryKey.GetValue(FOREGROUND_COLOR, _DefaultForegroundColor.ToArgb()));
+                    MaximumCacheItems = (int)registryKey.GetValue(MAXIMUM_CACHE_ITEMS, _DefaultMaximumCacheItems);
                     RandomVerse = bool.Parse(registryKey.GetValue(RANDOM_VERSE, _DefaultRandomVerse).ToString());
                     TextFont = FontBuilder.FromString(registryKey.GetValue(TEXT_FONT, _DefaultTextFont.ToStringEx()).ToString());
                     TitleFont = FontBuilder.FromString(registryKey.GetValue(TITLE_FONT, _DefaultTitleFont.ToStringEx()).ToString());
@@ -113,6 +118,7 @@ namespace CC.Votd
             FadeDelay = _DefaultFadeDelay;
             FadeSpeed = _DefaultFadeSpeed;
             ForegroundColor = _DefaultForegroundColor;
+            MaximumCacheItems = _DefaultMaximumCacheItems;
             RandomVerse = _DefaultRandomVerse;
             TextFont = _DefaultTextFont;
             TitleFont = _DefaultTitleFont;
@@ -132,6 +138,7 @@ namespace CC.Votd
                     registryKey.SetValue(FADE_DELAY, FadeDelay, RegistryValueKind.DWord);
                     registryKey.SetValue(FADESPEED, FadeSpeed, RegistryValueKind.DWord);
                     registryKey.SetValue(FOREGROUND_COLOR, ForegroundColor.ToArgb(), RegistryValueKind.DWord);
+                    registryKey.SetValue(MAXIMUM_CACHE_ITEMS, MaximumCacheItems, RegistryValueKind.DWord);
                     registryKey.SetValue(RANDOM_VERSE, RandomVerse.ToString(), RegistryValueKind.String);
                     registryKey.SetValue(TEXT_FONT, TextFont.ToStringEx());
                     registryKey.SetValue(TITLE_FONT, TitleFont.ToStringEx());
