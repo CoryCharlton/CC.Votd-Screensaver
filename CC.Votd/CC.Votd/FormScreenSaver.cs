@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.IO;
 using System.Windows.Forms;
-using CC.Utilities;
 using CC.Utilities.Rss;
 
 namespace CC.Votd
@@ -35,7 +33,7 @@ namespace CC.Votd
         {
             DateTime now = DateTime.Now;
 
-            if (_RssFeed.LastUpdated == DateTime.MinValue || (Program.Settings.RandomVerse && (now - _RssFeed.LastUpdated).TotalMinutes >= 10) || _RssFeed.LastUpdated.Day != now.Day)
+            if (_RssFeed.LastUpdated == DateTime.MinValue || (Settings.RandomVerse && (now - _RssFeed.LastUpdated).TotalMinutes >= 10) || _RssFeed.LastUpdated.Day != now.Day)
             {
                 RefreshRssFeed();
             }
@@ -58,26 +56,26 @@ namespace CC.Votd
         #region Private Methods
         private void InitializeRssItemView()
         {
-            _RssItemView.BackColor = Program.Settings.BackgroundColor;
-            _RssItemView.BorderColor = Program.Settings.BorderColor;
-            _RssItemView.ForeColor = Program.Settings.ForegroundColor;
+            _RssItemView.BackColor = Settings.BackgroundColor;
+            _RssItemView.BorderColor = Settings.BorderColor;
+            _RssItemView.ForeColor = Settings.ForegroundColor;
 
-            _RssItemView.FadeDelay = Program.Settings.FadeDelay;
-            _RssItemView.FadeSpeed = Program.Settings.FadeSpeed;
+            _RssItemView.FadeDelay = Settings.FadeDelay;
+            _RssItemView.FadeSpeed = Settings.FadeSpeed;
 
-            if (Program.Settings.IsPreview)
+            if (Settings.IsPreview)
             {
                 _RssItemView.MaxWidth = (int)(Width * .8);
                 _RssItemView.Padding = new Padding(2);
-                _RssItemView.TitleFont = new Font(Program.Settings.TitleFont.FontFamily.Name, Program.Settings.TitleFont.Size / 4, Program.Settings.TitleFont.Style, Program.Settings.TitleFont.Unit);
-                _RssItemView.TextFont = new Font(Program.Settings.TextFont.FontFamily.Name, Program.Settings.TextFont.Size / 4, Program.Settings.TextFont.Style, Program.Settings.TextFont.Unit);
+                _RssItemView.TitleFont = new Font(Settings.TitleFont.FontFamily.Name, Settings.TitleFont.Size / 4, Settings.TitleFont.Style, Settings.TitleFont.Unit);
+                _RssItemView.TextFont = new Font(Settings.TextFont.FontFamily.Name, Settings.TextFont.Size / 4, Settings.TextFont.Style, Settings.TextFont.Unit);
             }
             else
             {
                 _RssItemView.MaxWidth = (int)(Width * .65);
                 _RssItemView.Padding = new Padding(8);
-                _RssItemView.TitleFont = Program.Settings.TitleFont;
-                _RssItemView.TextFont = Program.Settings.TextFont;
+                _RssItemView.TitleFont = Settings.TitleFont;
+                _RssItemView.TextFont = Settings.TextFont;
             }
 
             _RssItemView.FadingTick += _RssItemView_FadeTick;
@@ -103,11 +101,11 @@ namespace CC.Votd
 
         private void SetupScreenSaver()
         {
-            if (!string.IsNullOrEmpty(Program.Settings.BackgroundImage) && File.Exists(Program.Settings.BackgroundImage))
+            if (!string.IsNullOrEmpty(Settings.BackgroundImage) && File.Exists(Settings.BackgroundImage))
             {
                 try
                 {
-                    BackgroundImage = Image.FromFile(Program.Settings.BackgroundImage);
+                    BackgroundImage = Image.FromFile(Settings.BackgroundImage);
                 }
                 catch (Exception)
                 {
@@ -143,7 +141,7 @@ namespace CC.Votd
         #region Public Methods
         public void Initialize()
         {
-            _RssFeed = new RssFeed(Program.Settings.RandomVerse ? Constants.VERSE_RANDOM : Constants.VERSE_DAILY);
+            _RssFeed = new RssFeed(Settings.RandomVerse ? Constants.VERSE_RANDOM : Constants.VERSE_DAILY);
             _RssItemView = new RssItemView(_RssFeed.Channels[0].Items[0]);
 
             InitializeRssItemView();

@@ -31,8 +31,6 @@ namespace CC.Votd
         #region Private Constants
         // ReSharper disable InconsistentNaming
         private const int ALPHA_MAX = 200;
-        private const int FADE_DELAY = 60000;
-        private const int FADE_SPEED = 50;
         // ReSharper restore InconsistentNaming
         #endregion
 
@@ -81,7 +79,7 @@ namespace CC.Votd
         // ReSharper disable InconsistentNaming
         private void _FadeTimer_Tick(object sender, EventArgs e)
         {
-            _FadeTimer.Interval = FADE_SPEED;
+            _FadeTimer.Interval = Settings.FadeSpeed;
             _Alpha += _AlphaDelta;
 
             OnFadingTick();
@@ -89,7 +87,7 @@ namespace CC.Votd
             if (_Alpha >= ALPHA_MAX)
             {
                 _AlphaDelta *= -1;
-                _FadeTimer.Interval = FADE_DELAY;
+                _FadeTimer.Interval = Settings.FadeDelay;
             }
             else if (_Alpha <= 0)
             {

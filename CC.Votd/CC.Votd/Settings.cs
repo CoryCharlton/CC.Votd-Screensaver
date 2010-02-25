@@ -5,22 +5,13 @@ using Microsoft.Win32;
 
 namespace CC.Votd
 {
-    public class Settings
+    public static class Settings
     {
         #region Constructor
-        public Settings() : this(true)
-        {
-            // Empty constructor
-        }
-
-        public Settings(bool loadSettings)
+        static Settings()
         {
             Reset();
-
-            if (loadSettings)
-            {
-                Load();
-            }
+            Load();
         }
         #endregion
 
@@ -42,38 +33,38 @@ namespace CC.Votd
 
         #region Private Fields
         // ReSharper disable InconsistentNaming
-        private readonly Color _DefaultBackgroundColor = Color.FromArgb(0, 128, 192);
-        private readonly string _DefaultBackgroundImage = string.Empty;
-        private readonly Color _DefaultBorderColor = Color.FromArgb(0, 0, 128);
-        private readonly Color _DefaultForegroundColor = Color.White;
+        private static readonly Color _DefaultBackgroundColor = Color.FromArgb(0, 128, 192);
+        private static readonly string _DefaultBackgroundImage = string.Empty;
+        private static readonly Color _DefaultBorderColor = Color.FromArgb(0, 0, 128);
+        private static readonly Color _DefaultForegroundColor = Color.White;
         private const int _DefaultFadeDelay = 60000;
-        private const int _DefaultFadeSpeed = 50;
+        private const int _DefaultFadeSpeed = 20;
         private const bool _DefaultRandomVerse = false;
-        private readonly Font _DefaultTextFont = new Font("Papyrus", 24, FontStyle.Regular, GraphicsUnit.Pixel);
-        private readonly Font _DefaultTitleFont = new Font("Papyrus", 24, FontStyle.Italic, GraphicsUnit.Pixel);
+        private static readonly Font _DefaultTextFont = new Font("Papyrus", 24, FontStyle.Regular, GraphicsUnit.Pixel);
+        private static readonly Font _DefaultTitleFont = new Font("Papyrus", 24, FontStyle.Italic, GraphicsUnit.Pixel);
         // ReSharper restore InconsistentNaming
         #endregion
 
         #region Public Properties
-        public Color BackgroundColor { get; set; }
+        public static Color BackgroundColor { get; set; }
 
-        public string BackgroundImage { get; set; }
+        public static string BackgroundImage { get; set; }
 
-        public Color BorderColor { get; set; }
+        public static Color BorderColor { get; set; }
 
-        public Color ForegroundColor { get; set; }
+        public static Color ForegroundColor { get; set; }
 
-        public int FadeDelay { get; set; }
+        public static int FadeDelay { get; set; }
 
-        public int FadeSpeed { get; set; }
+        public static int FadeSpeed { get; set; }
 
-        public bool IsPreview { get; set; }
+        public static bool IsPreview { get; set; }
 
-        public bool RandomVerse { get; set; }
+        public static bool RandomVerse { get; set; }
 
-        public Font TextFont { get; set; }
+        public static Font TextFont { get; set; }
 
-        public Font TitleFont { get; set; }
+        public static Font TitleFont { get; set; }
         #endregion
 
         #region Private Methods
@@ -84,7 +75,7 @@ namespace CC.Votd
         #endregion
 
         #region Public Methods
-        public bool Load()
+        public static bool Load()
         {
             bool returnValue;
 
@@ -114,7 +105,7 @@ namespace CC.Votd
             return returnValue;
         }
 
-        public void Reset()
+        public static void Reset()
         {
             BackgroundColor = _DefaultBackgroundColor;
             BackgroundImage = _DefaultBackgroundImage;
@@ -127,7 +118,7 @@ namespace CC.Votd
             TitleFont = _DefaultTitleFont;
         }
 
-        public bool Save()
+        public static bool Save()
         {
             bool returnValue;
 

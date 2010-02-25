@@ -184,6 +184,19 @@
             The value.
             </summary>
         </member>
+        <member name="T:CC.Utilities.Interop.User32">
+            <summary>
+            Contains Native Windows API from user32.dll
+            </summary>
+        </member>
+        <member name="M:CC.Utilities.Interop.User32.GetClientRect(System.IntPtr,CC.Utilities.Interop.RECT)">
+            <summary>
+            The GetClientRect function retrieves the coordinates of a window's client area. The client coordinates specify the upper-left and lower-right corners of the client area. Because client coordinates are relative to the upper-left corner of a window's client area, the coordinates of the upper-left corner are (0,0).
+            </summary>
+            <param name="hWnd">[in] Handle to the window whose client coordinates are to be retrieved.</param>
+            <param name="lpRect">[out] A <see cref="T:CC.Utilities.Interop.RECT"/> that receives the client coordinates. The left and top members are zero. The right and bottom members contain the width and height of the window.</param>
+            <returns></returns>
+        </member>
         <member name="T:CC.Utilities.ControlExtensions">
             <summary>
             Contains extension methods for <see cref="T:System.Windows.Forms.Control"/>
@@ -716,6 +729,11 @@
             The <see cref="T:CC.Utilities.Rss.RssChannel"/>s
             </summary>
         </member>
+        <member name="P:CC.Utilities.Rss.RssFeed.IsError">
+            <summary>
+            Indicates wether or not an error occured while loading the RSS feed
+            </summary>
+        </member>
         <member name="P:CC.Utilities.Rss.RssFeed.LastUpdated">
             <summary>
             The last updated
@@ -1099,6 +1117,13 @@
             <summary>
             The webmaster
             </summary>
+        </member>
+        <member name="T:CC.Utilities.SerializableDictionary`2">
+            <summary>
+            A serializable <see cref="T:System.Collections.Generic.Dictionary`2"/>
+            </summary>
+            <typeparam name="TKey">The Key <see cref="T:System.Type"/></typeparam>
+            <typeparam name="TValue">The Value <see cref="T:System.Type"/></typeparam>
         </member>
     </members>
 </doc>

@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CachedVerses.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="FormScreenSaver.cs">
       <SubType>Form</SubType>

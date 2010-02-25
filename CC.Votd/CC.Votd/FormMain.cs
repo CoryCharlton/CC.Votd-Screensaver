@@ -18,7 +18,7 @@ namespace CC.Votd
         {
             if (previewHandle != IntPtr.Zero)
             {
-                Program.Settings.IsPreview = true;
+                Settings.IsPreview = true;
                 _PreviewHandle = previewHandle;
             }
 
@@ -42,7 +42,7 @@ namespace CC.Votd
             {
                 CreateParams createParams = base.CreateParams;
 
-                if (!DesignMode && Program.Settings.IsPreview)
+                if (!DesignMode && Settings.IsPreview)
                 {
                     createParams.Style |= 0x40000000; // Add the WS_CHILD style to preview mode...
                 }
@@ -55,7 +55,7 @@ namespace CC.Votd
         #region Public Event Handlers
         public void FormMain_KeyDown(object sender, KeyEventArgs e)
         {
-            if (!Program.Settings.IsPreview)
+            if (!Settings.IsPreview)
             {
                 Close();
             }
@@ -63,7 +63,7 @@ namespace CC.Votd
 
         public void FormMain_MouseDown(object sender, MouseEventArgs e)
         {
-            if (!Program.Settings.IsPreview)
+            if (!Settings.IsPreview)
             {
                 Close();
             }
@@ -71,7 +71,7 @@ namespace CC.Votd
 
         public void FormMain_MouseMove(object sender, MouseEventArgs e)
         {
-            if (!Program.Settings.IsPreview)
+            if (!Settings.IsPreview)
             {
                 if (!_IsActive)
                 {
@@ -120,7 +120,7 @@ namespace CC.Votd
 
         private void SetupScreenSaver()
         {
-            if (!Program.Settings.IsPreview)
+            if (!Settings.IsPreview)
             {
                 Cursor.Hide();
                 Bounds = Screen.PrimaryScreen.Bounds;
@@ -145,7 +145,7 @@ namespace CC.Votd
                 Location = new Point(0, 0);
             }
 
-            if (!Program.Settings.IsPreview)
+            if (!Settings.IsPreview)
             {
                 CreateSecondaryScreenSavers();
             }

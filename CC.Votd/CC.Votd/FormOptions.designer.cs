@@ -240,7 +240,7 @@
             this._LabelFadeSpeedValue.Name = "_LabelFadeSpeedValue";
             this._LabelFadeSpeedValue.Size = new System.Drawing.Size(91, 13);
             this._LabelFadeSpeedValue.TabIndex = 5;
-            this._LabelFadeSpeedValue.Text = "50 milliseconds";
+            this._LabelFadeSpeedValue.Text = "20 milliseconds";
             this._LabelFadeSpeedValue.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // _LabelFadeDelayValue
@@ -267,12 +267,12 @@
             this._TrackBarFadeSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this._TrackBarFadeSpeed.Location = new System.Drawing.Point(5, 123);
-            this._TrackBarFadeSpeed.Minimum = 5;
+            this._TrackBarFadeSpeed.Minimum = 2;
             this._TrackBarFadeSpeed.Name = "_TrackBarFadeSpeed";
             this._TrackBarFadeSpeed.Size = new System.Drawing.Size(248, 45);
             this._TrackBarFadeSpeed.TabIndex = 2;
             this._ToolTipMain.SetToolTip(this._TrackBarFadeSpeed, "The ammount of time between fade intervals. A lower value will fade faster.");
-            this._TrackBarFadeSpeed.Value = 5;
+            this._TrackBarFadeSpeed.Value = 2;
             this._TrackBarFadeSpeed.ValueChanged += new System.EventHandler(this._TrackBarFadeSpeed_ValueChanged);
             this._TrackBarFadeSpeed.Scroll += new System.EventHandler(this._TrackBarFadeSpeed_ValueChanged);
             // 

@@ -30,14 +30,12 @@ namespace CC.Votd
 
             _TextBoxDescription.Text = AssemblyDescription;
 
-            _Settings = new Settings();
             ConfigToUI();
         }
         #endregion
 
         #region Private Fields
         private bool _IsLoaded;
-        private readonly Settings _Settings;
         #endregion
 
         #region Assembly Attribute Accessors
@@ -206,11 +204,11 @@ namespace CC.Votd
         #region Private Methods
         private void ConfigToUI()
         {
-            _LabelBackgroundColorValue.BackColor = _Settings.BackgroundColor;
-            _LabelBorderColorValue.BackColor = _Settings.BorderColor;
-            _LabelForegroundColorValue.BackColor = _Settings.ForegroundColor;
+            _LabelBackgroundColorValue.BackColor = Settings.BackgroundColor;
+            _LabelBorderColorValue.BackColor = Settings.BorderColor;
+            _LabelForegroundColorValue.BackColor = Settings.ForegroundColor;
             
-            if (_Settings.RandomVerse)
+            if (Settings.RandomVerse)
             {
                 _RadioButtonRandom.Checked = true;
             }
@@ -219,21 +217,21 @@ namespace CC.Votd
                 _RadioButtonDaily.Checked = true;
             }
 
-            _TrackBarFadeDelay.Value = _Settings.FadeDelay / 60000;
-            _TrackBarFadeSpeed.Value = _Settings.FadeSpeed / 10;
+            _TrackBarFadeDelay.Value = Settings.FadeDelay / 60000;
+            _TrackBarFadeSpeed.Value = Settings.FadeSpeed / 10;
 
-            if (!string.IsNullOrEmpty(_Settings.BackgroundImage) && File.Exists(_Settings.BackgroundImage))
+            if (!string.IsNullOrEmpty(Settings.BackgroundImage) && File.Exists(Settings.BackgroundImage))
             {
-                _PictureBoxBackgroundImage.Image = Image.FromFile(_Settings.BackgroundImage);
-                _TextBoxBackgroundImage.Text = _Settings.BackgroundImage;
+                _PictureBoxBackgroundImage.Image = Image.FromFile(Settings.BackgroundImage);
+                _TextBoxBackgroundImage.Text = Settings.BackgroundImage;
             }
             else
             {
                 _PictureBoxBackgroundImage.Image = Properties.Resources.Cross;
             }
 
-            _LabelTextFontValue.Font = _Settings.TextFont;
-            _LabelTitleFontValue.Font = _Settings.TitleFont;
+            _LabelTextFontValue.Font = Settings.TextFont;
+            _LabelTitleFontValue.Font = Settings.TitleFont;
         }
 
         private bool IsDirty()
@@ -243,45 +241,45 @@ namespace CC.Votd
             if (_IsLoaded)
             {
                 //Colors...
-                if (_Settings.BackgroundColor != _LabelBackgroundColorValue.BackColor)
+                if (Settings.BackgroundColor != _LabelBackgroundColorValue.BackColor)
                 {
                     returnValue = true;
                 }
-                if (!returnValue && _Settings.BorderColor != _LabelBorderColorValue.BackColor)
+                if (!returnValue && Settings.BorderColor != _LabelBorderColorValue.BackColor)
                 {
                     returnValue = true;
                 }
-                if (!returnValue && _Settings.ForegroundColor != _LabelForegroundColorValue.BackColor)
+                if (!returnValue && Settings.ForegroundColor != _LabelForegroundColorValue.BackColor)
                 {
                     returnValue = true;
                 }
 
                 //General...
-                if (!returnValue && (_Settings.FadeDelay / 60000) != _TrackBarFadeDelay.Value)
+                if (!returnValue && (Settings.FadeDelay / 60000) != _TrackBarFadeDelay.Value)
                 {
                     returnValue = true;
                 }
-                if (!returnValue && (_Settings.FadeSpeed / 10) != _TrackBarFadeSpeed.Value)
+                if (!returnValue && (Settings.FadeSpeed / 10) != _TrackBarFadeSpeed.Value)
                 {
                     returnValue = true;
                 }
-                if (!returnValue && _Settings.RandomVerse != _RadioButtonRandom.Checked)
+                if (!returnValue && Settings.RandomVerse != _RadioButtonRandom.Checked)
                 {
                     returnValue = true;
                 }
 
                 // Background Image ...
-                if (!returnValue && _Settings.BackgroundImage != _TextBoxBackgroundImage.Text)
+                if (!returnValue && Settings.BackgroundImage != _TextBoxBackgroundImage.Text)
                 {
                     returnValue = true;
                 }
 
                 // Fonts
-                if (!returnValue && !_Settings.TextFont.Equals(_LabelTextFontValue.Font))
+                if (!returnValue && !Settings.TextFont.Equals(_LabelTextFontValue.Font))
                 {
                     returnValue = true;
                 }
-                if (!returnValue && !_Settings.TitleFont.Equals(_LabelTitleFontValue.Font))
+                if (!returnValue && !Settings.TitleFont.Equals(_LabelTitleFontValue.Font))
                 {
                     returnValue = true;
                 }
@@ -321,21 +319,21 @@ namespace CC.Votd
         private void UIToConfig()
         {
 
-            _Settings.BackgroundColor = _LabelBackgroundColorValue.BackColor;
-            _Settings.BorderColor = _LabelBorderColorValue.BackColor;
-            _Settings.ForegroundColor = _LabelForegroundColorValue.BackColor;
+            Settings.BackgroundColor = _LabelBackgroundColorValue.BackColor;
+            Settings.BorderColor = _LabelBorderColorValue.BackColor;
+            Settings.ForegroundColor = _LabelForegroundColorValue.BackColor;
 
-            _Settings.FadeDelay = _TrackBarFadeDelay.Value * 60000;
-            _Settings.FadeSpeed = _TrackBarFadeSpeed.Value * 10;
+            Settings.FadeDelay = _TrackBarFadeDelay.Value * 60000;
+            Settings.FadeSpeed = _TrackBarFadeSpeed.Value * 10;
 
-            _Settings.RandomVerse = _RadioButtonRandom.Checked;
+            Settings.RandomVerse = _RadioButtonRandom.Checked;
 
-            _Settings.BackgroundImage = _TextBoxBackgroundImage.Text;
+            Settings.BackgroundImage = _TextBoxBackgroundImage.Text;
 
-            _Settings.TextFont = _LabelTextFontValue.Font;
-            _Settings.TitleFont = _LabelTitleFontValue.Font;
+            Settings.TextFont = _LabelTextFontValue.Font;
+            Settings.TitleFont = _LabelTitleFontValue.Font;
 
-            _Settings.Save();
+            Settings.Save();
         }
 
         private void UpdateApply()
