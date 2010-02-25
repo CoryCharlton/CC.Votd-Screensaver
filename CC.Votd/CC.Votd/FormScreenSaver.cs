@@ -43,7 +43,9 @@ namespace CC.Votd
             _RssItemView.Location = PositionRssItemView();
 
             Refresh();
+#if DEBUG
             Activate();
+#endif
         }
 
         private void _RssItemView_FadeTick(object sender, EventArgs e)

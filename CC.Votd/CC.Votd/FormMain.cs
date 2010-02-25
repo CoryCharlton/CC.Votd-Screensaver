@@ -1,19 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using CC.Utilities;
 using CC.Utilities.Interop;
 
 namespace CC.Votd
 {
     public partial class FormMain : FormScreenSaver
     {
-        // TODO: Move these into CC.Utilities, verifiy their accuracy and that they are the correct choice
-        [DllImport("user32.dll")]
-        static extern bool GetClientRect(IntPtr hWnd, out Rectangle lpRect);
-
         #region Constructor
         public FormMain() : this(IntPtr.Zero)
         {
