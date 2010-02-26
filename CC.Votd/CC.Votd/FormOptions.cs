@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
+using CC.Utilities;
 
 namespace CC.Votd
 {
@@ -135,8 +136,8 @@ namespace CC.Votd
                 openFileDialog.Multiselect = false;
                 openFileDialog.ShowReadOnly = false;
                 openFileDialog.Title = "Browse for background image...";
-                openFileDialog.ShowDialog();
-                if (File.Exists(openFileDialog.FileName))
+                
+                if (openFileDialog.ShowDialog() == DialogResult.OK && File.Exists(openFileDialog.FileName))
                 {
                     _TextBoxBackgroundImage.Text = openFileDialog.FileName;
                     _PictureBoxBackgroundImage.Image = Image.FromFile(openFileDialog.FileName);
@@ -198,13 +199,14 @@ namespace CC.Votd
 
         private void _TrackBarFadeDelay_ValueChanged(object sender, EventArgs e)
         {
-            _LabelFadeDelayValue.Text = string.Format("{0} {1}", _TrackBarFadeDelay.Value, (_TrackBarFadeDelay.Value > 1 ? "minutes" : "minute"));
+            TimeSpan timeSpan = new TimeSpan(0, 0, 0, 0, _TrackBarFadeDelay.Value*15000);
+            _LabelFadeDelayValue.Text = timeSpan.ToFriendlyString(false);
             UpdateApply();
         }
 
         private void _TrackBarFadeSpeed_ValueChanged(object sender, EventArgs e)
         {
-            _LabelFadeSpeedValue.Text = string.Format("{0} milliseconds", _TrackBarFadeSpeed.Value * 10);
+            _LabelFadeSpeedValue.Text = string.Format("{0} ms", _TrackBarFadeSpeed.Value * 10);
             UpdateApply();
         }
 
@@ -233,9 +235,14 @@ namespace CC.Votd
                 _RadioButtonDaily.Checked = true;
             }
 
-            _TrackBarFadeDelay.Value = Settings.FadeDelay / 60000;
+            _TrackBarFadeDelay.Value = Settings.FadeDelay / 15000;
             _TrackBarFadeSpeed.Value = Settings.FadeSpeed / 10;
             _TrackBarMaximumCacheItems.Value = Settings.MaximumCacheItems / 100;
+
+            // Make sure the values get displayed correctly
+            _TrackBarFadeDelay_ValueChanged(_TrackBarFadeDelay, EventArgs.Empty);
+            _TrackBarFadeSpeed_ValueChanged(_TrackBarFadeSpeed, EventArgs.Empty);
+            _TrackBarMaximumCacheItems_ValueChanged(_TrackBarMaximumCacheItems, EventArgs.Empty);
 
             if (!string.IsNullOrEmpty(Settings.BackgroundImage) && File.Exists(Settings.BackgroundImage))
             {
@@ -272,7 +279,7 @@ namespace CC.Votd
                 }
 
                 //General...
-                if (!returnValue && (Settings.FadeDelay / 60000) != _TrackBarFadeDelay.Value)
+                if (!returnValue && (Settings.FadeDelay / 15000) != _TrackBarFadeDelay.Value)
                 {
                     returnValue = true;
                 }
@@ -339,12 +346,11 @@ namespace CC.Votd
 
         private void UIToConfig()
         {
-
             Settings.BackgroundColor = _LabelBackgroundColorValue.BackColor;
             Settings.BorderColor = _LabelBorderColorValue.BackColor;
             Settings.ForegroundColor = _LabelForegroundColorValue.BackColor;
 
-            Settings.FadeDelay = _TrackBarFadeDelay.Value * 60000;
+            Settings.FadeDelay = _TrackBarFadeDelay.Value * 15000;
             Settings.FadeSpeed = _TrackBarFadeSpeed.Value * 10;
             Settings.MaximumCacheItems = _TrackBarMaximumCacheItems.Value * 100;
 

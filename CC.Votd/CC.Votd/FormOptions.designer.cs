@@ -31,12 +31,16 @@
             this.components = new System.ComponentModel.Container();
             this._TableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this._TableLayoutPanelButtons = new System.Windows.Forms.TableLayoutPanel();
+            this._ButtonDefaults = new System.Windows.Forms.Button();
             this._ButtonApply = new System.Windows.Forms.Button();
             this._ButtonCancel = new System.Windows.Forms.Button();
             this._ButtonOk = new System.Windows.Forms.Button();
             this._TabControlOptions = new System.Windows.Forms.TabControl();
             this._TabPageGeneral = new System.Windows.Forms.TabPage();
             this._GroupBoxGeneral = new System.Windows.Forms.GroupBox();
+            this._LabelMaximumCacheItemsValue = new System.Windows.Forms.Label();
+            this._LabelMaximumCacheItems = new System.Windows.Forms.Label();
+            this._TrackBarMaximumCacheItems = new System.Windows.Forms.TrackBar();
             this._RadioButtonRandom = new System.Windows.Forms.RadioButton();
             this._RadioButtonDaily = new System.Windows.Forms.RadioButton();
             this._LabelFadeSpeedValue = new System.Windows.Forms.Label();
@@ -74,15 +78,12 @@
             this._TextBoxDescription = new System.Windows.Forms.TextBox();
             this._LinkLabelHomepage = new System.Windows.Forms.LinkLabel();
             this._ToolTipMain = new System.Windows.Forms.ToolTip(this.components);
-            this._LabelMaximumCacheItemsValue = new System.Windows.Forms.Label();
-            this._LabelMaximumCacheItems = new System.Windows.Forms.Label();
-            this._TrackBarMaximumCacheItems = new System.Windows.Forms.TrackBar();
-            this._ButtonDefaults = new System.Windows.Forms.Button();
             this._TableLayoutPanelMain.SuspendLayout();
             this._TableLayoutPanelButtons.SuspendLayout();
             this._TabControlOptions.SuspendLayout();
             this._TabPageGeneral.SuspendLayout();
             this._GroupBoxGeneral.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._TrackBarMaximumCacheItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._TrackBarFadeSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._TrackBarFadeDelay)).BeginInit();
             this._TabPageImage.SuspendLayout();
@@ -97,7 +98,6 @@
             this._TabPageAbout.SuspendLayout();
             this._GroupBoxAbout.SuspendLayout();
             this._TableLayoutPanelAbout.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._TrackBarMaximumCacheItems)).BeginInit();
             this.SuspendLayout();
             // 
             // _TableLayoutPanelMain
@@ -136,6 +136,20 @@
             this._TableLayoutPanelButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this._TableLayoutPanelButtons.Size = new System.Drawing.Size(346, 34);
             this._TableLayoutPanelButtons.TabIndex = 1;
+            // 
+            // _ButtonDefaults
+            // 
+            this._ButtonDefaults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this._ButtonDefaults.Location = new System.Drawing.Point(3, 5);
+            this._ButtonDefaults.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this._ButtonDefaults.Name = "_ButtonDefaults";
+            this._ButtonDefaults.Size = new System.Drawing.Size(69, 24);
+            this._ButtonDefaults.TabIndex = 3;
+            this._ButtonDefaults.TabStop = false;
+            this._ButtonDefaults.Text = "&Defaults";
+            this._ButtonDefaults.Click += new System.EventHandler(this._ButtonDefaults_Click);
             // 
             // _ButtonApply
             // 
@@ -225,6 +239,40 @@
             this._GroupBoxGeneral.TabIndex = 0;
             this._GroupBoxGeneral.TabStop = false;
             // 
+            // _LabelMaximumCacheItemsValue
+            // 
+            this._LabelMaximumCacheItemsValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this._LabelMaximumCacheItemsValue.Location = new System.Drawing.Point(229, 162);
+            this._LabelMaximumCacheItemsValue.Name = "_LabelMaximumCacheItemsValue";
+            this._LabelMaximumCacheItemsValue.Size = new System.Drawing.Size(91, 13);
+            this._LabelMaximumCacheItemsValue.TabIndex = 9;
+            this._LabelMaximumCacheItemsValue.Text = "1000 items";
+            this._LabelMaximumCacheItemsValue.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // _LabelMaximumCacheItems
+            // 
+            this._LabelMaximumCacheItems.AutoSize = true;
+            this._LabelMaximumCacheItems.Location = new System.Drawing.Point(6, 162);
+            this._LabelMaximumCacheItems.Name = "_LabelMaximumCacheItems";
+            this._LabelMaximumCacheItems.Size = new System.Drawing.Size(116, 13);
+            this._LabelMaximumCacheItems.TabIndex = 8;
+            this._LabelMaximumCacheItems.Text = "Maximum Cache Items:";
+            // 
+            // _TrackBarMaximumCacheItems
+            // 
+            this._TrackBarMaximumCacheItems.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this._TrackBarMaximumCacheItems.Location = new System.Drawing.Point(5, 178);
+            this._TrackBarMaximumCacheItems.Maximum = 20;
+            this._TrackBarMaximumCacheItems.Name = "_TrackBarMaximumCacheItems";
+            this._TrackBarMaximumCacheItems.Size = new System.Drawing.Size(326, 45);
+            this._TrackBarMaximumCacheItems.TabIndex = 10;
+            this._ToolTipMain.SetToolTip(this._TrackBarMaximumCacheItems, "The maximum number of RSS items to cache locally for situations where network con" +
+                    "nectivity is unavailable.");
+            this._TrackBarMaximumCacheItems.Value = 10;
+            this._TrackBarMaximumCacheItems.ValueChanged += new System.EventHandler(this._TrackBarMaximumCacheItems_ValueChanged);
+            this._TrackBarMaximumCacheItems.Scroll += new System.EventHandler(this._TrackBarMaximumCacheItems_ValueChanged);
+            // 
             // _RadioButtonRandom
             // 
             this._RadioButtonRandom.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -260,7 +308,7 @@
             this._LabelFadeSpeedValue.Name = "_LabelFadeSpeedValue";
             this._LabelFadeSpeedValue.Size = new System.Drawing.Size(91, 13);
             this._LabelFadeSpeedValue.TabIndex = 6;
-            this._LabelFadeSpeedValue.Text = "20 milliseconds";
+            this._LabelFadeSpeedValue.Text = "20 ms";
             this._LabelFadeSpeedValue.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // _LabelFadeDelayValue
@@ -270,7 +318,7 @@
             this._LabelFadeDelayValue.Name = "_LabelFadeDelayValue";
             this._LabelFadeDelayValue.Size = new System.Drawing.Size(88, 13);
             this._LabelFadeDelayValue.TabIndex = 3;
-            this._LabelFadeDelayValue.Text = "1 minute";
+            this._LabelFadeDelayValue.Text = "1.0 m";
             this._LabelFadeDelayValue.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // _LabelFadeSpeed
@@ -287,7 +335,8 @@
             this._TrackBarFadeSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this._TrackBarFadeSpeed.Location = new System.Drawing.Point(5, 123);
-            this._TrackBarFadeSpeed.Minimum = 2;
+            this._TrackBarFadeSpeed.Maximum = 20;
+            this._TrackBarFadeSpeed.Minimum = 1;
             this._TrackBarFadeSpeed.Name = "_TrackBarFadeSpeed";
             this._TrackBarFadeSpeed.Size = new System.Drawing.Size(326, 45);
             this._TrackBarFadeSpeed.TabIndex = 7;
@@ -311,7 +360,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this._TrackBarFadeDelay.LargeChange = 1;
             this._TrackBarFadeDelay.Location = new System.Drawing.Point(5, 68);
-            this._TrackBarFadeDelay.Maximum = 5;
+            this._TrackBarFadeDelay.Maximum = 20;
             this._TrackBarFadeDelay.Minimum = 1;
             this._TrackBarFadeDelay.Name = "_TrackBarFadeDelay";
             this._TrackBarFadeDelay.Size = new System.Drawing.Size(326, 45);
@@ -683,54 +732,6 @@
             this._LinkLabelHomepage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this._LinkLabelHomepage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this._LinkLabelHomepage_LinkClicked);
             // 
-            // _LabelMaximumCacheItemsValue
-            // 
-            this._LabelMaximumCacheItemsValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._LabelMaximumCacheItemsValue.Location = new System.Drawing.Point(229, 162);
-            this._LabelMaximumCacheItemsValue.Name = "_LabelMaximumCacheItemsValue";
-            this._LabelMaximumCacheItemsValue.Size = new System.Drawing.Size(91, 13);
-            this._LabelMaximumCacheItemsValue.TabIndex = 9;
-            this._LabelMaximumCacheItemsValue.Text = "1000 items";
-            this._LabelMaximumCacheItemsValue.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // _LabelMaximumCacheItems
-            // 
-            this._LabelMaximumCacheItems.AutoSize = true;
-            this._LabelMaximumCacheItems.Location = new System.Drawing.Point(6, 162);
-            this._LabelMaximumCacheItems.Name = "_LabelMaximumCacheItems";
-            this._LabelMaximumCacheItems.Size = new System.Drawing.Size(116, 13);
-            this._LabelMaximumCacheItems.TabIndex = 8;
-            this._LabelMaximumCacheItems.Text = "Maximum Cache Items:";
-            // 
-            // _TrackBarMaximumCacheItems
-            // 
-            this._TrackBarMaximumCacheItems.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this._TrackBarMaximumCacheItems.Location = new System.Drawing.Point(5, 178);
-            this._TrackBarMaximumCacheItems.Maximum = 25;
-            this._TrackBarMaximumCacheItems.Name = "_TrackBarMaximumCacheItems";
-            this._TrackBarMaximumCacheItems.Size = new System.Drawing.Size(326, 45);
-            this._TrackBarMaximumCacheItems.TabIndex = 10;
-            this._ToolTipMain.SetToolTip(this._TrackBarMaximumCacheItems, "The maximum number of RSS items to cache locally for situations where network con" +
-                    "nectivity is unavailable.");
-            this._TrackBarMaximumCacheItems.Value = 10;
-            this._TrackBarMaximumCacheItems.ValueChanged += new System.EventHandler(this._TrackBarMaximumCacheItems_ValueChanged);
-            this._TrackBarMaximumCacheItems.Scroll += new System.EventHandler(this._TrackBarMaximumCacheItems_ValueChanged);
-            // 
-            // _ButtonDefaults
-            // 
-            this._ButtonDefaults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this._ButtonDefaults.Location = new System.Drawing.Point(3, 5);
-            this._ButtonDefaults.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this._ButtonDefaults.Name = "_ButtonDefaults";
-            this._ButtonDefaults.Size = new System.Drawing.Size(69, 24);
-            this._ButtonDefaults.TabIndex = 3;
-            this._ButtonDefaults.TabStop = false;
-            this._ButtonDefaults.Text = "&Defaults";
-            this._ButtonDefaults.Click += new System.EventHandler(this._ButtonDefaults_Click);
-            // 
             // FormOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -749,6 +750,7 @@
             this._TabPageGeneral.ResumeLayout(false);
             this._GroupBoxGeneral.ResumeLayout(false);
             this._GroupBoxGeneral.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._TrackBarMaximumCacheItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._TrackBarFadeSpeed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._TrackBarFadeDelay)).EndInit();
             this._TabPageImage.ResumeLayout(false);
@@ -767,7 +769,6 @@
             this._GroupBoxAbout.ResumeLayout(false);
             this._TableLayoutPanelAbout.ResumeLayout(false);
             this._TableLayoutPanelAbout.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._TrackBarMaximumCacheItems)).EndInit();
             this.ResumeLayout(false);
 
         }

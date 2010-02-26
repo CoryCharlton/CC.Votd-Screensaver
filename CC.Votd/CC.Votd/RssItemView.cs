@@ -8,7 +8,7 @@ using CC.Utilities.Rss;
 
 namespace CC.Votd
 {
-    public class RssItemView: IDisposable
+    public class RssItemView: UserControl, IDisposable
     {
         #region Constructor
         public RssItemView(RssItem rssItem)
@@ -38,6 +38,7 @@ namespace CC.Votd
         private int _Alpha;
         private int _AlphaDelta = 4;
         private Timer _FadeTimer;
+        private static readonly Random _Random = new Random();
         private StringFormat _StringFormat;
         private Size _TextSize;
         private Size _TitleSize;
@@ -167,6 +168,13 @@ namespace CC.Votd
             _Alpha = 0;
             _AlphaDelta = Math.Abs(_AlphaDelta);
             _FadeTimer_Tick(this, EventArgs.Empty);
+        }
+
+        public void SetLocation(Size maximumSize)
+        {
+            int x = (maximumSize.Width >= Size.Width) ? _Random.Next(0, maximumSize.Width - Size.Width) : 0;
+            int y = (maximumSize.Height >= Size.Height) ? _Random.Next(0, maximumSize.Height - Size.Height) : 0;
+            Location = new Point(x, y);
         }
 
         public void SetSize(Graphics graphics)

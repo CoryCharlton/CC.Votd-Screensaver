@@ -19,7 +19,6 @@ namespace CC.Votd
         #endregion
 
         #region Private Fields
-        private readonly Random _Random = new Random();
         private RssFeed _RssFeed;
         private RssItemView _RssItemView;
         #endregion
