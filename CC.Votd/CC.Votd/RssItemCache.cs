@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.Xml.Serialization;
 using CC.Utilities;
 using CC.Utilities.Rss;
@@ -20,8 +17,9 @@ namespace CC.Votd
         #endregion
 
         #region Private Fields
-        private static readonly string _Filename = Path.Combine(Application.StartupPath, "CC.Votd.xml");
+        private static readonly string _Filename = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "CC.Votd.xml");
         private static List<RssItem> _Items = new List<RssItem>();
+        private static readonly object _LockObject = new object();
         private readonly static Random _Random = new Random();
         #endregion
 
@@ -40,13 +38,6 @@ namespace CC.Votd
         #endregion
 
         #region Private Methods
-        private static void ManageMaxItems()
-        {
-            while (MaximumItems > 0 && _Items.Count >= MaximumItems)
-            {
-                _Items.RemoveAt(0);
-            }
-        }
         #endregion
 
         #region Public Methods
@@ -54,13 +45,19 @@ namespace CC.Votd
         {
             bool returnValue = false;
 
-            ManageMaxItems();
-
-            if (!_Items.Contains(rssItem))
+            lock (_LockObject)
             {
-                _Items.Add(rssItem);
+                while (MaximumItems > 0 && _Items.Count >= MaximumItems)
+                {
+                    _Items.RemoveAt(0);
+                }
 
-                returnValue = true;
+                if (!_Items.Contains(rssItem))
+                {
+                    _Items.Add(rssItem);
+
+                    returnValue = true;
+                }
             }
 
             return returnValue;
