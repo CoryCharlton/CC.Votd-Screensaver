@@ -31,10 +31,10 @@ namespace CC.Votd
         }
 
         /// <summary>
-        /// Controls the maximum number of items in the cache. If this value is less than or equal to 0 no maximum will be applied.
+        /// Gets or sets the maximum number of items in the cache. If this value is less than or equal to 0 no maximum will be applied.
         /// </summary>
         [XmlIgnore]
-        public static int MaximumItems { get; set; }
+        public static int Maximum { get; set; }
         #endregion
 
         #region Private Methods
@@ -47,7 +47,7 @@ namespace CC.Votd
 
             lock (_LockObject)
             {
-                while (MaximumItems > 0 && _Items.Count >= MaximumItems)
+                while (Maximum > 0 && _Items.Count >= Maximum)
                 {
                     _Items.RemoveAt(0);
                 }
