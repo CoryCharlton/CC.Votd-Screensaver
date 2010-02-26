@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using CC.Utilities;
+using CC.Utilities.Drawing;
 using Microsoft.Win32;
 
 namespace CC.Votd
@@ -42,8 +43,10 @@ namespace CC.Votd
         private const int _DefaultFadeSpeed = 20;
         private const int _DefaultMaximumCacheItems = 1000;
         private const bool _DefaultRandomVerse = false;
-        private static readonly Font _DefaultTextFont = new Font("Papyrus", 24, FontStyle.Regular, GraphicsUnit.Pixel);
-        private static readonly Font _DefaultTitleFont = new Font("Papyrus", 24, FontStyle.Italic, GraphicsUnit.Pixel);
+
+        // NOTE: The only font I like here is Papyrus but not everyone will have it. Need better default fallback choices although the default fonts mostly suck :-)
+        private static readonly Font _DefaultTextFont = FontBuilder.FromFontNames("Papyrus, Palatino Linotype, Tahoma", 24, FontStyle.Regular, GraphicsUnit.Pixel);
+        private static readonly Font _DefaultTitleFont = FontBuilder.FromFontNames("Papyrus, Palatino Linotype, Tahoma", 24, FontStyle.Italic, GraphicsUnit.Pixel);
         // ReSharper restore InconsistentNaming
         #endregion
 
