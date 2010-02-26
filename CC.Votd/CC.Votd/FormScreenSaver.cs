@@ -37,7 +37,6 @@ namespace CC.Votd
                 RefreshRssFeed();
             }
 
-            //_RssItemView.Location = PositionRssItemView();
             _RssItemView.SetLocation(Size);
             Refresh();
 

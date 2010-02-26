@@ -118,7 +118,6 @@
     <Compile Include="RssItemView.Designer.cs">
       <DependentUpon>RssItemView.cs</DependentUpon>
     </Compile>
-    <Compile Include="RssItemView2.cs" />
     <Compile Include="Settings.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -127,11 +126,6 @@
   <ItemGroup>
     <None Include="Resources\NativeResources.res" />
     <None Include="Resources\Cross.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="CC.Votd.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
