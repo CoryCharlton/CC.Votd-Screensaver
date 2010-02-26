@@ -235,9 +235,33 @@ namespace CC.Votd
                 _RadioButtonDaily.Checked = true;
             }
 
-            _TrackBarFadeDelay.Value = Settings.FadeDelay / 15000;
-            _TrackBarFadeSpeed.Value = Settings.FadeSpeed / 10;
-            _TrackBarMaximumCacheItems.Value = Settings.MaximumCacheItems / 100;
+            try
+            {
+                _TrackBarFadeDelay.Value = Settings.FadeDelay / 15000;
+            }
+            catch (Exception exception)
+            {
+                Logging.LogException(exception);
+            }
+
+            try
+            {
+                _TrackBarFadeSpeed.Value = Settings.FadeSpeed / 10;
+            }
+            catch (Exception exception)
+            {
+                Logging.LogException(exception);
+            }
+
+            try
+            {
+                _TrackBarMaximumCacheItems.Value = Settings.MaximumCacheItems / 100;
+            }
+            catch (Exception exception)
+            {
+                Logging.LogException(exception);
+            }
+
 
             // Make sure the values get displayed correctly
             _TrackBarFadeDelay_ValueChanged(_TrackBarFadeDelay, EventArgs.Empty);

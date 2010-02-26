@@ -318,7 +318,7 @@
             this._LabelFadeDelayValue.Name = "_LabelFadeDelayValue";
             this._LabelFadeDelayValue.Size = new System.Drawing.Size(88, 13);
             this._LabelFadeDelayValue.TabIndex = 3;
-            this._LabelFadeDelayValue.Text = "1.0 m";
+            this._LabelFadeDelayValue.Text = "00:15";
             this._LabelFadeDelayValue.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // _LabelFadeSpeed

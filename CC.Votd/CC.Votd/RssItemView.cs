@@ -76,7 +76,7 @@ namespace CC.Votd
             if (_Alpha >= ALPHA_MAX)
             {
                 _AlphaDelta *= -1;
-                //_FadeTimer.Interval = Settings.FadeDelay;
+                _FadeTimer.Interval = Settings.FadeDelay;
             }
             else if (_Alpha <= 0)
             {
@@ -162,6 +162,29 @@ namespace CC.Votd
         {
             int x = (maximumSize.Width - Margin.Horizontal >= Size.Width) ? _Random.Next(Margin.Left, maximumSize.Width - (Size.Width - Margin.Horizontal)) : Margin.Left;
             int y = (maximumSize.Height - Margin.Vertical >= Size.Height) ? _Random.Next(Margin.Top, maximumSize.Height - (Size.Height - Margin.Vertical)) : Margin.Top;
+          
+            // Make sure the control is visibly inside the maximumSize bounds
+            if (x + Size.Width > maximumSize.Width - Margin.Right)
+            {
+                x = maximumSize.Width - (Size.Width - Margin.Right);  
+            }
+
+            if (y + Size.Height > maximumSize.Height - Margin.Bottom)
+            {
+                y = maximumSize.Height - (Size.Height - Margin.Bottom);
+            }
+
+            // Make sure the control hasn't been positioned inside the Left/Top margins
+            if (x < Margin.Left)
+            {
+                x = Margin.Left;
+            }
+
+            if (y < Margin.Top)
+            {
+                y = Margin.Top;
+            }
+
             Location = new Point(x, y);
         }
 
@@ -170,9 +193,6 @@ namespace CC.Votd
             SizeF textSize = graphics.MeasureString(" " + Item.Description + " ", Font, MaxWidth - (Padding.Size.Width * 2) - Margin.Right, _StringFormat);
             SizeF titleSize = graphics.MeasureString(" " + Item.Title + " ", Font, MaxWidth - (Padding.Size.Width * 2) - Margin.Right, _StringFormat);
             SizeF totalSize = new SizeF((textSize.Width > titleSize.Width ? textSize.Width : titleSize.Width) + (Padding.Size.Width * 2), textSize.Height + titleSize.Height + (Padding.Size.Height * 3));
-            //SizeF textSize = graphics.MeasureString(" " + Item.Description + " ", Font, MaxWidth - (Padding.Size.Width * 2), _StringFormat);
-            //SizeF titleSize = graphics.MeasureString(" " + Item.Title + " ", Font, MaxWidth - (Padding.Size.Width * 2), _StringFormat);
-            //SizeF totalSize = new SizeF((textSize.Width > titleSize.Width ? textSize.Width : titleSize.Width) + (Padding.Size.Width * 2), textSize.Height + titleSize.Height + (Padding.Size.Height * 3));
 
             Logging.LogMessage("Text --- H: " + textSize.Height + " W: " + textSize.Width + " Max W: " + MaxWidth);
             Logging.LogMessage("Title -- H: " + titleSize.Height + " W: " + titleSize.Width + " Max W: " + MaxWidth);

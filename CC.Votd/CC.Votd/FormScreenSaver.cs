@@ -82,16 +82,8 @@ namespace CC.Votd
             _RssItemView.FadingComplete += _RssItemView_FadeComplete;
 
             _RssItemView.SetSize(CreateGraphics());
-            //_RssItemView.Location = PositionRssItemView();
             _RssItemView.SetLocation(Size);
         }
-
-        //private Point PositionRssItemView()
-        //{
-        //    int x = (Width >= _RssItemView.Size.Width) ? _Random.Next(0, Width - _RssItemView.Size.Width) : 0;
-        //    int y = (Height >= _RssItemView.Size.Height) ? _Random.Next(0, Height - _RssItemView.Size.Height) : 0;
-        //    return new Point(x, y);
-        //}
 
         private void RefreshRssFeed()
         {
