@@ -36,6 +36,7 @@ namespace CC.Votd
 
         #region Private Fields
         private bool _IsLoaded;
+        private bool _ResetToDefaults;
         #endregion
 
         #region Assembly Attribute Accessors
@@ -122,7 +123,6 @@ namespace CC.Votd
         private void _ButtonApply_Click(object sender, EventArgs e)
         {
             UIToConfig();
-            UpdateApply();
         }
 
         private void _ButtonBrowse_Click(object sender, EventArgs e)
@@ -148,6 +148,16 @@ namespace CC.Votd
         private void _ButtonCancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void _ButtonDefaults_Click(object sender, EventArgs e)
+        {
+            Settings.Reset();
+
+            _ResetToDefaults = true;
+
+            ConfigToUI();
+            UpdateApply();
         }
 
         private void _ButtonOk_Click(object sender, EventArgs e)
@@ -188,8 +198,7 @@ namespace CC.Votd
 
         private void _TrackBarFadeDelay_ValueChanged(object sender, EventArgs e)
         {
-            string text = _TrackBarFadeDelay.Value > 1 ? "minutes" : "minute";
-            _LabelFadeDelayValue.Text = string.Format("{0} {1}", _TrackBarFadeDelay.Value, text);
+            _LabelFadeDelayValue.Text = string.Format("{0} {1}", _TrackBarFadeDelay.Value, (_TrackBarFadeDelay.Value > 1 ? "minutes" : "minute"));
             UpdateApply();
         }
 
@@ -198,6 +207,13 @@ namespace CC.Votd
             _LabelFadeSpeedValue.Text = string.Format("{0} milliseconds", _TrackBarFadeSpeed.Value * 10);
             UpdateApply();
         }
+
+        private void _TrackBarMaximumCacheItems_ValueChanged(object sender, EventArgs e)
+        {
+            _LabelMaximumCacheItemsValue.Text = _TrackBarMaximumCacheItems.Value > 0 ? string.Format("{0} items", _TrackBarMaximumCacheItems.Value * 100) : "<Unlimited>";
+            UpdateApply();
+        }
+
         // ReSharper restore InconsistentNaming
         #endregion
 
@@ -219,6 +235,7 @@ namespace CC.Votd
 
             _TrackBarFadeDelay.Value = Settings.FadeDelay / 60000;
             _TrackBarFadeSpeed.Value = Settings.FadeSpeed / 10;
+            _TrackBarMaximumCacheItems.Value = Settings.MaximumCacheItems / 100;
 
             if (!string.IsNullOrEmpty(Settings.BackgroundImage) && File.Exists(Settings.BackgroundImage))
             {
@@ -236,7 +253,7 @@ namespace CC.Votd
 
         private bool IsDirty()
         {
-            bool returnValue = false;
+            bool returnValue = _ResetToDefaults;
 
             if (_IsLoaded)
             {
@@ -260,6 +277,10 @@ namespace CC.Votd
                     returnValue = true;
                 }
                 if (!returnValue && (Settings.FadeSpeed / 10) != _TrackBarFadeSpeed.Value)
+                {
+                    returnValue = true;
+                }
+                if (!returnValue && (Settings.MaximumCacheItems / 100) != _TrackBarMaximumCacheItems.Value)
                 {
                     returnValue = true;
                 }
@@ -325,6 +346,7 @@ namespace CC.Votd
 
             Settings.FadeDelay = _TrackBarFadeDelay.Value * 60000;
             Settings.FadeSpeed = _TrackBarFadeSpeed.Value * 10;
+            Settings.MaximumCacheItems = _TrackBarMaximumCacheItems.Value * 100;
 
             Settings.RandomVerse = _RadioButtonRandom.Checked;
 
@@ -334,6 +356,10 @@ namespace CC.Votd
             Settings.TitleFont = _LabelTitleFontValue.Font;
 
             Settings.Save();
+
+            _ResetToDefaults = false;
+
+            UpdateApply();
         }
 
         private void UpdateApply()

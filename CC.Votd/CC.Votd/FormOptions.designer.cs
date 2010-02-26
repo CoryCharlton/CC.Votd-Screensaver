@@ -74,6 +74,10 @@
             this._TextBoxDescription = new System.Windows.Forms.TextBox();
             this._LinkLabelHomepage = new System.Windows.Forms.LinkLabel();
             this._ToolTipMain = new System.Windows.Forms.ToolTip(this.components);
+            this._LabelMaximumCacheItemsValue = new System.Windows.Forms.Label();
+            this._LabelMaximumCacheItems = new System.Windows.Forms.Label();
+            this._TrackBarMaximumCacheItems = new System.Windows.Forms.TrackBar();
+            this._ButtonDefaults = new System.Windows.Forms.Button();
             this._TableLayoutPanelMain.SuspendLayout();
             this._TableLayoutPanelButtons.SuspendLayout();
             this._TabControlOptions.SuspendLayout();
@@ -93,6 +97,7 @@
             this._TabPageAbout.SuspendLayout();
             this._GroupBoxAbout.SuspendLayout();
             this._TableLayoutPanelAbout.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._TrackBarMaximumCacheItems)).BeginInit();
             this.SuspendLayout();
             // 
             // _TableLayoutPanelMain
@@ -109,58 +114,67 @@
             this._TableLayoutPanelMain.RowCount = 2;
             this._TableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this._TableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this._TableLayoutPanelMain.Size = new System.Drawing.Size(274, 253);
+            this._TableLayoutPanelMain.Size = new System.Drawing.Size(352, 302);
             this._TableLayoutPanelMain.TabIndex = 0;
             // 
             // _TableLayoutPanelButtons
             // 
-            this._TableLayoutPanelButtons.ColumnCount = 4;
+            this._TableLayoutPanelButtons.ColumnCount = 5;
+            this._TableLayoutPanelButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this._TableLayoutPanelButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this._TableLayoutPanelButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
-            this._TableLayoutPanelButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
-            this._TableLayoutPanelButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
-            this._TableLayoutPanelButtons.Controls.Add(this._ButtonApply, 3, 0);
-            this._TableLayoutPanelButtons.Controls.Add(this._ButtonCancel, 2, 0);
-            this._TableLayoutPanelButtons.Controls.Add(this._ButtonOk, 1, 0);
+            this._TableLayoutPanelButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this._TableLayoutPanelButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this._TableLayoutPanelButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this._TableLayoutPanelButtons.Controls.Add(this._ButtonDefaults, 0, 0);
+            this._TableLayoutPanelButtons.Controls.Add(this._ButtonApply, 4, 0);
+            this._TableLayoutPanelButtons.Controls.Add(this._ButtonCancel, 3, 0);
+            this._TableLayoutPanelButtons.Controls.Add(this._ButtonOk, 2, 0);
             this._TableLayoutPanelButtons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._TableLayoutPanelButtons.Location = new System.Drawing.Point(3, 216);
+            this._TableLayoutPanelButtons.Location = new System.Drawing.Point(3, 265);
             this._TableLayoutPanelButtons.Name = "_TableLayoutPanelButtons";
             this._TableLayoutPanelButtons.RowCount = 1;
-            this._TableLayoutPanelButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this._TableLayoutPanelButtons.Size = new System.Drawing.Size(268, 34);
-            this._TableLayoutPanelButtons.TabIndex = 9;
+            this._TableLayoutPanelButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this._TableLayoutPanelButtons.Size = new System.Drawing.Size(346, 34);
+            this._TableLayoutPanelButtons.TabIndex = 1;
             // 
             // _ButtonApply
             // 
-            this._ButtonApply.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this._ButtonApply.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this._ButtonApply.Enabled = false;
-            this._ButtonApply.Location = new System.Drawing.Point(190, 5);
+            this._ButtonApply.Location = new System.Drawing.Point(274, 5);
+            this._ButtonApply.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this._ButtonApply.Name = "_ButtonApply";
-            this._ButtonApply.Size = new System.Drawing.Size(75, 23);
-            this._ButtonApply.TabIndex = 5;
+            this._ButtonApply.Size = new System.Drawing.Size(69, 24);
+            this._ButtonApply.TabIndex = 2;
             this._ButtonApply.Text = "&Apply";
             this._ButtonApply.Click += new System.EventHandler(this._ButtonApply_Click);
             // 
             // _ButtonCancel
             // 
-            this._ButtonCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this._ButtonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this._ButtonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this._ButtonCancel.Location = new System.Drawing.Point(108, 5);
-            this._ButtonCancel.Margin = new System.Windows.Forms.Padding(1, 3, 3, 3);
+            this._ButtonCancel.Location = new System.Drawing.Point(199, 5);
+            this._ButtonCancel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this._ButtonCancel.Name = "_ButtonCancel";
-            this._ButtonCancel.Size = new System.Drawing.Size(75, 23);
-            this._ButtonCancel.TabIndex = 4;
+            this._ButtonCancel.Size = new System.Drawing.Size(69, 24);
+            this._ButtonCancel.TabIndex = 1;
             this._ButtonCancel.Text = "&Cancel";
             this._ButtonCancel.Click += new System.EventHandler(this._ButtonCancel_Click);
             // 
             // _ButtonOk
             // 
-            this._ButtonOk.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this._ButtonOk.Location = new System.Drawing.Point(28, 5);
-            this._ButtonOk.Margin = new System.Windows.Forms.Padding(3, 3, 2, 3);
+            this._ButtonOk.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this._ButtonOk.Location = new System.Drawing.Point(124, 5);
+            this._ButtonOk.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this._ButtonOk.Name = "_ButtonOk";
-            this._ButtonOk.Size = new System.Drawing.Size(75, 23);
-            this._ButtonOk.TabIndex = 3;
+            this._ButtonOk.Size = new System.Drawing.Size(69, 24);
+            this._ButtonOk.TabIndex = 0;
             this._ButtonOk.Text = "&OK";
             this._ButtonOk.Click += new System.EventHandler(this._ButtonOk_Click);
             // 
@@ -176,15 +190,16 @@
             this._TabControlOptions.Location = new System.Drawing.Point(3, 3);
             this._TabControlOptions.Name = "_TabControlOptions";
             this._TabControlOptions.SelectedIndex = 0;
-            this._TabControlOptions.Size = new System.Drawing.Size(268, 207);
-            this._TabControlOptions.TabIndex = 10;
+            this._TabControlOptions.ShowToolTips = true;
+            this._TabControlOptions.Size = new System.Drawing.Size(346, 256);
+            this._TabControlOptions.TabIndex = 0;
             // 
             // _TabPageGeneral
             // 
             this._TabPageGeneral.Controls.Add(this._GroupBoxGeneral);
             this._TabPageGeneral.Location = new System.Drawing.Point(4, 25);
             this._TabPageGeneral.Name = "_TabPageGeneral";
-            this._TabPageGeneral.Size = new System.Drawing.Size(260, 178);
+            this._TabPageGeneral.Size = new System.Drawing.Size(338, 227);
             this._TabPageGeneral.TabIndex = 1;
             this._TabPageGeneral.Text = "General";
             this._ToolTipMain.SetToolTip(this._TabPageGeneral, "General Options");
@@ -192,6 +207,9 @@
             // 
             // _GroupBoxGeneral
             // 
+            this._GroupBoxGeneral.Controls.Add(this._LabelMaximumCacheItemsValue);
+            this._GroupBoxGeneral.Controls.Add(this._LabelMaximumCacheItems);
+            this._GroupBoxGeneral.Controls.Add(this._TrackBarMaximumCacheItems);
             this._GroupBoxGeneral.Controls.Add(this._RadioButtonRandom);
             this._GroupBoxGeneral.Controls.Add(this._RadioButtonDaily);
             this._GroupBoxGeneral.Controls.Add(this._LabelFadeSpeedValue);
@@ -203,17 +221,18 @@
             this._GroupBoxGeneral.Dock = System.Windows.Forms.DockStyle.Fill;
             this._GroupBoxGeneral.Location = new System.Drawing.Point(0, 0);
             this._GroupBoxGeneral.Name = "_GroupBoxGeneral";
-            this._GroupBoxGeneral.Size = new System.Drawing.Size(260, 178);
-            this._GroupBoxGeneral.TabIndex = 10;
+            this._GroupBoxGeneral.Size = new System.Drawing.Size(338, 227);
+            this._GroupBoxGeneral.TabIndex = 0;
             this._GroupBoxGeneral.TabStop = false;
             // 
             // _RadioButtonRandom
             // 
+            this._RadioButtonRandom.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this._RadioButtonRandom.AutoSize = true;
-            this._RadioButtonRandom.Location = new System.Drawing.Point(139, 19);
+            this._RadioButtonRandom.Location = new System.Drawing.Point(182, 19);
             this._RadioButtonRandom.Name = "_RadioButtonRandom";
             this._RadioButtonRandom.Size = new System.Drawing.Size(95, 17);
-            this._RadioButtonRandom.TabIndex = 7;
+            this._RadioButtonRandom.TabIndex = 1;
             this._RadioButtonRandom.Text = "Random Verse";
             this._ToolTipMain.SetToolTip(this._RadioButtonRandom, "Display a random verse (updates every 10 minutes)");
             this._RadioButtonRandom.UseVisualStyleBackColor = true;
@@ -221,12 +240,13 @@
             // 
             // _RadioButtonDaily
             // 
+            this._RadioButtonDaily.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this._RadioButtonDaily.AutoSize = true;
             this._RadioButtonDaily.Checked = true;
-            this._RadioButtonDaily.Location = new System.Drawing.Point(18, 19);
+            this._RadioButtonDaily.Location = new System.Drawing.Point(61, 19);
             this._RadioButtonDaily.Name = "_RadioButtonDaily";
             this._RadioButtonDaily.Size = new System.Drawing.Size(78, 17);
-            this._RadioButtonDaily.TabIndex = 6;
+            this._RadioButtonDaily.TabIndex = 0;
             this._RadioButtonDaily.TabStop = true;
             this._RadioButtonDaily.Text = "Daily Verse";
             this._ToolTipMain.SetToolTip(this._RadioButtonDaily, "Display verse of the day");
@@ -236,20 +256,20 @@
             // _LabelFadeSpeedValue
             // 
             this._LabelFadeSpeedValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._LabelFadeSpeedValue.Location = new System.Drawing.Point(151, 107);
+            this._LabelFadeSpeedValue.Location = new System.Drawing.Point(229, 107);
             this._LabelFadeSpeedValue.Name = "_LabelFadeSpeedValue";
             this._LabelFadeSpeedValue.Size = new System.Drawing.Size(91, 13);
-            this._LabelFadeSpeedValue.TabIndex = 5;
+            this._LabelFadeSpeedValue.TabIndex = 6;
             this._LabelFadeSpeedValue.Text = "20 milliseconds";
             this._LabelFadeSpeedValue.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // _LabelFadeDelayValue
             // 
             this._LabelFadeDelayValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._LabelFadeDelayValue.Location = new System.Drawing.Point(154, 52);
+            this._LabelFadeDelayValue.Location = new System.Drawing.Point(232, 52);
             this._LabelFadeDelayValue.Name = "_LabelFadeDelayValue";
             this._LabelFadeDelayValue.Size = new System.Drawing.Size(88, 13);
-            this._LabelFadeDelayValue.TabIndex = 4;
+            this._LabelFadeDelayValue.TabIndex = 3;
             this._LabelFadeDelayValue.Text = "1 minute";
             this._LabelFadeDelayValue.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
@@ -259,7 +279,7 @@
             this._LabelFadeSpeed.Location = new System.Drawing.Point(6, 107);
             this._LabelFadeSpeed.Name = "_LabelFadeSpeed";
             this._LabelFadeSpeed.Size = new System.Drawing.Size(98, 13);
-            this._LabelFadeSpeed.TabIndex = 3;
+            this._LabelFadeSpeed.TabIndex = 5;
             this._LabelFadeSpeed.Text = "Verse Fade Speed:";
             // 
             // _TrackBarFadeSpeed
@@ -269,8 +289,8 @@
             this._TrackBarFadeSpeed.Location = new System.Drawing.Point(5, 123);
             this._TrackBarFadeSpeed.Minimum = 2;
             this._TrackBarFadeSpeed.Name = "_TrackBarFadeSpeed";
-            this._TrackBarFadeSpeed.Size = new System.Drawing.Size(248, 45);
-            this._TrackBarFadeSpeed.TabIndex = 2;
+            this._TrackBarFadeSpeed.Size = new System.Drawing.Size(326, 45);
+            this._TrackBarFadeSpeed.TabIndex = 7;
             this._ToolTipMain.SetToolTip(this._TrackBarFadeSpeed, "The ammount of time between fade intervals. A lower value will fade faster.");
             this._TrackBarFadeSpeed.Value = 2;
             this._TrackBarFadeSpeed.ValueChanged += new System.EventHandler(this._TrackBarFadeSpeed_ValueChanged);
@@ -282,7 +302,7 @@
             this._LabelFadeDelay.Location = new System.Drawing.Point(6, 52);
             this._LabelFadeDelay.Name = "_LabelFadeDelay";
             this._LabelFadeDelay.Size = new System.Drawing.Size(104, 13);
-            this._LabelFadeDelay.TabIndex = 1;
+            this._LabelFadeDelay.TabIndex = 2;
             this._LabelFadeDelay.Text = "Verse Display Delay:";
             // 
             // _TrackBarFadeDelay
@@ -294,8 +314,8 @@
             this._TrackBarFadeDelay.Maximum = 5;
             this._TrackBarFadeDelay.Minimum = 1;
             this._TrackBarFadeDelay.Name = "_TrackBarFadeDelay";
-            this._TrackBarFadeDelay.Size = new System.Drawing.Size(248, 45);
-            this._TrackBarFadeDelay.TabIndex = 0;
+            this._TrackBarFadeDelay.Size = new System.Drawing.Size(326, 45);
+            this._TrackBarFadeDelay.TabIndex = 4;
             this._ToolTipMain.SetToolTip(this._TrackBarFadeDelay, "The amount on time the verse will be displayed on the screen before fading out an" +
                     "d moving to a new location.");
             this._TrackBarFadeDelay.Value = 1;
@@ -307,7 +327,7 @@
             this._TabPageImage.Controls.Add(this._GroupBoxImage);
             this._TabPageImage.Location = new System.Drawing.Point(4, 25);
             this._TabPageImage.Name = "_TabPageImage";
-            this._TabPageImage.Size = new System.Drawing.Size(260, 178);
+            this._TabPageImage.Size = new System.Drawing.Size(338, 227);
             this._TabPageImage.TabIndex = 0;
             this._TabPageImage.Text = "Image";
             this._ToolTipMain.SetToolTip(this._TabPageImage, "Background Image Options");
@@ -321,37 +341,44 @@
             this._GroupBoxImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this._GroupBoxImage.Location = new System.Drawing.Point(0, 0);
             this._GroupBoxImage.Name = "_GroupBoxImage";
-            this._GroupBoxImage.Size = new System.Drawing.Size(260, 178);
-            this._GroupBoxImage.TabIndex = 12;
+            this._GroupBoxImage.Size = new System.Drawing.Size(338, 227);
+            this._GroupBoxImage.TabIndex = 0;
             this._GroupBoxImage.TabStop = false;
             // 
             // _PictureBoxBackgroundImage
             // 
-            this._PictureBoxBackgroundImage.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this._PictureBoxBackgroundImage.Location = new System.Drawing.Point(9, 45);
+            this._PictureBoxBackgroundImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this._PictureBoxBackgroundImage.Image = global::CC.Votd.Properties.Resources.Cross;
+            this._PictureBoxBackgroundImage.Location = new System.Drawing.Point(9, 46);
             this._PictureBoxBackgroundImage.Name = "_PictureBoxBackgroundImage";
-            this._PictureBoxBackgroundImage.Size = new System.Drawing.Size(160, 120);
+            this._PictureBoxBackgroundImage.Size = new System.Drawing.Size(240, 168);
             this._PictureBoxBackgroundImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this._PictureBoxBackgroundImage.TabIndex = 7;
             this._PictureBoxBackgroundImage.TabStop = false;
             // 
             // _ButtonBrowse
             // 
-            this._ButtonBrowse.Location = new System.Drawing.Point(172, 45);
+            this._ButtonBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this._ButtonBrowse.Location = new System.Drawing.Point(254, 45);
             this._ButtonBrowse.Name = "_ButtonBrowse";
             this._ButtonBrowse.Size = new System.Drawing.Size(75, 23);
-            this._ButtonBrowse.TabIndex = 6;
+            this._ButtonBrowse.TabIndex = 1;
             this._ButtonBrowse.Text = "&Browse";
             this._ToolTipMain.SetToolTip(this._ButtonBrowse, "Browse for background image.");
             this._ButtonBrowse.Click += new System.EventHandler(this._ButtonBrowse_Click);
             // 
             // _TextBoxBackgroundImage
             // 
+            this._TextBoxBackgroundImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this._TextBoxBackgroundImage.Location = new System.Drawing.Point(6, 19);
             this._TextBoxBackgroundImage.Name = "_TextBoxBackgroundImage";
             this._TextBoxBackgroundImage.ReadOnly = true;
-            this._TextBoxBackgroundImage.Size = new System.Drawing.Size(241, 20);
+            this._TextBoxBackgroundImage.Size = new System.Drawing.Size(323, 20);
             this._TextBoxBackgroundImage.TabIndex = 0;
+            this._TextBoxBackgroundImage.TabStop = false;
             this._ToolTipMain.SetToolTip(this._TextBoxBackgroundImage, "The path to the background image.");
             // 
             // _TabPageColors
@@ -359,10 +386,10 @@
             this._TabPageColors.Controls.Add(this._GroupBoxColors);
             this._TabPageColors.Location = new System.Drawing.Point(4, 25);
             this._TabPageColors.Name = "_TabPageColors";
-            this._TabPageColors.Size = new System.Drawing.Size(260, 178);
+            this._TabPageColors.Size = new System.Drawing.Size(338, 227);
             this._TabPageColors.TabIndex = 2;
             this._TabPageColors.Text = "Colors";
-            this._ToolTipMain.SetToolTip(this._TabPageColors, "Textbox Color Options");
+            this._ToolTipMain.SetToolTip(this._TabPageColors, "Color Options");
             this._TabPageColors.UseVisualStyleBackColor = true;
             // 
             // _GroupBoxColors
@@ -371,8 +398,8 @@
             this._GroupBoxColors.Dock = System.Windows.Forms.DockStyle.Fill;
             this._GroupBoxColors.Location = new System.Drawing.Point(0, 0);
             this._GroupBoxColors.Name = "_GroupBoxColors";
-            this._GroupBoxColors.Size = new System.Drawing.Size(260, 178);
-            this._GroupBoxColors.TabIndex = 13;
+            this._GroupBoxColors.Size = new System.Drawing.Size(338, 227);
+            this._GroupBoxColors.TabIndex = 0;
             this._GroupBoxColors.TabStop = false;
             // 
             // _TableLayoutPanelColors
@@ -394,7 +421,7 @@
             this._TableLayoutPanelColors.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this._TableLayoutPanelColors.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this._TableLayoutPanelColors.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this._TableLayoutPanelColors.Size = new System.Drawing.Size(254, 159);
+            this._TableLayoutPanelColors.Size = new System.Drawing.Size(332, 208);
             this._TableLayoutPanelColors.TabIndex = 0;
             // 
             // _LabelForegroundColorValue
@@ -403,9 +430,9 @@
             this._LabelForegroundColorValue.BackColor = System.Drawing.Color.White;
             this._LabelForegroundColorValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this._LabelForegroundColorValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._LabelForegroundColorValue.Location = new System.Drawing.Point(130, 106);
+            this._LabelForegroundColorValue.Location = new System.Drawing.Point(169, 138);
             this._LabelForegroundColorValue.Name = "_LabelForegroundColorValue";
-            this._LabelForegroundColorValue.Size = new System.Drawing.Size(121, 53);
+            this._LabelForegroundColorValue.Size = new System.Drawing.Size(160, 70);
             this._LabelForegroundColorValue.TabIndex = 5;
             this._ToolTipMain.SetToolTip(this._LabelForegroundColorValue, "Click to set foreground color.");
             this._LabelForegroundColorValue.Click += new System.EventHandler(this._LabelColor_Click);
@@ -416,10 +443,10 @@
             this._LabelBorderColorValue.BackColor = System.Drawing.Color.Navy;
             this._LabelBorderColorValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this._LabelBorderColorValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._LabelBorderColorValue.Location = new System.Drawing.Point(130, 53);
+            this._LabelBorderColorValue.Location = new System.Drawing.Point(169, 69);
             this._LabelBorderColorValue.Name = "_LabelBorderColorValue";
-            this._LabelBorderColorValue.Size = new System.Drawing.Size(121, 53);
-            this._LabelBorderColorValue.TabIndex = 4;
+            this._LabelBorderColorValue.Size = new System.Drawing.Size(160, 69);
+            this._LabelBorderColorValue.TabIndex = 3;
             this._ToolTipMain.SetToolTip(this._LabelBorderColorValue, "Click to set border color.");
             this._LabelBorderColorValue.Click += new System.EventHandler(this._LabelColor_Click);
             // 
@@ -427,10 +454,10 @@
             // 
             this._LabelForegroundColor.AutoSize = true;
             this._LabelForegroundColor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._LabelForegroundColor.Location = new System.Drawing.Point(3, 106);
+            this._LabelForegroundColor.Location = new System.Drawing.Point(3, 138);
             this._LabelForegroundColor.Name = "_LabelForegroundColor";
-            this._LabelForegroundColor.Size = new System.Drawing.Size(121, 53);
-            this._LabelForegroundColor.TabIndex = 2;
+            this._LabelForegroundColor.Size = new System.Drawing.Size(160, 70);
+            this._LabelForegroundColor.TabIndex = 4;
             this._LabelForegroundColor.Text = "Foreground Color:";
             this._LabelForegroundColor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -438,10 +465,10 @@
             // 
             this._LabelBorderColor.AutoSize = true;
             this._LabelBorderColor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._LabelBorderColor.Location = new System.Drawing.Point(3, 53);
+            this._LabelBorderColor.Location = new System.Drawing.Point(3, 69);
             this._LabelBorderColor.Name = "_LabelBorderColor";
-            this._LabelBorderColor.Size = new System.Drawing.Size(121, 53);
-            this._LabelBorderColor.TabIndex = 1;
+            this._LabelBorderColor.Size = new System.Drawing.Size(160, 69);
+            this._LabelBorderColor.TabIndex = 2;
             this._LabelBorderColor.Text = "Border Color:";
             this._LabelBorderColor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -451,7 +478,7 @@
             this._LabelBackgroundColor.Dock = System.Windows.Forms.DockStyle.Fill;
             this._LabelBackgroundColor.Location = new System.Drawing.Point(3, 0);
             this._LabelBackgroundColor.Name = "_LabelBackgroundColor";
-            this._LabelBackgroundColor.Size = new System.Drawing.Size(121, 53);
+            this._LabelBackgroundColor.Size = new System.Drawing.Size(160, 69);
             this._LabelBackgroundColor.TabIndex = 0;
             this._LabelBackgroundColor.Text = "Background Color:";
             this._LabelBackgroundColor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -462,10 +489,10 @@
             this._LabelBackgroundColorValue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(192)))));
             this._LabelBackgroundColorValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this._LabelBackgroundColorValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._LabelBackgroundColorValue.Location = new System.Drawing.Point(130, 0);
+            this._LabelBackgroundColorValue.Location = new System.Drawing.Point(169, 0);
             this._LabelBackgroundColorValue.Name = "_LabelBackgroundColorValue";
-            this._LabelBackgroundColorValue.Size = new System.Drawing.Size(121, 53);
-            this._LabelBackgroundColorValue.TabIndex = 3;
+            this._LabelBackgroundColorValue.Size = new System.Drawing.Size(160, 69);
+            this._LabelBackgroundColorValue.TabIndex = 1;
             this._ToolTipMain.SetToolTip(this._LabelBackgroundColorValue, "Click to set background color.");
             this._LabelBackgroundColorValue.Click += new System.EventHandler(this._LabelColor_Click);
             // 
@@ -474,7 +501,7 @@
             this._TabPageFonts.Controls.Add(this._GroupBoxFonts);
             this._TabPageFonts.Location = new System.Drawing.Point(4, 25);
             this._TabPageFonts.Name = "_TabPageFonts";
-            this._TabPageFonts.Size = new System.Drawing.Size(260, 178);
+            this._TabPageFonts.Size = new System.Drawing.Size(338, 227);
             this._TabPageFonts.TabIndex = 4;
             this._TabPageFonts.Text = "Fonts";
             this._ToolTipMain.SetToolTip(this._TabPageFonts, "Font Options");
@@ -486,7 +513,7 @@
             this._GroupBoxFonts.Dock = System.Windows.Forms.DockStyle.Fill;
             this._GroupBoxFonts.Location = new System.Drawing.Point(0, 0);
             this._GroupBoxFonts.Name = "_GroupBoxFonts";
-            this._GroupBoxFonts.Size = new System.Drawing.Size(260, 178);
+            this._GroupBoxFonts.Size = new System.Drawing.Size(338, 227);
             this._GroupBoxFonts.TabIndex = 0;
             this._GroupBoxFonts.TabStop = false;
             // 
@@ -506,7 +533,7 @@
             this._TableLayoutPanelFonts.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this._TableLayoutPanelFonts.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this._TableLayoutPanelFonts.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this._TableLayoutPanelFonts.Size = new System.Drawing.Size(254, 159);
+            this._TableLayoutPanelFonts.Size = new System.Drawing.Size(332, 208);
             this._TableLayoutPanelFonts.TabIndex = 0;
             // 
             // _LabelTitleFontValue
@@ -514,10 +541,10 @@
             this._LabelTitleFontValue.AutoSize = true;
             this._TableLayoutPanelFonts.SetColumnSpan(this._LabelTitleFontValue, 2);
             this._LabelTitleFontValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._LabelTitleFontValue.Location = new System.Drawing.Point(3, 104);
+            this._LabelTitleFontValue.Location = new System.Drawing.Point(3, 129);
             this._LabelTitleFontValue.Name = "_LabelTitleFontValue";
-            this._LabelTitleFontValue.Size = new System.Drawing.Size(248, 55);
-            this._LabelTitleFontValue.TabIndex = 10;
+            this._LabelTitleFontValue.Size = new System.Drawing.Size(326, 79);
+            this._LabelTitleFontValue.TabIndex = 3;
             this._LabelTitleFontValue.Text = "Title Example";
             this._LabelTitleFontValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this._ToolTipMain.SetToolTip(this._LabelTitleFontValue, "Click to set the font that will be used for the verse book chapter and line numbe" +
@@ -531,8 +558,8 @@
             this._LabelTextFontValue.Dock = System.Windows.Forms.DockStyle.Fill;
             this._LabelTextFontValue.Location = new System.Drawing.Point(3, 25);
             this._LabelTextFontValue.Name = "_LabelTextFontValue";
-            this._LabelTextFontValue.Size = new System.Drawing.Size(248, 54);
-            this._LabelTextFontValue.TabIndex = 9;
+            this._LabelTextFontValue.Size = new System.Drawing.Size(326, 79);
+            this._LabelTextFontValue.TabIndex = 1;
             this._LabelTextFontValue.Text = "Text Example";
             this._LabelTextFontValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this._ToolTipMain.SetToolTip(this._LabelTextFontValue, "Click to set the font that will be used for the verse text.");
@@ -543,10 +570,10 @@
             this._LabelTitleFont.AutoSize = true;
             this._TableLayoutPanelFonts.SetColumnSpan(this._LabelTitleFont, 2);
             this._LabelTitleFont.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._LabelTitleFont.Location = new System.Drawing.Point(3, 79);
+            this._LabelTitleFont.Location = new System.Drawing.Point(3, 104);
             this._LabelTitleFont.Name = "_LabelTitleFont";
-            this._LabelTitleFont.Size = new System.Drawing.Size(248, 25);
-            this._LabelTitleFont.TabIndex = 8;
+            this._LabelTitleFont.Size = new System.Drawing.Size(326, 25);
+            this._LabelTitleFont.TabIndex = 2;
             this._LabelTitleFont.Text = "Title Font:";
             this._LabelTitleFont.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -557,8 +584,8 @@
             this._LabelTextFont.Dock = System.Windows.Forms.DockStyle.Fill;
             this._LabelTextFont.Location = new System.Drawing.Point(3, 0);
             this._LabelTextFont.Name = "_LabelTextFont";
-            this._LabelTextFont.Size = new System.Drawing.Size(248, 25);
-            this._LabelTextFont.TabIndex = 7;
+            this._LabelTextFont.Size = new System.Drawing.Size(326, 25);
+            this._LabelTextFont.TabIndex = 0;
             this._LabelTextFont.Text = "Text Font:";
             this._LabelTextFont.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -567,7 +594,7 @@
             this._TabPageAbout.Controls.Add(this._GroupBoxAbout);
             this._TabPageAbout.Location = new System.Drawing.Point(4, 25);
             this._TabPageAbout.Name = "_TabPageAbout";
-            this._TabPageAbout.Size = new System.Drawing.Size(260, 178);
+            this._TabPageAbout.Size = new System.Drawing.Size(338, 227);
             this._TabPageAbout.TabIndex = 3;
             this._TabPageAbout.Text = "About";
             this._ToolTipMain.SetToolTip(this._TabPageAbout, "About CC.Votd.Screensaver");
@@ -579,7 +606,7 @@
             this._GroupBoxAbout.Dock = System.Windows.Forms.DockStyle.Fill;
             this._GroupBoxAbout.Location = new System.Drawing.Point(0, 0);
             this._GroupBoxAbout.Name = "_GroupBoxAbout";
-            this._GroupBoxAbout.Size = new System.Drawing.Size(260, 178);
+            this._GroupBoxAbout.Size = new System.Drawing.Size(338, 227);
             this._GroupBoxAbout.TabIndex = 0;
             this._GroupBoxAbout.TabStop = false;
             // 
@@ -600,8 +627,8 @@
             this._TableLayoutPanelAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.83432F));
             this._TableLayoutPanelAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.325444F));
             this._TableLayoutPanelAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 59.1716F));
-            this._TableLayoutPanelAbout.Size = new System.Drawing.Size(254, 159);
-            this._TableLayoutPanelAbout.TabIndex = 1;
+            this._TableLayoutPanelAbout.Size = new System.Drawing.Size(332, 208);
+            this._TableLayoutPanelAbout.TabIndex = 0;
             // 
             // _LabelProductName
             // 
@@ -611,8 +638,8 @@
             this._LabelProductName.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this._LabelProductName.MaximumSize = new System.Drawing.Size(0, 17);
             this._LabelProductName.Name = "_LabelProductName";
-            this._LabelProductName.Size = new System.Drawing.Size(245, 17);
-            this._LabelProductName.TabIndex = 24;
+            this._LabelProductName.Size = new System.Drawing.Size(323, 17);
+            this._LabelProductName.TabIndex = 0;
             this._LabelProductName.Text = "Product Name - v 1.0.0.0";
             this._LabelProductName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -620,26 +647,26 @@
             // 
             this._LabelCopyright.AutoSize = true;
             this._LabelCopyright.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._LabelCopyright.Location = new System.Drawing.Point(6, 18);
+            this._LabelCopyright.Location = new System.Drawing.Point(6, 24);
             this._LabelCopyright.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this._LabelCopyright.MaximumSize = new System.Drawing.Size(0, 17);
             this._LabelCopyright.Name = "_LabelCopyright";
-            this._LabelCopyright.Size = new System.Drawing.Size(245, 17);
-            this._LabelCopyright.TabIndex = 0;
+            this._LabelCopyright.Size = new System.Drawing.Size(323, 17);
+            this._LabelCopyright.TabIndex = 1;
             this._LabelCopyright.Text = "Copyright";
             this._LabelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // _TextBoxDescription
             // 
             this._TextBoxDescription.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._TextBoxDescription.Location = new System.Drawing.Point(6, 65);
+            this._TextBoxDescription.Location = new System.Drawing.Point(6, 86);
             this._TextBoxDescription.Margin = new System.Windows.Forms.Padding(6, 3, 3, 3);
             this._TextBoxDescription.Multiline = true;
             this._TextBoxDescription.Name = "_TextBoxDescription";
             this._TextBoxDescription.ReadOnly = true;
             this._TextBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this._TextBoxDescription.Size = new System.Drawing.Size(245, 91);
-            this._TextBoxDescription.TabIndex = 23;
+            this._TextBoxDescription.Size = new System.Drawing.Size(323, 119);
+            this._TextBoxDescription.TabIndex = 3;
             this._TextBoxDescription.TabStop = false;
             this._TextBoxDescription.Text = "Description";
             // 
@@ -647,20 +674,68 @@
             // 
             this._LinkLabelHomepage.AutoSize = true;
             this._LinkLabelHomepage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._LinkLabelHomepage.Location = new System.Drawing.Point(3, 36);
+            this._LinkLabelHomepage.Location = new System.Drawing.Point(3, 48);
             this._LinkLabelHomepage.Name = "_LinkLabelHomepage";
-            this._LinkLabelHomepage.Size = new System.Drawing.Size(248, 18);
-            this._LinkLabelHomepage.TabIndex = 25;
+            this._LinkLabelHomepage.Size = new System.Drawing.Size(326, 24);
+            this._LinkLabelHomepage.TabIndex = 2;
             this._LinkLabelHomepage.TabStop = true;
             this._LinkLabelHomepage.Text = "Homepage";
             this._LinkLabelHomepage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this._LinkLabelHomepage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this._LinkLabelHomepage_LinkClicked);
             // 
+            // _LabelMaximumCacheItemsValue
+            // 
+            this._LabelMaximumCacheItemsValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this._LabelMaximumCacheItemsValue.Location = new System.Drawing.Point(229, 162);
+            this._LabelMaximumCacheItemsValue.Name = "_LabelMaximumCacheItemsValue";
+            this._LabelMaximumCacheItemsValue.Size = new System.Drawing.Size(91, 13);
+            this._LabelMaximumCacheItemsValue.TabIndex = 9;
+            this._LabelMaximumCacheItemsValue.Text = "1000 items";
+            this._LabelMaximumCacheItemsValue.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // _LabelMaximumCacheItems
+            // 
+            this._LabelMaximumCacheItems.AutoSize = true;
+            this._LabelMaximumCacheItems.Location = new System.Drawing.Point(6, 162);
+            this._LabelMaximumCacheItems.Name = "_LabelMaximumCacheItems";
+            this._LabelMaximumCacheItems.Size = new System.Drawing.Size(116, 13);
+            this._LabelMaximumCacheItems.TabIndex = 8;
+            this._LabelMaximumCacheItems.Text = "Maximum Cache Items:";
+            // 
+            // _TrackBarMaximumCacheItems
+            // 
+            this._TrackBarMaximumCacheItems.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this._TrackBarMaximumCacheItems.Location = new System.Drawing.Point(5, 178);
+            this._TrackBarMaximumCacheItems.Maximum = 25;
+            this._TrackBarMaximumCacheItems.Name = "_TrackBarMaximumCacheItems";
+            this._TrackBarMaximumCacheItems.Size = new System.Drawing.Size(326, 45);
+            this._TrackBarMaximumCacheItems.TabIndex = 10;
+            this._ToolTipMain.SetToolTip(this._TrackBarMaximumCacheItems, "The maximum number of RSS items to cache locally for situations where network con" +
+                    "nectivity is unavailable.");
+            this._TrackBarMaximumCacheItems.Value = 10;
+            this._TrackBarMaximumCacheItems.ValueChanged += new System.EventHandler(this._TrackBarMaximumCacheItems_ValueChanged);
+            this._TrackBarMaximumCacheItems.Scroll += new System.EventHandler(this._TrackBarMaximumCacheItems_ValueChanged);
+            // 
+            // _ButtonDefaults
+            // 
+            this._ButtonDefaults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this._ButtonDefaults.Location = new System.Drawing.Point(3, 5);
+            this._ButtonDefaults.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this._ButtonDefaults.Name = "_ButtonDefaults";
+            this._ButtonDefaults.Size = new System.Drawing.Size(69, 24);
+            this._ButtonDefaults.TabIndex = 3;
+            this._ButtonDefaults.TabStop = false;
+            this._ButtonDefaults.Text = "&Defaults";
+            this._ButtonDefaults.Click += new System.EventHandler(this._ButtonDefaults_Click);
+            // 
             // FormOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(298, 277);
+            this.ClientSize = new System.Drawing.Size(376, 326);
             this.Controls.Add(this._TableLayoutPanelMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -692,6 +767,7 @@
             this._GroupBoxAbout.ResumeLayout(false);
             this._TableLayoutPanelAbout.ResumeLayout(false);
             this._TableLayoutPanelAbout.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._TrackBarMaximumCacheItems)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -743,5 +819,9 @@
         private System.Windows.Forms.Button _ButtonBrowse;
         private System.Windows.Forms.TextBox _TextBoxBackgroundImage;
         private System.Windows.Forms.ToolTip _ToolTipMain;
+        private System.Windows.Forms.Label _LabelMaximumCacheItemsValue;
+        private System.Windows.Forms.Label _LabelMaximumCacheItems;
+        private System.Windows.Forms.TrackBar _TrackBarMaximumCacheItems;
+        private System.Windows.Forms.Button _ButtonDefaults;
     }
 }
