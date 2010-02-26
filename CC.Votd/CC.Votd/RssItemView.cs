@@ -110,11 +110,12 @@ namespace CC.Votd
         {
             using (Brush backBrush = new SolidBrush(Color.FromArgb(_Alpha, BackColor)))
             {
-                using (Pen borderPen = new Pen(Color.FromArgb(_Alpha, BorderColor), 2))
-                {
-                    graphics.FillRectangle(backBrush, new Rectangle(Location.X, Location.Y, Size.Width, Size.Height));
-                    graphics.DrawRectangle(borderPen, new Rectangle(Location.X + 1, Location.Y + 1, Size.Width - 2, Size.Height - 2));
-                }
+                graphics.FillRectangle(backBrush, new Rectangle(Location.X, Location.Y, Size.Width, Size.Height));
+            }
+         
+            using (Pen borderPen = new Pen(Color.FromArgb(_Alpha, BorderColor), 2))
+            {
+                graphics.DrawRectangle(borderPen, new Rectangle(Location.X, Location.Y, Size.Width - 1, Size.Height - 1));
             }
         }
         #endregion
@@ -193,7 +194,6 @@ namespace CC.Votd
         public void Dispose()
         {
             Dispose(true);
-            GC.SuppressFinalize(this);
         }
 
         protected virtual void Dispose(bool disposing)
