@@ -1,14 +1,14 @@
-using System;
+﻿using System;
+using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.Windows.Forms;
-using System.Drawing;
 using CC.Utilities;
 using CC.Utilities.Rss;
 
 namespace CC.Votd
 {
-    public class RssItemView: UserControl, IDisposable
+    public partial class RssItemView : UserControl
     {
         #region Constructor
         public RssItemView(RssItem rssItem)
@@ -45,27 +45,15 @@ namespace CC.Votd
         #endregion
 
         #region Public Properties
-        public Color BackColor { get; set; }
-
         public Color BorderColor { get; set; }
 
         public int FadeDelay { get; set; }
 
         public int FadeSpeed { get; set; }
 
-        public Color ForeColor { get; set; }
-
         public RssItem Item { get; set; }
 
-        public Point Location { get; set; }
-        
         public int MaxWidth { get; set; }
-
-        public Padding Padding { get; set; }
-
-        public Size Size { get; private set; }
-
-        public Font TextFont { get; set; }
 
         public Font TitleFont { get; set; }
         #endregion
@@ -88,7 +76,7 @@ namespace CC.Votd
             if (_Alpha >= ALPHA_MAX)
             {
                 _AlphaDelta *= -1;
-                _FadeTimer.Interval = Settings.FadeDelay;
+                //_FadeTimer.Interval = Settings.FadeDelay;
             }
             else if (_Alpha <= 0)
             {
@@ -113,7 +101,7 @@ namespace CC.Votd
             {
                 graphics.FillRectangle(backBrush, new Rectangle(Location.X, Location.Y, Size.Width, Size.Height));
             }
-         
+
             using (Pen borderPen = new Pen(Color.FromArgb(_Alpha, BorderColor), 2))
             {
                 graphics.DrawRectangle(borderPen, new Rectangle(Location.X, Location.Y, Size.Width - 1, Size.Height - 1));
@@ -140,7 +128,7 @@ namespace CC.Votd
         #endregion
 
         #region Public Methods
-        public void Paint(PaintEventArgs e)
+        public new void Paint(PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
             e.Graphics.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
@@ -153,13 +141,13 @@ namespace CC.Votd
             using (Brush textBrush = new SolidBrush(Color.FromArgb(_Alpha, Color.Black)))
             {
                 e.Graphics.DrawString(Item.Title, TitleFont, textBrush, CreateShadowRectangle(titleRectangle, 1), _StringFormat);
-                e.Graphics.DrawString(Item.Description, TextFont, textBrush, CreateShadowRectangle(textRectangle, 1), _StringFormat);
+                e.Graphics.DrawString(Item.Description, Font, textBrush, CreateShadowRectangle(textRectangle, 1), _StringFormat);
             }
 
             using (Brush textBrush = new SolidBrush(Color.FromArgb(_Alpha, ForeColor)))
             {
                 e.Graphics.DrawString(Item.Title, TitleFont, textBrush, titleRectangle, _StringFormat);
-                e.Graphics.DrawString(Item.Description, TextFont, textBrush, textRectangle, _StringFormat);
+                e.Graphics.DrawString(Item.Description, Font, textBrush, textRectangle, _StringFormat);
             }
         }
 
@@ -172,16 +160,19 @@ namespace CC.Votd
 
         public void SetLocation(Size maximumSize)
         {
-            int x = (maximumSize.Width >= Size.Width) ? _Random.Next(0, maximumSize.Width - Size.Width) : 0;
-            int y = (maximumSize.Height >= Size.Height) ? _Random.Next(0, maximumSize.Height - Size.Height) : 0;
+            int x = (maximumSize.Width - Margin.Horizontal >= Size.Width) ? _Random.Next(Margin.Left, maximumSize.Width - (Size.Width - Margin.Horizontal)) : Margin.Left;
+            int y = (maximumSize.Height - Margin.Vertical >= Size.Height) ? _Random.Next(Margin.Top, maximumSize.Height - (Size.Height - Margin.Vertical)) : Margin.Top;
             Location = new Point(x, y);
         }
 
         public void SetSize(Graphics graphics)
         {
-            SizeF textSize = graphics.MeasureString(" " + Item.Description + " ", TextFont, MaxWidth - (Padding.Size.Width * 2), _StringFormat);
-            SizeF titleSize = graphics.MeasureString(" " + Item.Title + " ", TextFont, MaxWidth - (Padding.Size.Width * 2), _StringFormat);
+            SizeF textSize = graphics.MeasureString(" " + Item.Description + " ", Font, MaxWidth - (Padding.Size.Width * 2) - Margin.Right, _StringFormat);
+            SizeF titleSize = graphics.MeasureString(" " + Item.Title + " ", Font, MaxWidth - (Padding.Size.Width * 2) - Margin.Right, _StringFormat);
             SizeF totalSize = new SizeF((textSize.Width > titleSize.Width ? textSize.Width : titleSize.Width) + (Padding.Size.Width * 2), textSize.Height + titleSize.Height + (Padding.Size.Height * 3));
+            //SizeF textSize = graphics.MeasureString(" " + Item.Description + " ", Font, MaxWidth - (Padding.Size.Width * 2), _StringFormat);
+            //SizeF titleSize = graphics.MeasureString(" " + Item.Title + " ", Font, MaxWidth - (Padding.Size.Width * 2), _StringFormat);
+            //SizeF totalSize = new SizeF((textSize.Width > titleSize.Width ? textSize.Width : titleSize.Width) + (Padding.Size.Width * 2), textSize.Height + titleSize.Height + (Padding.Size.Height * 3));
 
             Logging.LogMessage("Text --- H: " + textSize.Height + " W: " + textSize.Width + " Max W: " + MaxWidth);
             Logging.LogMessage("Title -- H: " + titleSize.Height + " W: " + titleSize.Width + " Max W: " + MaxWidth);
@@ -193,33 +184,27 @@ namespace CC.Votd
             _TextSize = new Size((int)textSize.Width, (int)textSize.Height);
             _TitleSize = new Size((int)titleSize.Width, (int)titleSize.Height);
         }
-        #endregion 
+        #endregion
 
         #region IDisposable Members
         /// <summary>
         /// Dispose all disposable fields
         /// </summary>
-        public void Dispose()
+        public new void Dispose()
         {
-            Dispose(true);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing)
+            if (_FadeTimer != null)
             {
-                if (_FadeTimer != null)
-                {
-                    _FadeTimer.Dispose();
-                    _FadeTimer = null;
-                }
-
-                if (_StringFormat != null)
-                {
-                    _StringFormat.Dispose();
-                    _StringFormat = null;
-                }
+                _FadeTimer.Dispose();
+                _FadeTimer = null;
             }
+
+            if (_StringFormat != null)
+            {
+                _StringFormat.Dispose();
+                _StringFormat = null;
+            }
+
+            Dispose(true);
         }
         #endregion
     }

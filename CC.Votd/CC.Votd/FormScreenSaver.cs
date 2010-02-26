@@ -37,12 +37,14 @@ namespace CC.Votd
                 RefreshRssFeed();
             }
 
-            _RssItemView.Location = PositionRssItemView();
-
+            //_RssItemView.Location = PositionRssItemView();
+            _RssItemView.SetLocation(Size);
             Refresh();
-#if DEBUG
-            Activate();
-#endif
+
+            if (!Settings.IsPreview)
+            {
+                Activate();
+            }
         }
 
         private void _RssItemView_FadeTick(object sender, EventArgs e)
@@ -67,29 +69,30 @@ namespace CC.Votd
                 _RssItemView.MaxWidth = (int)(Width * .8);
                 _RssItemView.Padding = new Padding(2);
                 _RssItemView.TitleFont = new Font(Settings.TitleFont.FontFamily.Name, Settings.TitleFont.Size / 4, Settings.TitleFont.Style, Settings.TitleFont.Unit);
-                _RssItemView.TextFont = new Font(Settings.TextFont.FontFamily.Name, Settings.TextFont.Size / 4, Settings.TextFont.Style, Settings.TextFont.Unit);
+                _RssItemView.Font = new Font(Settings.TextFont.FontFamily.Name, Settings.TextFont.Size / 4, Settings.TextFont.Style, Settings.TextFont.Unit);
             }
             else
             {
                 _RssItemView.MaxWidth = (int)(Width * .65);
                 _RssItemView.Padding = new Padding(8);
                 _RssItemView.TitleFont = Settings.TitleFont;
-                _RssItemView.TextFont = Settings.TextFont;
+                _RssItemView.Font = Settings.TextFont;
             }
 
             _RssItemView.FadingTick += _RssItemView_FadeTick;
             _RssItemView.FadingComplete += _RssItemView_FadeComplete;
 
             _RssItemView.SetSize(CreateGraphics());
-            _RssItemView.Location = PositionRssItemView();
+            //_RssItemView.Location = PositionRssItemView();
+            _RssItemView.SetLocation(Size);
         }
 
-        private Point PositionRssItemView()
-        {
-            int x = (Width >= _RssItemView.Size.Width) ? _Random.Next(0, Width - _RssItemView.Size.Width) : 0;
-            int y = (Height >= _RssItemView.Size.Height) ? _Random.Next(0, Height - _RssItemView.Size.Height) : 0;
-            return new Point(x, y);
-        }
+        //private Point PositionRssItemView()
+        //{
+        //    int x = (Width >= _RssItemView.Size.Width) ? _Random.Next(0, Width - _RssItemView.Size.Width) : 0;
+        //    int y = (Height >= _RssItemView.Size.Height) ? _Random.Next(0, Height - _RssItemView.Size.Height) : 0;
+        //    return new Point(x, y);
+        //}
 
         private void RefreshRssFeed()
         {
@@ -155,7 +158,8 @@ namespace CC.Votd
             if (_RssItemView != null)
             {
                 _RssItemView.SetSize(CreateGraphics());
-                _RssItemView.Location = PositionRssItemView();
+                //_RssItemView.Location = PositionRssItemView();
+                _RssItemView.SetLocation(Size);
             }
             base.OnResize(e);
         }
