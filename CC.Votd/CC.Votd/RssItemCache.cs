@@ -77,8 +77,9 @@ namespace CC.Votd
 
         public static void Load()
         {
-            _Items = new List<RssItem>();
-
+            // Load a default verse so the screensaver always works
+            _Items = new List<RssItem> {new RssItem {Description = "No temptation has seized you except what is common to man. And God is faithful; he will not let you be tempted beyond what you can bear. But when you are tempted, he will also provide a way out so that you can stand up under it.", Title = "1 Corinthians 10:13"}};
+            
             if (File.Exists(_Filename))
             {
                 string xmlString = File.ReadAllText(_Filename);
