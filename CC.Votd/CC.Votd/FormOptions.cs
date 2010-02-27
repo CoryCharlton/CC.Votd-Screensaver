@@ -35,6 +35,12 @@ namespace CC.Votd
         }
         #endregion
 
+        #region Private Constants
+        private const int FadeDelayScale = 15000;
+        private const int FadeSpeedScale = 5;
+        private const int MaximumCacheItemsScale = 25;
+        #endregion
+
         #region Private Fields
         private bool _IsLoaded;
         private bool _ResetToDefaults;
@@ -199,20 +205,20 @@ namespace CC.Votd
 
         private void _TrackBarFadeDelay_ValueChanged(object sender, EventArgs e)
         {
-            TimeSpan timeSpan = new TimeSpan(0, 0, 0, 0, _TrackBarFadeDelay.Value*15000);
+            TimeSpan timeSpan = new TimeSpan(0, 0, 0, 0, _TrackBarFadeDelay.Value * FadeDelayScale);
             _LabelFadeDelayValue.Text = timeSpan.ToFriendlyString(false);
             UpdateApply();
         }
 
         private void _TrackBarFadeSpeed_ValueChanged(object sender, EventArgs e)
         {
-            _LabelFadeSpeedValue.Text = string.Format("{0} ms", _TrackBarFadeSpeed.Value * 10);
+            _LabelFadeSpeedValue.Text = string.Format("{0} ms", _TrackBarFadeSpeed.Value * FadeSpeedScale);
             UpdateApply();
         }
 
         private void _TrackBarMaximumCacheItems_ValueChanged(object sender, EventArgs e)
         {
-            _LabelMaximumCacheItemsValue.Text = _TrackBarMaximumCacheItems.Value > 0 ? string.Format("{0} items", _TrackBarMaximumCacheItems.Value * 25) : "<Unlimited>";
+            _LabelMaximumCacheItemsValue.Text = _TrackBarMaximumCacheItems.Value > 0 ? string.Format("{0} items", _TrackBarMaximumCacheItems.Value * MaximumCacheItemsScale) : "<Unlimited>";
             UpdateApply();
         }
 
@@ -237,7 +243,7 @@ namespace CC.Votd
 
             try
             {
-                _TrackBarFadeDelay.Value = Settings.FadeDelay / 15000;
+                _TrackBarFadeDelay.Value = Settings.FadeDelay / FadeDelayScale;
             }
             catch (Exception exception)
             {
@@ -246,7 +252,7 @@ namespace CC.Votd
 
             try
             {
-                _TrackBarFadeSpeed.Value = Settings.FadeSpeed / 10;
+                _TrackBarFadeSpeed.Value = Settings.FadeSpeed / FadeSpeedScale;
             }
             catch (Exception exception)
             {
@@ -255,7 +261,7 @@ namespace CC.Votd
 
             try
             {
-                _TrackBarMaximumCacheItems.Value = Settings.MaximumCacheItems / 25;
+                _TrackBarMaximumCacheItems.Value = Settings.MaximumCacheItems / MaximumCacheItemsScale;
             }
             catch (Exception exception)
             {
@@ -303,15 +309,15 @@ namespace CC.Votd
                 }
 
                 //General...
-                if (!returnValue && (Settings.FadeDelay / 15000) != _TrackBarFadeDelay.Value)
+                if (!returnValue && (Settings.FadeDelay / FadeDelayScale) != _TrackBarFadeDelay.Value)
                 {
                     returnValue = true;
                 }
-                if (!returnValue && (Settings.FadeSpeed / 10) != _TrackBarFadeSpeed.Value)
+                if (!returnValue && (Settings.FadeSpeed / FadeSpeedScale) != _TrackBarFadeSpeed.Value)
                 {
                     returnValue = true;
                 }
-                if (!returnValue && (Settings.MaximumCacheItems / 100) != _TrackBarMaximumCacheItems.Value)
+                if (!returnValue && (Settings.MaximumCacheItems / MaximumCacheItemsScale) != _TrackBarMaximumCacheItems.Value)
                 {
                     returnValue = true;
                 }
@@ -374,9 +380,9 @@ namespace CC.Votd
             Settings.BorderColor = _LabelBorderColorValue.BackColor;
             Settings.ForegroundColor = _LabelForegroundColorValue.BackColor;
 
-            Settings.FadeDelay = _TrackBarFadeDelay.Value * 15000;
-            Settings.FadeSpeed = _TrackBarFadeSpeed.Value * 10;
-            Settings.MaximumCacheItems = _TrackBarMaximumCacheItems.Value * 25;
+            Settings.FadeDelay = _TrackBarFadeDelay.Value * FadeDelayScale;
+            Settings.FadeSpeed = _TrackBarFadeSpeed.Value * FadeSpeedScale;
+            Settings.MaximumCacheItems = _TrackBarMaximumCacheItems.Value * MaximumCacheItemsScale;
 
             Settings.RandomVerse = _RadioButtonRandom.Checked;
 

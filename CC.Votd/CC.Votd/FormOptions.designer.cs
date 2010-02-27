@@ -201,11 +201,13 @@
             this._TabControlOptions.Controls.Add(this._TabPageFonts);
             this._TabControlOptions.Controls.Add(this._TabPageAbout);
             this._TabControlOptions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._TabControlOptions.ItemSize = new System.Drawing.Size(55, 21);
             this._TabControlOptions.Location = new System.Drawing.Point(3, 3);
             this._TabControlOptions.Name = "_TabControlOptions";
             this._TabControlOptions.SelectedIndex = 0;
             this._TabControlOptions.ShowToolTips = true;
             this._TabControlOptions.Size = new System.Drawing.Size(346, 256);
+            this._TabControlOptions.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this._TabControlOptions.TabIndex = 0;
             // 
             // _TabPageGeneral
@@ -341,7 +343,7 @@
             this._TrackBarFadeSpeed.Size = new System.Drawing.Size(326, 45);
             this._TrackBarFadeSpeed.TabIndex = 7;
             this._ToolTipMain.SetToolTip(this._TrackBarFadeSpeed, "The ammount of time between fade intervals. A lower value will fade faster.");
-            this._TrackBarFadeSpeed.Value = 2;
+            this._TrackBarFadeSpeed.Value = 4;
             this._TrackBarFadeSpeed.ValueChanged += new System.EventHandler(this._TrackBarFadeSpeed_ValueChanged);
             this._TrackBarFadeSpeed.Scroll += new System.EventHandler(this._TrackBarFadeSpeed_ValueChanged);
             // 
