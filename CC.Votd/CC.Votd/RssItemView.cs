@@ -76,7 +76,11 @@ namespace CC.Votd
             if (_Alpha >= ALPHA_MAX)
             {
                 _AlphaDelta *= -1;
-                _FadeTimer.Interval = Settings.FadeDelay;
+
+                if (!Settings.IsDebug)
+                {
+                    _FadeTimer.Interval = Settings.FadeDelay;
+                }
             }
             else if (_Alpha <= 0)
             {

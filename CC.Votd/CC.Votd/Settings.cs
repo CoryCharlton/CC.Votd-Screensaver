@@ -63,6 +63,8 @@ namespace CC.Votd
 
         public static int FadeSpeed { get; set; }
 
+        public static bool IsDebug { get; set; }
+
         public static bool IsPreview { get; set; }
 
         public static int MaximumCacheItems { get; set; }

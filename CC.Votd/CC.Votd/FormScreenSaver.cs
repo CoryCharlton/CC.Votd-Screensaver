@@ -40,7 +40,7 @@ namespace CC.Votd
             _RssItemView.SetLocation(Size);
             Refresh();
 
-            if (!Settings.IsPreview)
+            if (!Settings.IsPreview && !Settings.IsDebug)
             {
                 Activate();
             }
@@ -65,6 +65,7 @@ namespace CC.Votd
 
             if (Settings.IsPreview)
             {
+                _RssItemView.Margin = new Padding(2);
                 _RssItemView.MaxWidth = (int)(Width * .8);
                 _RssItemView.Padding = new Padding(2);
                 _RssItemView.TitleFont = new Font(Settings.TitleFont.FontFamily.Name, Settings.TitleFont.Size / 4, Settings.TitleFont.Style, Settings.TitleFont.Unit);
@@ -72,6 +73,7 @@ namespace CC.Votd
             }
             else
             {
+                _RssItemView.Margin = new Padding(10);
                 _RssItemView.MaxWidth = (int)(Width * .65);
                 _RssItemView.Padding = new Padding(8);
                 _RssItemView.TitleFont = Settings.TitleFont;
@@ -149,7 +151,6 @@ namespace CC.Votd
             if (_RssItemView != null)
             {
                 _RssItemView.SetSize(CreateGraphics());
-                //_RssItemView.Location = PositionRssItemView();
                 _RssItemView.SetLocation(Size);
             }
             base.OnResize(e);

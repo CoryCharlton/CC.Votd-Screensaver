@@ -80,13 +80,20 @@ namespace CC.Votd
         {
             if (!Settings.IsPreview)
             {
-                Close();
+                if (!Settings.IsDebug)
+                {
+                    Close();
+                }
+                else if (e.KeyCode == Keys.Escape)
+                {
+                    Close();
+                }
             }
         }
 
         public void FormMain_MouseDown(object sender, MouseEventArgs e)
         {
-            if (!Settings.IsPreview)
+            if (!Settings.IsPreview && !Settings.IsDebug)
             {
                 Close();
             }
@@ -94,7 +101,7 @@ namespace CC.Votd
 
         public void FormMain_MouseMove(object sender, MouseEventArgs e)
         {
-            if (!Settings.IsPreview)
+            if (!Settings.IsPreview && !Settings.IsDebug)
             {
                 if (!_IsActive)
                 {
@@ -148,11 +155,7 @@ namespace CC.Votd
                 Cursor.Hide();
                 Bounds = Screen.PrimaryScreen.Bounds;
                 WindowState = FormWindowState.Maximized;
-#if DEBUG
-                TopMost = false;
-#else
-                TopMost = true;
-#endif
+                TopMost = !Settings.IsDebug;
             }
             else
             {

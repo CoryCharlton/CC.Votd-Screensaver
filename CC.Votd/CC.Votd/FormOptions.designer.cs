@@ -318,7 +318,7 @@
             this._LabelFadeDelayValue.Name = "_LabelFadeDelayValue";
             this._LabelFadeDelayValue.Size = new System.Drawing.Size(88, 13);
             this._LabelFadeDelayValue.TabIndex = 3;
-            this._LabelFadeDelayValue.Text = "00:15";
+            this._LabelFadeDelayValue.Text = "01:00";
             this._LabelFadeDelayValue.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // _LabelFadeSpeed
@@ -367,7 +367,7 @@
             this._TrackBarFadeDelay.TabIndex = 4;
             this._ToolTipMain.SetToolTip(this._TrackBarFadeDelay, "The amount on time the verse will be displayed on the screen before fading out an" +
                     "d moving to a new location.");
-            this._TrackBarFadeDelay.Value = 1;
+            this._TrackBarFadeDelay.Value = 4;
             this._TrackBarFadeDelay.ValueChanged += new System.EventHandler(this._TrackBarFadeDelay_ValueChanged);
             this._TrackBarFadeDelay.Scroll += new System.EventHandler(this._TrackBarFadeDelay_ValueChanged);
             // 

@@ -31,19 +31,7 @@ namespace CC.Votd
                         }
                     case "/p":
                         {
-                            IntPtr previewHandle = IntPtr.Zero;
-                            
-                            if (args.Length > 1)
-                            {
-                                long tempLong;
-                                if (long.TryParse(args[1], out tempLong))
-                                {
-                                    previewHandle = new IntPtr(tempLong);
-                                    Logging.LogMessage("Preview Handle: " + previewHandle);
-                                }
-                            }
-
-                            Application.Run(new FormMain(previewHandle));
+                            Application.Run(new FormMain(GetPreviewHandle(args)));
                             break;
                         }
                     case "/s":
@@ -53,8 +41,8 @@ namespace CC.Votd
                         }
                     case "/d":
                         {
-                            // Should be debug mode...
-                            Application.Run(new FormMain(IntPtr.Zero));
+                            Settings.IsDebug = true;
+                            Application.Run(new FormMain(GetPreviewHandle(args)));
                             break;
                         }
                     default:
@@ -96,5 +84,23 @@ namespace CC.Votd
         // ReSharper restore InconsistentNaming
         #endregion
 
+        #region Private Methods
+        private static IntPtr GetPreviewHandle(string[] args)
+        {
+            IntPtr returnValue = IntPtr.Zero;
+
+            if (args.Length > 1)
+            {
+                long tempLong;
+                if (long.TryParse(args[1], out tempLong))
+                {
+                    returnValue = new IntPtr(tempLong);
+                    Logging.LogMessage("Preview Handle: " + returnValue);
+                }
+            }
+
+            return returnValue;
+        }
+        #endregion
     }
 }
