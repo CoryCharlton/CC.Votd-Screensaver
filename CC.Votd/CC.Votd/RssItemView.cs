@@ -170,12 +170,12 @@ namespace CC.Votd
             // Make sure the control is visibly inside the maximumSize bounds
             if (x + Size.Width > maximumSize.Width - Margin.Right)
             {
-                x = maximumSize.Width - (Size.Width - Margin.Right);  
+                x = maximumSize.Width - (Size.Width + Margin.Right);  
             }
 
             if (y + Size.Height > maximumSize.Height - Margin.Bottom)
             {
-                y = maximumSize.Height - (Size.Height - Margin.Bottom);
+                y = maximumSize.Height - (Size.Height + Margin.Bottom);
             }
 
             // Make sure the control hasn't been positioned inside the Left/Top margins

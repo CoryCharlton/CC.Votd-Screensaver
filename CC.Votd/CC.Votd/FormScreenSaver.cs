@@ -32,7 +32,7 @@ namespace CC.Votd
         {
             DateTime now = DateTime.Now;
 
-            if (_RssFeed.LastUpdated == DateTime.MinValue || (Settings.RandomVerse && (now - _RssFeed.LastUpdated).TotalMinutes >= 10) || _RssFeed.LastUpdated.Day != now.Day)
+            if (_RssFeed.LastUpdated == DateTime.MinValue || (Settings.RandomVerse && (now - _RssFeed.LastUpdated).TotalMinutes >= (Settings.IsDebug ? 1 : 10)) || _RssFeed.LastUpdated.Day != now.Day)
             {
                 RefreshRssFeed();
             }
@@ -73,7 +73,7 @@ namespace CC.Votd
             }
             else
             {
-                _RssItemView.Margin = new Padding(10);
+                _RssItemView.Margin = new Padding(8);
                 _RssItemView.MaxWidth = (int)(Width * .65);
                 _RssItemView.Padding = new Padding(8);
                 _RssItemView.TitleFont = Settings.TitleFont;
