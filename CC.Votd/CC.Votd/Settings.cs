@@ -41,7 +41,7 @@ namespace CC.Votd
         private static readonly Color _DefaultForegroundColor = Color.White;
         private const int _DefaultFadeDelay = 60000;
         private const int _DefaultFadeSpeed = 20;
-        private const int _DefaultMaximumCacheItems = 1000;
+        private const int _DefaultMaximumCacheItems = 250;
         private const bool _DefaultRandomVerse = false;
 
         // NOTE: The only font I like here is Papyrus but not everyone will have it. Need better default fallback choices although the default fonts mostly suck :-)

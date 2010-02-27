@@ -212,7 +212,7 @@ namespace CC.Votd
 
         private void _TrackBarMaximumCacheItems_ValueChanged(object sender, EventArgs e)
         {
-            _LabelMaximumCacheItemsValue.Text = _TrackBarMaximumCacheItems.Value > 0 ? string.Format("{0} items", _TrackBarMaximumCacheItems.Value * 100) : "<Unlimited>";
+            _LabelMaximumCacheItemsValue.Text = _TrackBarMaximumCacheItems.Value > 0 ? string.Format("{0} items", _TrackBarMaximumCacheItems.Value * 25) : "<Unlimited>";
             UpdateApply();
         }
 
@@ -255,7 +255,7 @@ namespace CC.Votd
 
             try
             {
-                _TrackBarMaximumCacheItems.Value = Settings.MaximumCacheItems / 100;
+                _TrackBarMaximumCacheItems.Value = Settings.MaximumCacheItems / 25;
             }
             catch (Exception exception)
             {
@@ -376,7 +376,7 @@ namespace CC.Votd
 
             Settings.FadeDelay = _TrackBarFadeDelay.Value * 15000;
             Settings.FadeSpeed = _TrackBarFadeSpeed.Value * 10;
-            Settings.MaximumCacheItems = _TrackBarMaximumCacheItems.Value * 100;
+            Settings.MaximumCacheItems = _TrackBarMaximumCacheItems.Value * 25;
 
             Settings.RandomVerse = _RadioButtonRandom.Checked;
 

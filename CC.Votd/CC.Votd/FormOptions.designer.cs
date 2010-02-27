@@ -246,7 +246,7 @@
             this._LabelMaximumCacheItemsValue.Name = "_LabelMaximumCacheItemsValue";
             this._LabelMaximumCacheItemsValue.Size = new System.Drawing.Size(91, 13);
             this._LabelMaximumCacheItemsValue.TabIndex = 9;
-            this._LabelMaximumCacheItemsValue.Text = "1000 items";
+            this._LabelMaximumCacheItemsValue.Text = "250 items";
             this._LabelMaximumCacheItemsValue.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // _LabelMaximumCacheItems
