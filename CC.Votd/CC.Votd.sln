@@ -12,9 +12,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "CC.Votd.Installer", "CC.Votd.Installer\CC.Votd.Installer.vdproj", "{B358678E-768E-45E5-9EE0-4402EE9BAE0B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CC.Votd.TestTool", "CC.Votd.TestTool\CC.Votd.TestTool.csproj", "{3D777364-7302-40C4-A215-71D87A81E9A8}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
+		SccNumberOfProjects = 4
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs08.codeplex.com/
 		SccLocalPath0 = .
@@ -24,6 +26,9 @@ Global
 		SccProjectUniqueName2 = CC.Votd\\CC.Votd.csproj
 		SccProjectName2 = CC.Votd
 		SccLocalPath2 = CC.Votd
+		SccProjectUniqueName3 = CC.Votd.TestTool\\CC.Votd.TestTool.csproj
+		SccProjectName3 = CC.Votd.TestTool
+		SccLocalPath3 = CC.Votd.TestTool
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +46,12 @@ Global
 		{B358678E-768E-45E5-9EE0-4402EE9BAE0B}.Installer|Any CPU.ActiveCfg = Release
 		{B358678E-768E-45E5-9EE0-4402EE9BAE0B}.Installer|Any CPU.Build.0 = Release
 		{B358678E-768E-45E5-9EE0-4402EE9BAE0B}.Release|Any CPU.ActiveCfg = Release
+		{3D777364-7302-40C4-A215-71D87A81E9A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D777364-7302-40C4-A215-71D87A81E9A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D777364-7302-40C4-A215-71D87A81E9A8}.Installer|Any CPU.ActiveCfg = Release|Any CPU
+		{3D777364-7302-40C4-A215-71D87A81E9A8}.Installer|Any CPU.Build.0 = Release|Any CPU
+		{3D777364-7302-40C4-A215-71D87A81E9A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D777364-7302-40C4-A215-71D87A81E9A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

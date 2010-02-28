@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Diagnostics;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using CC.Utilities;
 
-namespace CC.Votd
+namespace CC.Votd.TestTool
 {
     static class Program
     {
@@ -12,7 +13,7 @@ namespace CC.Votd
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main(string[] args)
+        static void Main()
         {
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.EnableVisualStyles();
@@ -20,36 +21,7 @@ namespace CC.Votd
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
             Application.ThreadException += Application_ThreadException;
 
-            ArgumentParser argumentParser = new ArgumentParser(new[] {"/"}, true, new[] {new Argument("c", ArgumentValue.None, true), new Argument("d", ArgumentValue.None, true), new Argument("p", ArgumentValue.Required, true), new Argument("s", ArgumentValue.None, true)});
-            argumentParser.Parse(args);
-            ArgumentDictionary validArguments = argumentParser.ParsedArguments.GetValidArguments();
-            
-            if (validArguments.Contains("d"))
-            {
-                Debugger.Launch();
-                Settings.IsDebug = true;                
-            }
-
-            if (validArguments.Contains("c"))
-            {
-                Application.Run(new FormOptions());
-            }
-            else
-            {
-                IntPtr previewHandle = IntPtr.Zero;
-
-                if (validArguments.Contains("p"))
-                {
-                    long tempLong;
-                    if (long.TryParse(validArguments["p"].Value, out tempLong))
-                    {
-                        previewHandle = new IntPtr(tempLong);
-                        Logging.LogMessage("Preview Handle: " + previewHandle);
-                    }
-                }
-
-                Application.Run(new FormMain(previewHandle));
-            }
+            Application.Run(new FormMain());
         }
 
         #region Private Event Handlers

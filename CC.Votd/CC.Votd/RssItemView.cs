@@ -101,6 +101,14 @@ namespace CC.Votd
 
         private void DrawBackground(Graphics graphics)
         {
+            //if (Settings.IsDebug)
+            //{
+            //    using (Brush backBrush = new SolidBrush(Color.FromArgb(_Alpha, Color.Red)))
+            //    {
+            //        graphics.FillRectangle(backBrush, new Rectangle(Location.X - Margin.Left, Location.Y - Margin.Top, Size.Width + Margin.Horizontal + Margin.Left, Size.Height + Margin.Vertical + Margin.Top));
+            //    }                
+            //}
+
             using (Brush backBrush = new SolidBrush(Color.FromArgb(_Alpha, BackColor)))
             {
                 graphics.FillRectangle(backBrush, new Rectangle(Location.X, Location.Y, Size.Width, Size.Height));
@@ -139,8 +147,17 @@ namespace CC.Votd
 
             DrawBackground(e.Graphics);
 
-            Rectangle textRectangle = new Rectangle(Location.X + Padding.Size.Width, Location.Y + Padding.Size.Height, _TextSize.Width, _TextSize.Height);
-            Rectangle titleRectangle = new Rectangle(Location.X + Padding.Size.Width, Location.Y + Padding.Size.Height + _TextSize.Height + Padding.Size.Height, _TitleSize.Width, _TitleSize.Height);
+            Rectangle textRectangle = new Rectangle(Location.X + Padding.Left, Location.Y + Padding.Top, _TextSize.Width + Padding.Right, _TextSize.Height);
+            Rectangle titleRectangle = new Rectangle(Location.X + Padding.Left, Location.Y + Padding.Top + Padding.Vertical + textRectangle.Height, _TitleSize.Width + Padding.Right, _TitleSize.Height);
+
+            //if (Settings.IsDebug)
+            //{
+            //    using (Brush backBrush = new SolidBrush(Color.FromArgb(_Alpha, Color.Yellow)))
+            //    {
+            //        e.Graphics.FillRectangle(backBrush, textRectangle);
+            //        e.Graphics.FillRectangle(backBrush, titleRectangle);
+            //    }
+            //}
 
             using (Brush textBrush = new SolidBrush(Color.FromArgb(_Alpha, Color.Black)))
             {
@@ -164,8 +181,8 @@ namespace CC.Votd
 
         public void SetLocation(Size maximumSize)
         {
-            int x = (maximumSize.Width - Margin.Horizontal >= Size.Width) ? _Random.Next(Margin.Left, maximumSize.Width - (Size.Width - Margin.Horizontal)) : Margin.Left;
-            int y = (maximumSize.Height - Margin.Vertical >= Size.Height) ? _Random.Next(Margin.Top, maximumSize.Height - (Size.Height - Margin.Vertical)) : Margin.Top;
+            int x = (maximumSize.Width - Margin.Horizontal >= Size.Width) ? _Random.Next(Margin.Left, maximumSize.Width - (Size.Width + Margin.Right)) : Margin.Left;
+            int y = (maximumSize.Height - Margin.Vertical >= Size.Height) ? _Random.Next(Margin.Top, maximumSize.Height - (Size.Height + Margin.Right)) : Margin.Top;
           
             // Make sure the control is visibly inside the maximumSize bounds
             if (x + Size.Width > maximumSize.Width - Margin.Right)
@@ -194,19 +211,19 @@ namespace CC.Votd
 
         public void SetSize(Graphics graphics)
         {
-            SizeF textSize = graphics.MeasureString(" " + Item.Description + " ", Font, MaxWidth - (Padding.Size.Width * 2) - Margin.Right, _StringFormat);
-            SizeF titleSize = graphics.MeasureString(" " + Item.Title + " ", Font, MaxWidth - (Padding.Size.Width * 2) - Margin.Right, _StringFormat);
-            SizeF totalSize = new SizeF((textSize.Width > titleSize.Width ? textSize.Width : titleSize.Width) + (Padding.Size.Width * 2), textSize.Height + titleSize.Height + (Padding.Size.Height * 3));
-
+            SizeF textSize = graphics.MeasureString(Item.Description, Font, MaxWidth - Padding.Horizontal, _StringFormat);
+            SizeF titleSize = graphics.MeasureString(Item.Title, Font, MaxWidth - Padding.Horizontal, _StringFormat);
+            SizeF totalSize = new SizeF((textSize.Width > titleSize.Width ? textSize.Width : titleSize.Width) + Padding.Horizontal, textSize.Height + titleSize.Height + Padding.Vertical + Padding.Vertical);
+            
             Logging.LogMessage("Text --- H: " + textSize.Height + " W: " + textSize.Width + " Max W: " + MaxWidth);
             Logging.LogMessage("Title -- H: " + titleSize.Height + " W: " + titleSize.Width + " Max W: " + MaxWidth);
             Logging.LogMessage("Total -- H: " + totalSize.Height + " W: " + totalSize.Width + " Max W: " + MaxWidth);
             Logging.LogMessage(Item.Title + " -- " + Item.Description);
 
-            Size = new Size((int)totalSize.Width, (int)totalSize.Height);
+            Size = Size.Round(totalSize);
 
-            _TextSize = new Size((int)textSize.Width, (int)textSize.Height);
-            _TitleSize = new Size((int)titleSize.Width, (int)titleSize.Height);
+            _TextSize = Size.Round(textSize);
+            _TitleSize = Size.Round(titleSize);
         }
         #endregion
 

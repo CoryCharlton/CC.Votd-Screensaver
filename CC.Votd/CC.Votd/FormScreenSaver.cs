@@ -49,6 +49,7 @@ namespace CC.Votd
         private void _RssItemView_FadeTick(object sender, EventArgs e)
         {
             Invalidate(new Rectangle(_RssItemView.Location, _RssItemView.Size));
+            //Invalidate(new Rectangle(_RssItemView.Location.X - _RssItemView.Margin.Left, _RssItemView.Location.Y - _RssItemView.Margin.Top, _RssItemView.Size.Width + Margin.Horizontal + Margin.Left, _RssItemView.Size.Height + Margin.Vertical + Margin.Top));
         }
         // ReSharper restore InconsistentNaming
         #endregion
@@ -73,9 +74,9 @@ namespace CC.Votd
             }
             else
             {
-                _RssItemView.Margin = new Padding(8);
+                _RssItemView.Margin = new Padding(10);
                 _RssItemView.MaxWidth = (int)(Width * .65);
-                _RssItemView.Padding = new Padding(8);
+                _RssItemView.Padding = new Padding(10);
                 _RssItemView.TitleFont = Settings.TitleFont;
                 _RssItemView.Font = Settings.TextFont;
             }

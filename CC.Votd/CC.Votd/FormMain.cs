@@ -152,7 +152,11 @@ namespace CC.Votd
         {
             if (!Settings.IsPreview)
             {
-                Cursor.Hide();
+                if (!Settings.IsDebug)
+                {
+                    Cursor.Hide();
+                }
+
                 Bounds = Screen.PrimaryScreen.Bounds;
                 WindowState = FormWindowState.Maximized;
                 TopMost = !Settings.IsDebug;
