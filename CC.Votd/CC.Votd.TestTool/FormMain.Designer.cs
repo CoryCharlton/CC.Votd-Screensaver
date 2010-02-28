@@ -36,19 +36,19 @@
             // 
             // _PanelMiniPreview
             // 
-            this._PanelMiniPreview.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this._PanelMiniPreview.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this._PanelMiniPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this._PanelMiniPreview.Location = new System.Drawing.Point(12, 39);
+            this._PanelMiniPreview.Location = new System.Drawing.Point(9, 30);
             this._PanelMiniPreview.Name = "_PanelMiniPreview";
             this._PanelMiniPreview.Size = new System.Drawing.Size(155, 116);
             this._PanelMiniPreview.TabIndex = 0;
             // 
             // _ButtonPreview
             // 
-            this._ButtonPreview.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this._ButtonPreview.Location = new System.Drawing.Point(94, 168);
+            this._ButtonPreview.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this._ButtonPreview.Location = new System.Drawing.Point(90, 154);
             this._ButtonPreview.Name = "_ButtonPreview";
-            this._ButtonPreview.Size = new System.Drawing.Size(73, 23);
+            this._ButtonPreview.Size = new System.Drawing.Size(74, 23);
             this._ButtonPreview.TabIndex = 1;
             this._ButtonPreview.Text = "&Preview";
             this._ButtonPreview.UseVisualStyleBackColor = true;
@@ -56,10 +56,10 @@
             // 
             // _ButtonSettings
             // 
-            this._ButtonSettings.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this._ButtonSettings.Location = new System.Drawing.Point(12, 168);
+            this._ButtonSettings.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this._ButtonSettings.Location = new System.Drawing.Point(9, 154);
             this._ButtonSettings.Name = "_ButtonSettings";
-            this._ButtonSettings.Size = new System.Drawing.Size(73, 23);
+            this._ButtonSettings.Size = new System.Drawing.Size(74, 23);
             this._ButtonSettings.TabIndex = 2;
             this._ButtonSettings.Text = "&Settings";
             this._ButtonSettings.UseVisualStyleBackColor = true;
@@ -69,7 +69,7 @@
             // 
             this._CheckBoxDebug.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this._CheckBoxDebug.AutoSize = true;
-            this._CheckBoxDebug.Location = new System.Drawing.Point(42, 12);
+            this._CheckBoxDebug.Location = new System.Drawing.Point(39, 7);
             this._CheckBoxDebug.Name = "_CheckBoxDebug";
             this._CheckBoxDebug.Size = new System.Drawing.Size(94, 17);
             this._CheckBoxDebug.TabIndex = 3;
@@ -81,7 +81,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(179, 203);
+            this.ClientSize = new System.Drawing.Size(172, 185);
             this.Controls.Add(this._CheckBoxDebug);
             this.Controls.Add(this._ButtonSettings);
             this.Controls.Add(this._ButtonPreview);
@@ -89,7 +89,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.Name = "FormMain";
-            this.Text = " CC.Votd.TestTool";
+            this.Text = "  CC.Votd.TestTool";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
