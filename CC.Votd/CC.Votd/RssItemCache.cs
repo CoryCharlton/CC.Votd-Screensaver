@@ -17,6 +17,8 @@ namespace CC.Votd
         #endregion
 
         #region Private Fields
+        private static RssItem _DailyItem;
+        private static DateTime _DailyItemUpdated;
         private static readonly string _Filename = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "CC.Votd.xml");
         private static List<RssItem> _Items = new List<RssItem>();
         private static readonly object _LockObject = new object();
@@ -41,26 +43,53 @@ namespace CC.Votd
         #endregion
 
         #region Public Methods
-        public static bool Add(RssItem rssItem)
+        public static bool Add(RssItem rssItem, bool isDaily)
         {
             bool returnValue = false;
 
-            lock (_LockObject)
+            if (rssItem != null)
             {
-                while (Maximum > 0 && _Items.Count >= Maximum)
+                lock (_LockObject)
                 {
-                    _Items.RemoveAt(0);
-                }
+                    while (Maximum > 0 && _Items.Count >= Maximum)
+                    {
+                        _Items.RemoveAt(0);
+                    }
 
-                if (!_Items.Contains(rssItem))
-                {
-                    _Items.Add(rssItem);
+                    if (isDaily)
+                    {
+                        _DailyItem = rssItem;
+                        _DailyItemUpdated = DateTime.Now;
+                    }
 
-                    returnValue = true;
+                    if (!_Items.Contains(rssItem))
+                    {
+                        _Items.Add(rssItem);
+
+                        returnValue = true;
+                    }
                 }
             }
 
             return returnValue;
+        }
+
+        public static RssItem GetDailyItem()
+        {
+            lock (_LockObject)
+            {
+                if (_DailyItem == null || _DailyItemUpdated.Day != DateTime.Now.Day)
+                {
+                    _DailyItem = GetRandomItem();
+
+                    if (_DailyItem != null)
+                    {
+                        _DailyItemUpdated = DateTime.Now;
+                    }
+                }
+            }
+
+            return _DailyItem;
         }
 
         public static RssItem GetRandomItem()

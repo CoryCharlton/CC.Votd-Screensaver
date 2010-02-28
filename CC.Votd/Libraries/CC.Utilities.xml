@@ -476,6 +476,22 @@
             </summary>
             <param name="xmlNode">The <see cref="T:System.Xml.XmlNode"/> to parse.</param>
         </member>
+        <member name="M:CC.Utilities.Rss.RssItem.op_Equality(CC.Utilities.Rss.RssItem,CC.Utilities.Rss.RssItem)">
+            <summary>
+            Determines if both <see cref="T:CC.Utilities.Rss.RssItem"/> are equal
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CC.Utilities.Rss.RssItem.op_Inequality(CC.Utilities.Rss.RssItem,CC.Utilities.Rss.RssItem)">
+            <summary>
+            Determines if both <see cref="T:CC.Utilities.Rss.RssItem"/> are not equal
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns></returns>
+        </member>
         <member name="P:CC.Utilities.Rss.RssItem.Author">
             <summary>
             The author
@@ -1063,6 +1079,22 @@
             Create a new <see cref="T:CC.Utilities.Rss.RssEnclosure"/> from a <see cref="T:System.Xml.XmlNode"/>.
             </summary>
             <param name="xmlNode">The <see cref="T:System.Xml.XmlNode"/> to parse.</param>
+        </member>
+        <member name="M:CC.Utilities.Rss.RssEnclosure.op_Equality(CC.Utilities.Rss.RssEnclosure,CC.Utilities.Rss.RssEnclosure)">
+            <summary>
+            Determines if both <see cref="T:CC.Utilities.Rss.RssEnclosure"/> are equal
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CC.Utilities.Rss.RssEnclosure.op_Inequality(CC.Utilities.Rss.RssEnclosure,CC.Utilities.Rss.RssEnclosure)">
+            <summary>
+            Determines if both <see cref="T:CC.Utilities.Rss.RssEnclosure"/> are not equal
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns></returns>
         </member>
         <member name="P:CC.Utilities.Rss.RssEnclosure.Length">
             <summary>

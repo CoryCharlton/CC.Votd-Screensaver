@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using CC.Utilities;
 using CC.Utilities.Rss;
 
 namespace CC.Votd
@@ -103,14 +104,14 @@ namespace CC.Votd
 
             if (!_RssFeed.IsError)
             {
-                if (RssItemCache.Add(_RssItemView.Item))
+                if (RssItemCache.Add(_RssItemView.Item, !Settings.RandomVerse))
                 {
                     RssItemCache.Save();
                 }
             }
             else
             {
-                RssItem rssItem = RssItemCache.GetRandomItem();
+                RssItem rssItem = Settings.RandomVerse ? RssItemCache.GetRandomItem() : RssItemCache.GetDailyItem();
 
                 if (rssItem != null)
                 {
