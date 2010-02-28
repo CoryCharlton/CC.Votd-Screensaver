@@ -25,6 +25,7 @@ namespace CC.Votd
             argumentParser.Parse(args);
             ArgumentDictionary validArguments = argumentParser.ParsedArguments.GetValidArguments();
 
+            /*
             foreach (string arg in args)
             {
                 Logging.LogMessage("Argument: " + arg);
@@ -34,8 +35,9 @@ namespace CC.Votd
             {
                 Logging.LogMessage(validArgument.Value.ToString(true));
             }
-
+            
             Logging.LogMessage(args.Length + " " + validArguments.Count);
+            */
 
             if (validArguments.Contains("d"))
             {
