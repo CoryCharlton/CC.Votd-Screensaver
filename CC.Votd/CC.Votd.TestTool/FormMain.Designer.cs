@@ -38,9 +38,9 @@
             // 
             this._PanelMiniPreview.Anchor = System.Windows.Forms.AnchorStyles.None;
             this._PanelMiniPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this._PanelMiniPreview.Location = new System.Drawing.Point(29, 41);
+            this._PanelMiniPreview.Location = new System.Drawing.Point(29, 40);
             this._PanelMiniPreview.Name = "_PanelMiniPreview";
-            this._PanelMiniPreview.Size = new System.Drawing.Size(155, 115);
+            this._PanelMiniPreview.Size = new System.Drawing.Size(155, 116);
             this._PanelMiniPreview.TabIndex = 0;
             // 
             // _ButtonPreview
@@ -67,8 +67,9 @@
             // 
             // _CheckBoxDebug
             // 
+            this._CheckBoxDebug.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this._CheckBoxDebug.AutoSize = true;
-            this._CheckBoxDebug.Location = new System.Drawing.Point(56, 12);
+            this._CheckBoxDebug.Location = new System.Drawing.Point(59, 12);
             this._CheckBoxDebug.Name = "_CheckBoxDebug";
             this._CheckBoxDebug.Size = new System.Drawing.Size(94, 17);
             this._CheckBoxDebug.TabIndex = 3;
@@ -79,6 +80,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(213, 208);
             this.Controls.Add(this._CheckBoxDebug);
             this.Controls.Add(this._ButtonSettings);

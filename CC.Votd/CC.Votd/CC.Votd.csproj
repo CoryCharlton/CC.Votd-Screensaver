@@ -124,9 +124,6 @@
     <None Include="Resources\Bible.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="License.rtf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="Resources\NativeResources.res" />
     <None Include="Resources\Cross.jpg" />
   </ItemGroup>
