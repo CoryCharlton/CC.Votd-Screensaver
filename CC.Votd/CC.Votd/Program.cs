@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 using System.Windows.Forms;
@@ -20,17 +21,30 @@ namespace CC.Votd
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
             Application.ThreadException += Application_ThreadException;
 
-            ArgumentParser argumentParser = new ArgumentParser(new[] {"/"}, true, new[] {new Argument("c", ArgumentValue.None, true), new Argument("d", ArgumentValue.None, true), new Argument("p", ArgumentValue.Required, true), new Argument("s", ArgumentValue.None, true)});
+            ArgumentParser argumentParser = new ArgumentParser(new[] {"/", "-"}, true, new[] {new Argument("c", ArgumentValue.None, true), new Argument("d", ArgumentValue.None, true), new Argument("p", ArgumentValue.Required, true), new Argument("s", ArgumentValue.None, true)});
             argumentParser.Parse(args);
             ArgumentDictionary validArguments = argumentParser.ParsedArguments.GetValidArguments();
-            
+
+            foreach (string arg in args)
+            {
+                Logging.LogMessage("Argument: " + arg);
+            }
+
+            foreach (KeyValuePair<string, Argument> validArgument in validArguments)
+            {
+                Logging.LogMessage(validArgument.Value.ToString(true));
+            }
+
+            Logging.LogMessage(args.Length + " " + validArguments.Count);
+
             if (validArguments.Contains("d"))
             {
                 Debugger.Launch();
                 Settings.IsDebug = true;                
             }
 
-            if (validArguments.Contains("c"))
+            // NOTE: I need to work on my ArgumentParser class. In the meantime this will workaround the one known issue
+            if (validArguments.Contains("c") || (args.Length > 0 && args[0].Substring(0,2).Equals("/c", StringComparison.InvariantCultureIgnoreCase)))
             {
                 Application.Run(new FormOptions());
             }
