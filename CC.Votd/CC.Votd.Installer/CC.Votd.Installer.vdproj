@@ -152,7 +152,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:CC.Votd, Version=1.0.10.227, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:CC.Votd, Version=1.0.10.228, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_9B01A54F134742BB926B45B9A6DFE128"
@@ -275,14 +275,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:CC.Votd"
-        "ProductCode" = "8:{920B6E4C-DA10-4DB3-9B4B-1DF61C8C7C86}"
-        "PackageCode" = "8:{015D1BE8-6D69-4E24-B548-7A49A9A46855}"
+        "ProductCode" = "8:{5298194D-DEFC-4D6B-B4AF-61067813CB8F}"
+        "PackageCode" = "8:{8DB0962D-3209-4FCA-8585-302EE26F39CE}"
         "UpgradeCode" = "8:{18589AC4-0B9F-428D-993E-8380AB7D66EE}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.4"
+        "ProductVersion" = "8:1.0.5"
         "Manufacturer" = "8:CC Software Engineering"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://www.ccswe.com"
