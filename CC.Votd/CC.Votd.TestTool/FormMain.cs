@@ -2,6 +2,8 @@
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
+using CC.Utilities;
+using Timer=System.Timers.Timer;
 
 namespace CC.Votd.TestTool
 {
@@ -11,15 +13,20 @@ namespace CC.Votd.TestTool
         public FormMain()
         {
             InitializeComponent();
+
+            _Timer = new Timer(250);
+            _Timer.Elapsed += _Timer_Elapsed;
         }
         #endregion
 
         #region Private Fields
         private bool _Closing;
         private Process _ScreenSaverProcess;
+        private readonly Timer _Timer;
         #endregion
 
         #region Private Event Handlers
+        // ReSharper disable InconsistentNaming
         private void _ButtonPreview_Click(object sender, EventArgs e)
         {
             StartProcess(true);
@@ -42,9 +49,30 @@ namespace CC.Votd.TestTool
             Show();
             StartMiniPreview();
         }
+
+        private void _LabelProcessInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            KillProcess();
+            StartMiniPreview();
+        }
+
+        private void _Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            SetProcessInfo();
+        }
+        // ReSharper restore InconsistentNaming
         #endregion
 
         #region Private Methods
+        private void ClearImage()
+        {
+            if (_PanelMiniPreview.BackgroundImage != null)
+            {
+                _PanelMiniPreview.BackgroundImage.Dispose();
+                _PanelMiniPreview.BackgroundImage = null;
+            }
+        }
+
         private void KillProcess()
         {
             if (_ScreenSaverProcess != null)
@@ -57,11 +85,52 @@ namespace CC.Votd.TestTool
                 _ScreenSaverProcess.Dispose();
                 _ScreenSaverProcess = null;
             }
+
+            SetImage();
+            SetProcessInfo();
+
+            _Timer.Stop();
+        }
+
+        private void SetImage()
+        {
+            ClearImage();
+
+            _PanelMiniPreview.BackgroundImage = Utilities.Utilities.CaptureScreen();
+        }
+
+        private void SetProcessInfo()
+        {
+            if (InvokeRequired)
+            {
+                try
+                {
+                    Invoke(new MethodInvoker(SetProcessInfo));
+                }
+                catch (ObjectDisposedException exception)
+                {
+                    Logging.LogException(exception);
+                }
+            }
+            else
+            {
+                if (_ScreenSaverProcess != null)
+                {
+                    _ScreenSaverProcess.Refresh();
+                    _LabelProcessInfo.Text = _ScreenSaverProcess.Id + " (" + _ScreenSaverProcess.HandleCount + "/" + _ScreenSaverProcess.Threads.Count + ")";
+                }
+                else
+                {
+                    _LabelProcessInfo.Text = string.Empty;
+                    _Timer.Enabled = false;
+                }
+            }
         }
 
         private void StartMiniPreview()
         {
             StartProcess("/p " + _PanelMiniPreview.Handle, false);
+            ClearImage();
         }
 
         private void StartProcess(bool waitForExit)
@@ -79,10 +148,10 @@ namespace CC.Votd.TestTool
             }
 
             _ScreenSaverProcess = new Process();
-            ProcessStartInfo startInfo = new ProcessStartInfo(Path.Combine(Application.StartupPath, @"..\..\..\CC.Votd\bin\Debug\CC.Votd.exe"))
-                                             {
-                                                 WorkingDirectory = Path.Combine(Application.StartupPath, @"..\..\..\CC.Votd\bin\Debug\")
-                                             };
+            var startInfo = new ProcessStartInfo(Path.Combine(Application.StartupPath, @"..\..\..\CC.Votd\bin\Debug\CC.Votd.exe"))
+                                {
+                                    WorkingDirectory = Path.Combine(Application.StartupPath, @"..\..\..\CC.Votd\bin\Debug\")
+                                };
 
             if (_CheckBoxDebug.Checked)
             {
@@ -95,6 +164,7 @@ namespace CC.Votd.TestTool
 
             _ScreenSaverProcess.StartInfo = startInfo;
             _ScreenSaverProcess.Start();
+            _Timer.Start();
 
             if (waitForExit)
             {
