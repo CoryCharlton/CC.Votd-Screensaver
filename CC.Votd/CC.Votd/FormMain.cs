@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using CC.Utilities.Interop;
-using CC.Utilities.Rss;
 
 namespace CC.Votd
 {
@@ -24,27 +23,6 @@ namespace CC.Votd
             }
 
             InitializeComponent();
-
-            /*
-            RssItem rssItem = RssItemCache.GetRandomItem();
-
-            if (rssItem != null)
-            {
-                RssItem rssItem2 = new RssItem
-                                       {
-                                           Author = rssItem.Author, 
-                                           Category = rssItem.Category, 
-                                           Comments = rssItem.Comments,
-                                           Description = rssItem.Description,
-                                           Enclosure = rssItem.Enclosure,
-                                           Guid = rssItem.Guid,
-                                           Link = rssItem.Link,
-                                           Title = rssItem.Title
-                                       };
-
-                RssItemCache.Add(rssItem2);
-            }
-            */
 
             SetupScreenSaver();
             Initialize();

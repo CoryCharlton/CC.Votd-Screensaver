@@ -40,6 +40,14 @@ namespace CC.Votd
         #endregion
 
         #region Private Methods
+        private static void SetDailyItem(RssItem rssItem, DateTime updated)
+        {
+            if (rssItem != null && (rssItem != _DailyItem || updated.Day != _DailyItemUpdated.Day))
+            {
+                _DailyItem = rssItem;
+                _DailyItemUpdated = updated;
+            }
+        }
         #endregion
 
         #region Public Methods
@@ -58,8 +66,7 @@ namespace CC.Votd
 
                     if (isDaily)
                     {
-                        _DailyItem = rssItem;
-                        _DailyItemUpdated = DateTime.Now;
+                        SetDailyItem(rssItem, DateTime.Now);
                     }
 
                     if (!_Items.Contains(rssItem))
@@ -80,12 +87,7 @@ namespace CC.Votd
             {
                 if (_DailyItem == null || _DailyItemUpdated.Day != DateTime.Now.Day)
                 {
-                    _DailyItem = GetRandomItem();
-
-                    if (_DailyItem != null)
-                    {
-                        _DailyItemUpdated = DateTime.Now;
-                    }
+                    SetDailyItem(GetRandomItem(), DateTime.Now);
                 }
             }
 

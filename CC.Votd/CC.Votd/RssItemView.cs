@@ -101,14 +101,6 @@ namespace CC.Votd
 
         private void DrawBackground(Graphics graphics)
         {
-            //if (Settings.IsDebug)
-            //{
-            //    using (Brush backBrush = new SolidBrush(Color.FromArgb(_Alpha, Color.Red)))
-            //    {
-            //        graphics.FillRectangle(backBrush, new Rectangle(Location.X - Margin.Left, Location.Y - Margin.Top, Size.Width + Margin.Horizontal + Margin.Left, Size.Height + Margin.Vertical + Margin.Top));
-            //    }                
-            //}
-
             using (Brush backBrush = new SolidBrush(Color.FromArgb(_Alpha, BackColor)))
             {
                 graphics.FillRectangle(backBrush, new Rectangle(Location.X, Location.Y, Size.Width, Size.Height));
@@ -149,15 +141,6 @@ namespace CC.Votd
 
             Rectangle textRectangle = new Rectangle(Location.X + Padding.Left, Location.Y + Padding.Top, _TextSize.Width + Padding.Right, _TextSize.Height);
             Rectangle titleRectangle = new Rectangle(Location.X + Padding.Left, Location.Y + Padding.Top + Padding.Vertical + textRectangle.Height, _TitleSize.Width + Padding.Right, _TitleSize.Height);
-
-            //if (Settings.IsDebug)
-            //{
-            //    using (Brush backBrush = new SolidBrush(Color.FromArgb(_Alpha, Color.Yellow)))
-            //    {
-            //        e.Graphics.FillRectangle(backBrush, textRectangle);
-            //        e.Graphics.FillRectangle(backBrush, titleRectangle);
-            //    }
-            //}
 
             using (Brush textBrush = new SolidBrush(Color.FromArgb(_Alpha, Color.Black)))
             {

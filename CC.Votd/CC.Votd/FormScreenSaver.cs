@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using CC.Utilities;
 using CC.Utilities.Rss;
 
 namespace CC.Votd
@@ -50,7 +49,6 @@ namespace CC.Votd
         private void _RssItemView_FadeTick(object sender, EventArgs e)
         {
             Invalidate(new Rectangle(_RssItemView.Location, _RssItemView.Size));
-            //Invalidate(new Rectangle(_RssItemView.Location.X - _RssItemView.Margin.Left, _RssItemView.Location.Y - _RssItemView.Margin.Top, _RssItemView.Size.Width + Margin.Horizontal + Margin.Left, _RssItemView.Size.Height + Margin.Vertical + Margin.Top));
         }
         // ReSharper restore InconsistentNaming
         #endregion
