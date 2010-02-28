@@ -86,9 +86,11 @@
             this.Controls.Add(this._ButtonSettings);
             this.Controls.Add(this._ButtonPreview);
             this.Controls.Add(this._PanelMiniPreview);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.Name = "FormMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  CC.Votd.TestTool";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.FormMain_Load);
