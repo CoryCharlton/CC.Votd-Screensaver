@@ -16,11 +16,8 @@ namespace CC.Votd
 
         public FormMain(IntPtr previewHandle)
         {
-            if (previewHandle != IntPtr.Zero)
-            {
-                Settings.IsPreview = true;
-                _PreviewHandle = previewHandle;
-            }
+            Settings.IsPreview = (previewHandle != IntPtr.Zero);
+            _PreviewHandle = previewHandle;
 
             InitializeComponent();
 
@@ -45,7 +42,7 @@ namespace CC.Votd
 
                 if (!DesignMode && Settings.IsPreview)
                 {
-                    createParams.Style |= 0x40000000; // Add the WS_CHILD style to preview mode...
+                    createParams.Style |= (int)WS.CHILD;
                 }
 
                 return createParams;
@@ -151,6 +148,7 @@ namespace CC.Votd
                 }
 
                 Location = new Point(0, 0);
+                User32.SetForegroundWindow(_PreviewHandle);
             }
 
             if (!Settings.IsPreview)

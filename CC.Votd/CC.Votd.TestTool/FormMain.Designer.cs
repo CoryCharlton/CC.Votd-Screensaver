@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this._PanelMiniPreview = new System.Windows.Forms.Panel();
             this._ButtonPreview = new System.Windows.Forms.Button();
             this._ButtonSettings = new System.Windows.Forms.Button();
             this._CheckBoxDebug = new System.Windows.Forms.CheckBox();
             this._LabelProcessInfo = new System.Windows.Forms.LinkLabel();
+            this._ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // _PanelMiniPreview
@@ -51,6 +53,7 @@
             this._ButtonPreview.Size = new System.Drawing.Size(94, 23);
             this._ButtonPreview.TabIndex = 3;
             this._ButtonPreview.Text = "&Preview";
+            this._ToolTip.SetToolTip(this._ButtonPreview, "Launch screen saver preview...");
             this._ButtonPreview.UseVisualStyleBackColor = true;
             this._ButtonPreview.Click += new System.EventHandler(this._ButtonPreview_Click);
             // 
@@ -61,6 +64,7 @@
             this._ButtonSettings.Size = new System.Drawing.Size(94, 23);
             this._ButtonSettings.TabIndex = 2;
             this._ButtonSettings.Text = "&Settings";
+            this._ToolTip.SetToolTip(this._ButtonSettings, "Launch screen saver settings...");
             this._ButtonSettings.UseVisualStyleBackColor = true;
             this._ButtonSettings.Click += new System.EventHandler(this._ButtonSettings_Click);
             // 
@@ -83,6 +87,7 @@
             this._LabelProcessInfo.TabStop = true;
             this._LabelProcessInfo.Text = "0000 (000/000)";
             this._LabelProcessInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this._ToolTip.SetToolTip(this._LabelProcessInfo, "PID (Handles/Threads) [Click to kill current process]");
             this._LabelProcessInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this._LabelProcessInfo_LinkClicked);
             // 
             // FormMain
@@ -118,6 +123,7 @@
         private System.Windows.Forms.Button _ButtonSettings;
         private System.Windows.Forms.CheckBox _CheckBoxDebug;
         private System.Windows.Forms.LinkLabel _LabelProcessInfo;
+        private System.Windows.Forms.ToolTip _ToolTip;
     }
 }
 

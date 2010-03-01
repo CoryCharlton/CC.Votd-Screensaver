@@ -98,6 +98,21 @@
             Specifies constants that indicate the state of an <see cref="T:CC.Utilities.Argument"/>'s value property.
             </summary>
         </member>
+        <member name="F:CC.Utilities.ArgumentValue.None">
+            <summary>
+            None
+            </summary>
+        </member>
+        <member name="F:CC.Utilities.ArgumentValue.Optional">
+            <summary>
+            Optional
+            </summary>
+        </member>
+        <member name="F:CC.Utilities.ArgumentValue.Required">
+            <summary>
+            Required
+            </summary>
+        </member>
         <member name="T:CC.Utilities.Argument">
             <summary>
             Represents a single command line argument.
@@ -555,6 +570,11 @@
         <member name="T:CC.Utilities.Interop.WM">
             <summary>
             Window messages
+            </summary>
+        </member>
+        <member name="T:CC.Utilities.Interop.WS">
+            <summary>
+            Window styles
             </summary>
         </member>
         <member name="T:CC.Utilities.Drawing.FontBuilder">

@@ -38,6 +38,7 @@
             this.ClientSize = new System.Drawing.Size(292, 266);
             this.Name = "FormMain";
             this.Text = "CC.Votd";
+            this.TopMost = false;
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormMain_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FormMain_MouseMove);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormMain_KeyDown);
