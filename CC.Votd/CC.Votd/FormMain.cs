@@ -51,22 +51,26 @@ namespace CC.Votd
         #endregion
 
         #region Public Event Handlers
-        public void FormMain_KeyDown(object sender, KeyEventArgs e)
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            foreach (FormScreenSaver secondaryScreen in _SecondaryScreens)
+            {
+                secondaryScreen.Close();
+            }
+        }
+
+        private void FormMain_KeyDown(object sender, KeyEventArgs e)
         {
             if (!Settings.IsPreview)
             {
-                if (!Settings.IsDebug)
-                {
-                    Close();
-                }
-                else if (e.KeyCode == Keys.Escape)
+                if (!Settings.IsDebug || (e.KeyCode == Keys.Escape))
                 {
                     Close();
                 }
             }
         }
 
-        public void FormMain_MouseDown(object sender, MouseEventArgs e)
+        private void FormMain_MouseDown(object sender, MouseEventArgs e)
         {
             if (!Settings.IsPreview && !Settings.IsDebug)
             {
@@ -74,7 +78,7 @@ namespace CC.Votd
             }
         }
 
-        public void FormMain_MouseMove(object sender, MouseEventArgs e)
+        private void FormMain_MouseMove(object sender, MouseEventArgs e)
         {
             if (!Settings.IsPreview && !Settings.IsDebug)
             {
@@ -135,6 +139,8 @@ namespace CC.Votd
                 Bounds = Screen.PrimaryScreen.Bounds;
                 WindowState = FormWindowState.Maximized;
                 TopMost = !Settings.IsDebug;
+
+                CreateSecondaryScreenSavers();
             }
             else
             {
@@ -149,11 +155,6 @@ namespace CC.Votd
 
                 Location = new Point(0, 0);
                 User32.SetForegroundWindow(_PreviewHandle);
-            }
-
-            if (!Settings.IsPreview)
-            {
-                CreateSecondaryScreenSavers();
             }
         }
         #endregion

@@ -33,8 +33,8 @@
             this._ButtonPreview = new System.Windows.Forms.Button();
             this._ButtonSettings = new System.Windows.Forms.Button();
             this._CheckBoxDebug = new System.Windows.Forms.CheckBox();
-            this._LabelProcessInfo = new System.Windows.Forms.LinkLabel();
             this._ToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this._ButtonKillProcess = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // _PanelMiniPreview
@@ -48,9 +48,11 @@
             // 
             // _ButtonPreview
             // 
+            this._ButtonPreview.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this._ButtonPreview.Location = new System.Drawing.Point(174, 102);
             this._ButtonPreview.Name = "_ButtonPreview";
-            this._ButtonPreview.Size = new System.Drawing.Size(94, 23);
+            this._ButtonPreview.Size = new System.Drawing.Size(95, 23);
             this._ButtonPreview.TabIndex = 3;
             this._ButtonPreview.Text = "&Preview";
             this._ToolTip.SetToolTip(this._ButtonPreview, "Launch screen saver preview...");
@@ -59,9 +61,11 @@
             // 
             // _ButtonSettings
             // 
+            this._ButtonSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this._ButtonSettings.Location = new System.Drawing.Point(174, 73);
             this._ButtonSettings.Name = "_ButtonSettings";
-            this._ButtonSettings.Size = new System.Drawing.Size(94, 23);
+            this._ButtonSettings.Size = new System.Drawing.Size(95, 23);
             this._ButtonSettings.TabIndex = 2;
             this._ButtonSettings.Text = "&Settings";
             this._ToolTip.SetToolTip(this._ButtonSettings, "Launch screen saver settings...");
@@ -70,33 +74,35 @@
             // 
             // _CheckBoxDebug
             // 
+            this._CheckBoxDebug.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this._CheckBoxDebug.AutoSize = true;
-            this._CheckBoxDebug.Location = new System.Drawing.Point(176, 9);
+            this._CheckBoxDebug.Location = new System.Drawing.Point(177, 9);
             this._CheckBoxDebug.Name = "_CheckBoxDebug";
             this._CheckBoxDebug.Size = new System.Drawing.Size(94, 17);
             this._CheckBoxDebug.TabIndex = 1;
             this._CheckBoxDebug.Text = "Enable &Debug";
             this._CheckBoxDebug.UseVisualStyleBackColor = true;
             // 
-            // _LabelProcessInfo
+            // _ButtonKillProcess
             // 
-            this._LabelProcessInfo.Location = new System.Drawing.Point(176, 35);
-            this._LabelProcessInfo.Name = "_LabelProcessInfo";
-            this._LabelProcessInfo.Size = new System.Drawing.Size(92, 27);
-            this._LabelProcessInfo.TabIndex = 4;
-            this._LabelProcessInfo.TabStop = true;
-            this._LabelProcessInfo.Text = "0000 (000/000)";
-            this._LabelProcessInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this._ToolTip.SetToolTip(this._LabelProcessInfo, "PID (Handles/Threads) [Click to kill current process]");
-            this._LabelProcessInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this._LabelProcessInfo_LinkClicked);
+            this._ButtonKillProcess.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this._ButtonKillProcess.Location = new System.Drawing.Point(174, 36);
+            this._ButtonKillProcess.Name = "_ButtonKillProcess";
+            this._ButtonKillProcess.Size = new System.Drawing.Size(95, 23);
+            this._ButtonKillProcess.TabIndex = 4;
+            this._ButtonKillProcess.Text = "1234 (234/7)";
+            this._ToolTip.SetToolTip(this._ButtonKillProcess, "PID (Handles/Threads) [Kill current screen saver process]");
+            this._ButtonKillProcess.UseVisualStyleBackColor = true;
+            this._ButtonKillProcess.Click += new System.EventHandler(this._ButtonKillProcess_Click);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(277, 134);
-            this.Controls.Add(this._LabelProcessInfo);
+            this.ClientSize = new System.Drawing.Size(278, 134);
+            this.Controls.Add(this._ButtonKillProcess);
             this.Controls.Add(this._CheckBoxDebug);
             this.Controls.Add(this._ButtonSettings);
             this.Controls.Add(this._ButtonPreview);
@@ -122,8 +128,8 @@
         private System.Windows.Forms.Button _ButtonPreview;
         private System.Windows.Forms.Button _ButtonSettings;
         private System.Windows.Forms.CheckBox _CheckBoxDebug;
-        private System.Windows.Forms.LinkLabel _LabelProcessInfo;
         private System.Windows.Forms.ToolTip _ToolTip;
+        private System.Windows.Forms.Button _ButtonKillProcess;
     }
 }
 

@@ -27,6 +27,12 @@ namespace CC.Votd.TestTool
 
         #region Private Event Handlers
         // ReSharper disable InconsistentNaming
+        private void _ButtonKillProcess_Click(object sender, EventArgs e)
+        {
+            KillProcess();
+            StartMiniPreview();
+        }
+
         private void _ButtonPreview_Click(object sender, EventArgs e)
         {
             StartProcess(true);
@@ -34,7 +40,7 @@ namespace CC.Votd.TestTool
 
         private void _ButtonSettings_Click(object sender, EventArgs e)
         {
-            StartProcess("/c", true);
+            StartProcess("/c:blahblah", true); //To test the /c:###### parameter I'm seeing on Windows Vista (maybe others). Not sure what the number is
         }
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -47,12 +53,6 @@ namespace CC.Votd.TestTool
         private void FormMain_Load(object sender, EventArgs e)
         {
             Show();
-            StartMiniPreview();
-        }
-
-        private void _LabelProcessInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            KillProcess();
             StartMiniPreview();
         }
 
@@ -117,11 +117,11 @@ namespace CC.Votd.TestTool
                 if (_ScreenSaverProcess != null)
                 {
                     _ScreenSaverProcess.Refresh();
-                    _LabelProcessInfo.Text = _ScreenSaverProcess.Id + " (" + _ScreenSaverProcess.HandleCount + "/" + _ScreenSaverProcess.Threads.Count + ")";
+                    _ButtonKillProcess.Text = _ScreenSaverProcess.Id + " (" + _ScreenSaverProcess.HandleCount + "/" + _ScreenSaverProcess.Threads.Count + ")";
                 }
                 else
                 {
-                    _LabelProcessInfo.Text = string.Empty;
+                    _ButtonKillProcess.Text = string.Empty;
                     _Timer.Enabled = false;
                 }
             }
@@ -183,13 +183,13 @@ namespace CC.Votd.TestTool
                 {
                     StartMiniPreview();
                 }
-
-                UseWaitCursor = false;
-
-                _ButtonPreview.Enabled = true;
-                _ButtonSettings.Enabled = true;
-                _CheckBoxDebug.Enabled = true;
             }
+
+            UseWaitCursor = false;
+
+            _ButtonPreview.Enabled = true;
+            _ButtonSettings.Enabled = true;
+            _CheckBoxDebug.Enabled = true;
         }
         #endregion
     }

@@ -133,6 +133,7 @@ namespace CC.Votd
             }
 
             SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
+            Text = Application.ProductName;
             Capture = true;
         }
         #endregion
