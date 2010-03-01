@@ -475,6 +475,11 @@
             A list of common prefixes.
             </summary>
         </member>
+        <member name="P:CC.Utilities.ArgumentParser.CommonSplitters">
+            <summary>
+            A list of common parameter splitters.
+            </summary>
+        </member>
         <member name="T:CC.Utilities.Rss.RssItem">
             <summary>
             Represents an Item element in an RSS 2.0 XML document.
