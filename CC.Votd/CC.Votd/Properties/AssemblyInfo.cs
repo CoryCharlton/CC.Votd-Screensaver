@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("CC.Votd")]
-[assembly: AssemblyDescription("A screensaver that displays a verse of the day or a random verse.\r\n\r\nVerses are provided from the RSS feed hosted by Good News & Crossway at www.gnpcb.org\r\n\r\nDefault background image courtesy unknown artist.")]
+[assembly: AssemblyDescription("A screensaver that displays a verse of the day or a random verse.\r\n\r\nVerses are provided from the RSS feed hosted by Good News & Crossway at www.gnpcb.org.\r\n\r\nUnless otherwise indicated, all Scripture quotations are from The Holy Bible, English Standard Version® (ESV®), copyright © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("CC Software Engineering")]
 [assembly: AssemblyProduct("CC.Votd")]
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.10.228")]
-[assembly: AssemblyFileVersion("1.0.10.228")]
+[assembly: AssemblyVersion("1.0.10.301")]
+[assembly: AssemblyFileVersion("1.0.10.301")]

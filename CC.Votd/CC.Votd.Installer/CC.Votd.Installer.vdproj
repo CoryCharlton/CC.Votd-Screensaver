@@ -21,6 +21,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_9B19BFF7D7344D149916C9B8BFCD180F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_C90158E726E3877F39DA6758B8EB836C"
         "OwnerKey" = "8:_9B01A54F134742BB926B45B9A6DFE128"
         "MsmSig" = "8:_UNDEFINED"
@@ -179,6 +185,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9B19BFF7D7344D149916C9B8BFCD180F"
+            {
+            "SourcePath" = "8:..\\Readme.txt"
+            "TargetName" = "8:Readme.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_9188BB6F5E1A4F0083D0B5B9C2A4CCC5"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C90158E726E3877F39DA6758B8EB836C"
             {
             "AssemblyRegister" = "3:1"
@@ -275,14 +301,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:CC.Votd"
-        "ProductCode" = "8:{5298194D-DEFC-4D6B-B4AF-61067813CB8F}"
-        "PackageCode" = "8:{8DB0962D-3209-4FCA-8585-302EE26F39CE}"
+        "ProductCode" = "8:{20D339C5-10B0-4BBC-9EBA-FCE63027EF0A}"
+        "PackageCode" = "8:{29769B69-CE67-4140-8534-0DC35000986D}"
         "UpgradeCode" = "8:{18589AC4-0B9F-428D-993E-8380AB7D66EE}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.5"
+        "ProductVersion" = "8:1.0.6"
         "Manufacturer" = "8:CC Software Engineering"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://www.ccswe.com"

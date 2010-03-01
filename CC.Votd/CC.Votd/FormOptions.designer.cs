@@ -673,11 +673,11 @@
             this._TableLayoutPanelAbout.Location = new System.Drawing.Point(3, 16);
             this._TableLayoutPanelAbout.Name = "_TableLayoutPanelAbout";
             this._TableLayoutPanelAbout.RowCount = 5;
-            this._TableLayoutPanelAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.83432F));
-            this._TableLayoutPanelAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.83432F));
-            this._TableLayoutPanelAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.83432F));
-            this._TableLayoutPanelAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.325444F));
-            this._TableLayoutPanelAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 59.1716F));
+            this._TableLayoutPanelAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this._TableLayoutPanelAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this._TableLayoutPanelAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this._TableLayoutPanelAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this._TableLayoutPanelAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this._TableLayoutPanelAbout.Size = new System.Drawing.Size(332, 208);
             this._TableLayoutPanelAbout.TabIndex = 0;
             // 
@@ -698,7 +698,7 @@
             // 
             this._LabelCopyright.AutoSize = true;
             this._LabelCopyright.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._LabelCopyright.Location = new System.Drawing.Point(6, 24);
+            this._LabelCopyright.Location = new System.Drawing.Point(6, 20);
             this._LabelCopyright.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this._LabelCopyright.MaximumSize = new System.Drawing.Size(0, 17);
             this._LabelCopyright.Name = "_LabelCopyright";
@@ -710,13 +710,13 @@
             // _TextBoxDescription
             // 
             this._TextBoxDescription.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._TextBoxDescription.Location = new System.Drawing.Point(6, 86);
+            this._TextBoxDescription.Location = new System.Drawing.Point(6, 68);
             this._TextBoxDescription.Margin = new System.Windows.Forms.Padding(6, 3, 3, 3);
             this._TextBoxDescription.Multiline = true;
             this._TextBoxDescription.Name = "_TextBoxDescription";
             this._TextBoxDescription.ReadOnly = true;
             this._TextBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this._TextBoxDescription.Size = new System.Drawing.Size(323, 119);
+            this._TextBoxDescription.Size = new System.Drawing.Size(323, 137);
             this._TextBoxDescription.TabIndex = 3;
             this._TextBoxDescription.TabStop = false;
             this._TextBoxDescription.Text = "Description";
@@ -725,9 +725,9 @@
             // 
             this._LinkLabelHomepage.AutoSize = true;
             this._LinkLabelHomepage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._LinkLabelHomepage.Location = new System.Drawing.Point(3, 48);
+            this._LinkLabelHomepage.Location = new System.Drawing.Point(3, 40);
             this._LinkLabelHomepage.Name = "_LinkLabelHomepage";
-            this._LinkLabelHomepage.Size = new System.Drawing.Size(326, 24);
+            this._LinkLabelHomepage.Size = new System.Drawing.Size(326, 20);
             this._LinkLabelHomepage.TabIndex = 2;
             this._LinkLabelHomepage.TabStop = true;
             this._LinkLabelHomepage.Text = "Homepage";
