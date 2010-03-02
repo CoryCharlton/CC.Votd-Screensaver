@@ -8,12 +8,13 @@ Minimum Requirements:
   • 128 megabytes (MB) of RAM or higher recommended
   • 1 megabytes (MB) of available hard disk space
   • Super VGA (800 x 600) or higher-resolution video adapter and monitor
+  • Microsoft .NET 3.5 or higher (installed if needed by `Setup`)
  
 Copyright:
 
-	Verses are provided from the RSS feed hosted by Good News & Crossway at www.gnpcb.org.
+   Verses are provided from the RSS feed hosted by Good News & Crossway at www.gnpcb.org.
 	
-	Unless otherwise indicated, all Scripture quotations are from The Holy Bible, English Standard 
-	Version® (ESV®), copyright © 2001 by Crossway, a publishing ministry of Good News Publishers. 
-	Used by permission. All rights reserved.
+   Unless otherwise indicated, all Scripture quotations are from The Holy Bible, English Standard 
+   Version® (ESV®), copyright © 2001 by Crossway, a publishing ministry of Good News Publishers. 
+   Used by permission. All rights reserved.
 	
